@@ -28,6 +28,35 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap" Text="about app" Style="{StaticResource PhoneTextTitle2Style}"/>
+                <TextBlock TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"><Run Text="The app aims to be the ultimate remote control client for XBMC. The app is made open source in spirit of XBMC and all the source code is available at GitHub."/></TextBlock>
+                
+                <TextBlock TextWrapping="Wrap" Text="about project" Style="{StaticResource PhoneTextTitle2Style}"/>
+                <TextBlock TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"><Run Text="This app is a part of an open source project. If you wish to contribute, feel free to do so at the URL below. Be sure to check out the project wiki before submitting pull requests."/></TextBlock>
+                <HyperlinkButton Content="http://git.io/S2Wj5A" TargetName="_blank" HorizontalAlignment="Left" NavigateUri="https://github.com/akshay2000/XBMCRemoteWP"/>
+
+                <TextBlock Style="{StaticResource PhoneTextTitle2Style}" Margin="14,12,12,0"><Run Text="about developer"/></TextBlock>
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock HorizontalAlignment="Left" Style="{StaticResource PhoneTextSubtleStyle}"><Run Text="apps from developer:"/></TextBlock>
+                    <HyperlinkButton Content="akshay2000" Width="auto" x:Name="DevProfile" Click="DevProfile_Click" HorizontalAlignment="Left" Margin="-17,0,0,0" FontSize="{StaticResource PhoneFontSizeNormal}" />
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Left" Style="{StaticResource PhoneTextSubtleStyle}"><Run Text="email support:"/></TextBlock>
+                    <HyperlinkButton Content="appsupport@indestructible.in" x:Name="Email" Click="Email_Click" HorizontalAlignment="Left" Margin="-17,0,0,0" FontSize="{StaticResource PhoneFontSizeNormal}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" HorizontalAlignment="Left"><Run Text="website:"/></TextBlock>
+                    <HyperlinkButton Content="http://indestructible.in" x:Name="Website" NavigateUri="http://indestructible.in" TargetName="_blank" HorizontalAlignment="Left" Margin="-17,0,0,0" FontSize="{StaticResource PhoneFontSizeNormal}"/>
+                </StackPanel>
+
+                <Button Content="Rate app" Height="72" HorizontalAlignment="Stretch" x:Name="RateApp" Click="RateApp_Click" />
+
+            </StackPanel>
+
 
         </Grid>
     </Grid>

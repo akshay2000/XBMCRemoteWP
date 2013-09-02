@@ -4,7 +4,6 @@ C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\Bin\Debug\XBMCRemoteW
 C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\Bin\Debug\XBMCRemoteWP.pdb
 C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\Bin\Debug\AppManifest.xaml
 C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\Bin\Debug\XBMCRemoteWP.xap
-C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\XBMCRemoteWP.csprojResolveAssemblyReference.cache
 C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\App.g.cs
 C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\MainPage.g.cs
 C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\Pages\AboutPage.g.cs
@@ -12,3 +11,5 @@ C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\XBMCRemoteW
 C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\XBMCRemoteWP.dll
 C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\XBMCRemoteWP.pdb
 C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\XapCacheFile.xml
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\Pages\SettingsPage.g.cs
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\Pages\FeedbackPage.g.cs
