@@ -1,0 +1,14 @@
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\Bin\Debug\ApplicationIcon.png
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\Bin\Debug\Background.png
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\Bin\Debug\XBMCRemoteWP.dll
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\Bin\Debug\XBMCRemoteWP.pdb
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\Bin\Debug\AppManifest.xaml
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\Bin\Debug\XBMCRemoteWP.xap
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\XBMCRemoteWP.csprojResolveAssemblyReference.cache
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\App.g.cs
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\MainPage.g.cs
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\Pages\AboutPage.g.cs
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\XBMCRemoteWP.g.resources
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\XBMCRemoteWP.dll
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\XBMCRemoteWP.pdb
+C:\Users\Akshay\Documents\GitHub\XBMCRemoteWP\XBMCRemoteWP\obj\Debug\XapCacheFile.xml

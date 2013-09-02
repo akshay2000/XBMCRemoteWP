@@ -20,5 +20,15 @@ namespace XBMCRemoteWP
         {
             InitializeComponent();
         }
+
+        private void SettingsMenuItem_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/SettingsPage.xaml", UriKind.Relative));
+        }
+
+        private void AboutMenuItem_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/AboutPage.xaml", UriKind.Relative));
+        }
     }
 }
