@@ -19,6 +19,7 @@ namespace XBMCRemoteWP
         public MainPage()
         {
             InitializeComponent();
+            App.ReadMethods.GetActivePlayers();
         }
 
         private void SettingsMenuItem_Click(object sender, EventArgs e)

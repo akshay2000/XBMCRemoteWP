@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using XBMCRemoteWP.ViewModels;
 
 namespace XBMCRemoteWP
 {
@@ -22,6 +23,15 @@ namespace XBMCRemoteWP
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
+
+        private static ReadMethods readMethods;
+        public static ReadMethods ReadMethods
+        {
+            get
+            {
+                return readMethods;
+            }
+        }
 
         /// <summary>
         /// Constructor for the Application object.
@@ -36,6 +46,9 @@ namespace XBMCRemoteWP
 
             // Phone-specific initialization
             InitializePhoneApplication();
+
+            //Create viewmodels
+            readMethods = new ReadMethods();
 
             // Show graphics profiling information while debugging.
             if (System.Diagnostics.Debugger.IsAttached)
