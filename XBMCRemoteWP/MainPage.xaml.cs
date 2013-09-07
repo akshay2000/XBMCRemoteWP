@@ -19,6 +19,13 @@ namespace XBMCRemoteWP
         public MainPage()
         {
             InitializeComponent();
+           
+        }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            App.ConnManager.CurrentConnection = "http://10.0.0.3:8080/jsonrpc?request=";
             App.ReadMethods.GetActivePlayers();
         }
 

@@ -24,12 +24,21 @@ namespace XBMCRemoteWP
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
 
-        private static ReadMethods readMethods;
+        private static ReadMethods _readMethods;
         public static ReadMethods ReadMethods
         {
             get
             {
-                return readMethods;
+                return _readMethods;
+            }
+        }
+
+        private static ConnectionManagers _connManager;
+        public static ConnectionManagers ConnManager
+        {
+            get
+            {
+                return _connManager;
             }
         }
 
@@ -48,7 +57,9 @@ namespace XBMCRemoteWP
             InitializePhoneApplication();
 
             //Create viewmodels
-            readMethods = new ReadMethods();
+            _connManager = new ConnectionManagers();
+            _readMethods = new ReadMethods();
+            
 
             // Show graphics profiling information while debugging.
             if (System.Diagnostics.Debugger.IsAttached)

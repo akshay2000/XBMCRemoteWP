@@ -11,11 +11,13 @@ namespace XBMCRemoteWP.ViewModels
 {
     public class ReadMethods
     {
+        private ConnectionManagers ConnManager = App.ConnManager;
+
         public async void GetActivePlayers()
         {
             HttpClientHandler handler = new HttpClientHandler();
             HttpClient httpClient = new HttpClient(handler);
-            httpClient.BaseAddress = new Uri("http://10.0.0.3:8080/jsonrpc");
+            httpClient.BaseAddress = new Uri(ConnManager.CurrentConnection);
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "");
           
             request.Content = new StringContent( "{\"jsonrpc\":\"2.0\",\"method\":\"Player.GetActivePlayers\",\"id\":234345}");
