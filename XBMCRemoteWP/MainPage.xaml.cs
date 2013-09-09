@@ -22,12 +22,18 @@ namespace XBMCRemoteWP
            
         }
 
+        #region Overrides
+
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             App.ConnManager.CurrentConnection = "http://10.0.0.3:8080/jsonrpc?request=";
             App.ReadMethods.GetActivePlayers();
         }
+
+        #endregion
+
+        #region Appbar buttons and menus
 
         private void SettingsMenuItem_Click(object sender, EventArgs e)
         {
@@ -38,5 +44,7 @@ namespace XBMCRemoteWP
         {
             NavigationService.Navigate(new Uri("/Pages/AboutPage.xaml", UriKind.Relative));
         }
+
+        #endregion
     }
 }

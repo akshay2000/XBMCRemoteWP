@@ -9,6 +9,7 @@
     <!--Application Resources-->
     <Application.Resources>
         <ResourceDictionary>
+            <!--App name is held as a resource-->
             <sys:String x:Key="AppName">XBMC REMOTE</sys:String>
         </ResourceDictionary>
     </Application.Resources>

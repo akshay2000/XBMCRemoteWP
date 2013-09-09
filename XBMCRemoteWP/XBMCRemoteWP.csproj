@@ -94,6 +94,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\CommonReturnTypes.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\RPCBase.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>

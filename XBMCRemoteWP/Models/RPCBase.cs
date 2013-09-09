@@ -5,6 +5,9 @@ using System.Text;
 
 namespace XBMCRemoteWP.Models
 {
+    /// <summary>
+    /// Base class for all the RPC requests. Defauts value of id to 1 and jsonrpc to 2.0
+    /// </summary>
     public class RPCBase
     {
         private int _id = 1;
