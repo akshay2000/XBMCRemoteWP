@@ -28,10 +28,10 @@ namespace XBMCRemoteWP.Models
         public int Result { get; set; }
     }
 
-    ////List type
-    //public class ListReturn : RPCBase
-    //{
-    //    public List<object> Result { get; set; }
-    //}
+    //List type
+    public class PlayerListReturn : RPCBase
+    {
+        public List<Player> Result { get; set; }
+    }
 
 }

@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using XBMCRemoteWP.Models;
 
 namespace XBMCRemoteWP
 {
@@ -24,11 +25,11 @@ namespace XBMCRemoteWP
 
         #region Overrides
 
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        protected async override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             App.ConnManager.CurrentConnection = "http://10.0.0.3:8080/jsonrpc?request=";
-            App.ReadMethods.GetActivePlayers();
+            List<Player> ActivePlayers = await App.ReadMethods.GetActivePlayers(); //TODO do something with this list.
         }
 
         #endregion

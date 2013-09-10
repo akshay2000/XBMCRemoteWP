@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,6 +7,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+using XBMCRemoteWP.Models;
 
 namespace XBMCRemoteWP.ViewModels
 {
@@ -19,7 +22,7 @@ namespace XBMCRemoteWP.ViewModels
         private ConnectionManagers ConnManager = App.ConnManager;
 
         //Method returns the active players on the server.
-        public async void GetActivePlayers()
+        public async Task<List<Player>> GetActivePlayers()
         {
             HttpClientHandler handler = new HttpClientHandler();
             HttpClient httpClient = new HttpClient(handler);
@@ -31,8 +34,22 @@ namespace XBMCRemoteWP.ViewModels
 
             HttpResponseMessage response = await httpClient.SendAsync(request);
             var res = await response.Content.ReadAsStringAsync();
-            Debug.WriteLine(response.StatusCode);   //TODO: Do something fruitful with the response.
-            Debug.WriteLine(res);
+            Debug.WriteLine("Status Code:" + response.StatusCode);
+            Debug.WriteLine("Response String:" + res);
+
+            PlayerListReturn jsonResponse = JsonConvert.DeserializeObject<PlayerListReturn>(res);
+            return jsonResponse.Result;
+            //List<Player> templist = new List<Player>();
+            //foreach (var element in jsonResponse.Result)
+            //{
+            //    var s = Convert.ToString(element);
+            //    var t = JsonConvert.DeserializeObject<Player>(s);
+            //    templist.Add(t);
+            //}
+            //foreach (var element in templist)
+            //{
+            //    Debug.WriteLine(element.Type);
+            //}
         }
     }
 }
