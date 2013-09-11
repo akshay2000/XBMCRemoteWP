@@ -30,6 +30,8 @@ namespace XBMCRemoteWP
             base.OnNavigatedTo(e);
             App.ConnManager.CurrentConnection = "http://10.0.0.3:8080/jsonrpc?request=";
             List<Player> ActivePlayers = await App.ReadMethods.GetActivePlayers(); //TODO do something with this list.
+
+            App.ReadMethods.GetNowPlaying();
         }
 
         #endregion
