@@ -16,7 +16,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="180"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Image Grid.RowSpan="10" Stretch="UniformToFill" Source="Assets/DesignTime/NowPlayingBack.jpg" />
@@ -30,12 +30,16 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            
+            <StackPanel>
+                <TextBlock x:Name="ArtistNameTextBlock" Text="Green Day" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                <TextBlock x:Name="SongNameTextBlock" Text="21 Guns Locking" Style="{StaticResource PhoneTextLargeStyle}"/>
+                <Image x:Name="AlbumArtImage" Margin="12" Source="Assets/DesignTime/AlbumArt.jpg" Height="285" Width="285" Stretch="UniformToFill" HorizontalAlignment="Left" />
+            </StackPanel>
         </Grid>
     </Grid>
     
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar>
+        <shell:ApplicationBar Opacity="0.3">
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click" Text="settings"/>
                 <shell:ApplicationBarMenuItem x:Name="AboutMenuItem" Click="AboutMenuItem_Click" Text="about"/>
