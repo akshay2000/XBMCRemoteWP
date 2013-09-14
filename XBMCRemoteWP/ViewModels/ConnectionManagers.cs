@@ -1,7 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+using XBMCRemoteWP.Models;
 
 namespace XBMCRemoteWP.ViewModels
 {
@@ -28,5 +35,15 @@ namespace XBMCRemoteWP.ViewModels
                 }
             }
         }
+
+        ///Network service discovery is supposed to happen here.
+        ///XBMC announces it's JSON-RPC availability over zeroconf and string is "_http._tcp"
+        ///Pseudo code is written below. Zeroconf is nicely provided by project here: https://github.com/onovotny/Zeroconf
+       
+        //public async Task<List<string>> GetAvailableServers()
+        //{
+        //    var list = zaroconf.searchforservers("_http._tcp");
+        //    return list;
+        //}
     }
 }
