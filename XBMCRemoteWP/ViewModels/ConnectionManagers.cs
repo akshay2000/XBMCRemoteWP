@@ -45,5 +45,8 @@ namespace XBMCRemoteWP.ViewModels
         //    var list = zaroconf.searchforservers("_http._tcp");
         //    return list;
         //}
+
+        ///The Zeroconf there doesn't support Windows Phone 7 (bummer).
+        ///Looks like we'll have to implement an UI to do the job.
     }
 }
