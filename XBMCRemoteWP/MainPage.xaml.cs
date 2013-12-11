@@ -16,6 +16,7 @@ namespace XBMCRemoteWP
 {
     public partial class MainPage : PhoneApplicationPage
     {
+	//Just a dumb comment!
         // Constructor
         public MainPage()
         {
