@@ -39,7 +39,7 @@ namespace XBMCRemoteWP.Helpers
                     _currentConnection = value;
                 }
             }
-        }
+        }       
 
         public async Task<HttpResponseMessage> ExecuteRequest(string requestData)
         {
