@@ -10,7 +10,7 @@ namespace XBMCRemoteWP.Models
     /// </summary>
     public class Player
     {
-        public int Playerid { get; set; }
+        public int PlayerId { get; set; }
         public string Type { get; set; }
     }
 }
