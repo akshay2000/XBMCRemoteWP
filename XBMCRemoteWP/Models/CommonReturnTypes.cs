@@ -16,7 +16,7 @@ namespace XBMCRemoteWP.Models
         public string Result { get; set; }
     }
 
-    //Boolesn type
+    //Boolean type
     public class BoolReturn : RPCBase
     {
         public bool Result { get; set; }

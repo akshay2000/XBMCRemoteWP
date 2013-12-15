@@ -12,7 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using XBMCRemoteWP.ViewModels;
+using XBMCRemoteWP.Helpers;
 
 namespace XBMCRemoteWP
 {
@@ -33,8 +33,8 @@ namespace XBMCRemoteWP
             }
         }
 
-        private static ConnectionManagers _connManager;
-        public static ConnectionManagers ConnManager
+        private static ConnectionManager _connManager;
+        public static ConnectionManager ConnManager
         {
             get
             {
@@ -57,7 +57,7 @@ namespace XBMCRemoteWP
             InitializePhoneApplication();
 
             //Create viewmodels
-            _connManager = new ConnectionManagers();
+            _connManager = new ConnectionManager();
             _readMethods = new ReadMethods();
             
 

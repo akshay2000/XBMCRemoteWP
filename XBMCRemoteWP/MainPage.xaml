@@ -5,6 +5,7 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -34,12 +35,18 @@
                 <TextBlock x:Name="ArtistNameTextBlock" Text="Green Day" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
                 <TextBlock x:Name="SongNameTextBlock" Text="21 Guns Locking" Style="{StaticResource PhoneTextLargeStyle}"/>
                 <Image x:Name="AlbumArtImage" Margin="12" Source="Assets/DesignTime/AlbumArt.jpg" Height="285" Width="285" Stretch="UniformToFill" HorizontalAlignment="Left" />
+                <StackPanel Orientation="Horizontal">
+                    <c4f:RoundButton x:Name="PreviousButton" Click="PreviousButton_Click" ImageSource="Assets/Glyphs/appbar.transport.rew.rest.png"/>
+                    <c4f:RoundButton x:Name="PlayPauseButton" Click="PlayPauseButton_Click" ImageSource="Assets/Glyphs/appbar.transport.play.rest.png" />
+                    <c4f:RoundButton x:Name="NextButton" Click="NextButton_Click" ImageSource="Assets/Glyphs/appbar.transport.ff.rest.png" />
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>
     
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Opacity="0.3">
+            <shell:ApplicationBarIconButton Text="next" IconUri="Assets/Glyphs/check.png" />
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click" Text="settings"/>
                 <shell:ApplicationBarMenuItem x:Name="AboutMenuItem" Click="AboutMenuItem_Click" Text="about"/>
