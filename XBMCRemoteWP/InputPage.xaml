@@ -1,0 +1,70 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="XBMCRemoteWP.InputPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:c4d="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="Input" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="InputCommand" Width="350"/>
+                <Button x:Name="SubmitButton" Content="Go" Click="SubmitButton_Click"/>
+            </StackPanel>
+            
+            <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="HomeButton" Click="HomeButton_Click" Grid.Row="0" Grid.Column="0" Content="H" Height="80" Width="80"/>                
+                <c4d:RoundButton x:Name="UpButton" Click="UpButton_Click" Grid.Row="0" Grid.Column="1" ImageSource="Assets/Glyphs/appbar.up.png" VerticalAlignment="Center"/>
+                <Button x:Name="BackButton" Click="BackButton_Click" Grid.Row="0" Grid.Column="2" Content="B" Height="80" Width="80"/>
+                <c4d:RoundButton x:Name="LeftButton" Click="LeftButton_Click" Grid.Row="1" Grid.Column="0" ImageSource="Assets/Glyphs/appbar.back.rest.png" VerticalAlignment="Center"/>
+                <Button x:Name="OkayButton" Click="OkayButton_Click" Grid.Row="1" Grid.Column="1" Content="Ok" Height="80"/>
+                <c4d:RoundButton x:Name="RightButton" Click="RightButton_Click" Grid.Row="1" Grid.Column="2" ImageSource="Assets/Glyphs/appbar.next.rest.png" VerticalAlignment="Center"/>
+                <Button x:Name="OSDButton" Click="OSDButton_Click" Grid.Row="2" Grid.Column="0" Content="O" Height="80" Width="80"/>
+                <c4d:RoundButton x:Name="DownButton" Click="DownButton_Click" Grid.Row="2" Grid.Column="1" ImageSource="Assets/Glyphs/appbar.down.png" VerticalAlignment="Center"/>
+                <Button x:Name="MenuButton" Click="MenuButton_Click" Grid.Row="2" Grid.Column="2" Content="C" Height="80" Width="80"/>
+                <Button x:Name="InfoButton" Click="InfoButton_Click" Grid.Row="3" Grid.Column="0" Content="i" Height="80" Width="80"/>
+                
+            </Grid>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>
