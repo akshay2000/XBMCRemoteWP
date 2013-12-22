@@ -32,8 +32,7 @@ namespace XBMCRemoteWP
 
         protected async override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-            ConnectionManager.CurrentConnection = "http://10.0.0.3:8080/jsonrpc?request=";
+            base.OnNavigatedTo(e);            
             List<Player> ActivePlayers = await App.ReadMethods.GetActivePlayers(); //TODO do something with this list.
             dynamic nowPlaying = await ReadMethods.GetNowPlaying(0);
 
@@ -41,7 +40,7 @@ namespace XBMCRemoteWP
             string imgPath = nowPlaying.result.item.thumbnail;
             var t = imgPath.Substring(8);
             var encodedt = HttpUtility.UrlEncode(t);
-            var thumbnailUrl = "http://10.0.0.3:8080/image/image://" + encodedt;
+            var thumbnailUrl = "http://192.168.1.3:8080/image/image://" + encodedt;
             AlbumArtImage.Source = new BitmapImage(new Uri(thumbnailUrl));
 
             //App.ReadMethods.GetNowPlaying();
