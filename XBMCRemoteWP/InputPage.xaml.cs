@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using XBMCRemoteWP.Helpers;
+using XBMCRemoteWP.RPCWrappers;
 
 namespace XBMCRemoteWP
 {
@@ -20,57 +21,57 @@ namespace XBMCRemoteWP
 
         private void LeftButton_Click(object sender, RoutedEventArgs e)
         {
-            InputControls.ExecuteAction(InputCommands.Left);
+            Input.ExecuteAction(InputCommands.Left);
         }
 
         private void UpButton_Click(object sender, RoutedEventArgs e)
         {
-            InputControls.ExecuteAction(InputCommands.Up);
+            Input.ExecuteAction(InputCommands.Up);
         }
 
         private void RightButton_Click(object sender, RoutedEventArgs e)
         {
-            InputControls.ExecuteAction(InputCommands.Right);
+            Input.ExecuteAction(InputCommands.Right);
         }
 
         private void DownButton_Click(object sender, RoutedEventArgs e)
         {
-            InputControls.ExecuteAction(InputCommands.Down);
+            Input.ExecuteAction(InputCommands.Down);
         }
 
         private void OkayButton_Click(object sender, RoutedEventArgs e)
         {
-            InputControls.ExecuteAction(InputCommands.Select);
+            Input.ExecuteAction(InputCommands.Select);
         }
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            InputControls.ExecuteAction(InputCommands.Home);
+            Input.ExecuteAction(InputCommands.Home);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            InputControls.ExecuteAction(InputCommands.Back);
+            Input.ExecuteAction(InputCommands.Back);
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
-            InputControls.ExecuteAction(InputCommands.ShowCodec);
+            Input.ExecuteAction(InputCommands.ShowCodec);
         }
 
         private void OSDButton_Click(object sender, RoutedEventArgs e)
         {
-            InputControls.ExecuteAction(InputCommands.ShowOSD);
+            Input.ExecuteAction(InputCommands.ShowOSD);
         }
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
-            InputControls.ExecuteAction(InputCommands.Info);
+            Input.ExecuteAction(InputCommands.Info);
         }
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            InputControls.ExecuteAction(InputCommand.Text);
+            Input.ExecuteAction(InputCommand.Text);
         }
     }
 }

@@ -4,11 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:converters="clr-namespace:XBMCRemoteWP.Converters"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone">
 
     <!--Application Resources-->
-    <Application.Resources>
+    <Application.Resources>        
         <ResourceDictionary>
+            <converters:ImagePathConverter x:Key="ImagePathConverter"/>
             <!--App name is held as a resource-->
             <sys:String x:Key="AppName">XBMC REMOTE</sys:String>
         </ResourceDictionary>

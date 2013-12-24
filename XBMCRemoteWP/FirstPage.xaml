@@ -31,6 +31,7 @@
             <StackPanel>
                 <Button x:Name="Player" Click="Player_Click" Content="Player"/>
                 <Button x:Name="Navigation" Click="Navigation_Click" Content="Navigation"/>
+                <Button x:Name="Cover" Click="Cover_Click" Content="Cover"/>
             </StackPanel>
         </Grid>
     </Grid>

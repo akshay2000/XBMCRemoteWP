@@ -22,7 +22,7 @@ namespace XBMCRemoteWP.Helpers
         private static ConnectionManager ConnManager = App.ConnManager;
 
         //Method returns the active players on the server.
-        public async Task<List<Player>> GetActivePlayers()
+        public async Task<List<PlayerObject>> GetActivePlayers()
         {
             JObject requestObject = JObject.FromObject(new
                 {

@@ -13,6 +13,7 @@ using Microsoft.Phone.Controls;
 using XBMCRemoteWP.Models;
 using XBMCRemoteWP.Helpers;
 using System.Windows.Media.Imaging;
+using XBMCRemoteWP.RPCWrappers;
 
 namespace XBMCRemoteWP
 {
@@ -33,7 +34,7 @@ namespace XBMCRemoteWP
         protected async override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);            
-            List<Player> ActivePlayers = await App.ReadMethods.GetActivePlayers(); //TODO do something with this list.
+            List<PlayerObject> ActivePlayers = await App.ReadMethods.GetActivePlayers(); //TODO do something with this list.
             dynamic nowPlaying = await ReadMethods.GetNowPlaying(0);
 
             //Let's update UI.
@@ -64,7 +65,7 @@ namespace XBMCRemoteWP
 
         private async void PlayPauseButton_Click(object sender, RoutedEventArgs e)
         {
-            int? playerSpeed = await PlayerControls.PlayPausePlayer();
+            int? playerSpeed = await Player.PlayPausePlayer();
             switch (playerSpeed)
             {
                 case 0:
@@ -78,12 +79,12 @@ namespace XBMCRemoteWP
 
         private void PreviousButton_Click(object sender, RoutedEventArgs e)
         {
-            PlayerControls.GoTo("previous");
+            Player.GoTo("previous");
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            PlayerControls.GoTo("next");
+            Player.GoTo("next");
         }
     }
 }
