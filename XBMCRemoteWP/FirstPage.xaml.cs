@@ -37,5 +37,10 @@ namespace XBMCRemoteWP
         {
             NavigationService.Navigate(new Uri("/CoverPage.xaml", UriKind.Relative));
         }
+
+        private void Connections_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/ConnectionsPage.xaml", UriKind.Relative));
+        }
     }
 }

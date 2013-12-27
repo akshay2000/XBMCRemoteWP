@@ -102,6 +102,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConnectionsPage.xaml.cs">
+      <DependentUpon>ConnectionsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\ImagePathConverter.cs" />
     <Compile Include="CoverPage.xaml.cs">
       <DependentUpon>CoverPage.xaml</DependentUpon>
@@ -110,7 +113,13 @@
       <DependentUpon>FirstPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Audio\Album.cs" />
+    <Compile Include="Models\ConnectionItem.cs" />
+    <Compile Include="Models\MainDataContext.cs" />
+    <Compile Include="Models\NotifyBase.cs" />
     <Compile Include="Models\Video\Episode.cs" />
+    <Compile Include="Pages\AddConnectionPage.xaml.cs">
+      <DependentUpon>AddConnectionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RPCWrappers\AudioLibrary.cs" />
     <Compile Include="RPCWrappers\Input.cs" />
     <Compile Include="RPCWrappers\Player.cs" />
@@ -136,12 +145,18 @@
     <Compile Include="Helpers\ConnectionManager.cs" />
     <Compile Include="Helpers\ReadMethods.cs" />
     <Compile Include="RPCWrappers\VideoLibrary.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ObservableCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="ConnectionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CoverPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddConnectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,6 +204,7 @@
     </Content>
     <Content Include="Assets\DesignTime\AlbumArt.jpg" />
     <Content Include="Assets\DesignTime\NowPlayingBack.jpg" />
+    <Content Include="Assets\Glyphs\add.png" />
     <Content Include="Assets\Glyphs\appbar.back.rest.png" />
     <Content Include="Assets\Glyphs\appbar.down.png" />
     <Content Include="Assets\Glyphs\appbar.next.rest.png" />
@@ -193,7 +213,10 @@
     <Content Include="Assets\Glyphs\appbar.transport.play.rest.png" />
     <Content Include="Assets\Glyphs\appbar.transport.rew.rest.png" />
     <Content Include="Assets\Glyphs\appbar.up.png" />
+    <Content Include="Assets\Glyphs\cancel.png" />
     <Content Include="Assets\Glyphs\check.png" />
+    <Content Include="Assets\Glyphs\delete.png" />
+    <Content Include="Assets\Glyphs\save.png" />
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -224,7 +247,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <Folder Include="Pages\Audio\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
