@@ -21,7 +21,7 @@ namespace XBMCRemoteWP
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ConnectionManager.CurrentConnection = "http://192.168.1.3:8080/jsonrpc?request=";
+            ConnectionManager.CurrentConnection = "http://192.168.1.4:8080/jsonrpc?request=";
         }
         private void Player_Click(object sender, RoutedEventArgs e)
         {

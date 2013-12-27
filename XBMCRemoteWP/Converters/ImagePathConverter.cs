@@ -18,7 +18,7 @@ namespace XBMCRemoteWP.Converters
             {
                 string uri = imagePath.Substring(8);
                 var encodedUri = HttpUtility.UrlEncode(uri);
-                imageURL = "http://192.168.1.3:8080/image/image://" + encodedUri;
+                imageURL = "http://192.168.1.4:8080/image/image://" + encodedUri; //TODO Use this connectionstring properly!
             }
             else
             {

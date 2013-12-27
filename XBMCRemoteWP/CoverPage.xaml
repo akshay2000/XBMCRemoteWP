@@ -34,8 +34,16 @@
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
-            <phone:PanoramaItem Header="item2">
-                <Grid/>
+            <phone:PanoramaItem Header="tv shows">
+                <Grid>
+                    <phone:LongListSelector x:Name="TVShowsLLS" >
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <Image Width="350" Stretch="Uniform" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </Grid>
             </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>

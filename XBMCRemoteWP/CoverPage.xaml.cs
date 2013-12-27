@@ -20,8 +20,11 @@ namespace XBMCRemoteWP
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var t = await AudioLibrary.GetRecentlyAddedAlbums();
-            MusicLLS.ItemsSource = t;
+            var albums = await AudioLibrary.GetRecentlyAddedAlbums();
+            MusicLLS.ItemsSource = albums;
+
+            var episodes = await VideoLibrary.GetRecentlyAddedEpisodes();
+            TVShowsLLS.ItemsSource = episodes;
             base.OnNavigatedTo(e);
         }
     }
