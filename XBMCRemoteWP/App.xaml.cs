@@ -25,16 +25,7 @@ namespace XBMCRemoteWP
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
-
-        private static ReadMethods _readMethods;
-        public static ReadMethods ReadMethods
-        {
-            get
-            {
-                return _readMethods;
-            }
-        }
-
+               
         private static ConnectionManager _connManager;
         public static ConnectionManager ConnManager
         {
@@ -81,7 +72,6 @@ namespace XBMCRemoteWP
 
             //Create viewmodels
             _connManager = new ConnectionManager();
-            _readMethods = new ReadMethods();
             _mainVM = new MainViewModel(DBConnectionString);
             
 

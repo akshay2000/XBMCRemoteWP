@@ -31,8 +31,9 @@
             <phone:LongListSelector x:Name="ConnectionsLLS" ItemsSource="{Binding ConnectionItems}">
                 <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding ConnectionName}"/>
+                        <StackPanel x:Name="ConnectionItemWrapper" Tap="ConnectionItemWrapper_Tap">
+                            <TextBlock Text="{Binding ConnectionName}" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                            <TextBlock Text="{Binding IpAddress}" Style="{StaticResource PhoneTextSubtleStyle}"/>
                         </StackPanel>
                     </DataTemplate>
                 </phone:LongListSelector.ItemTemplate>

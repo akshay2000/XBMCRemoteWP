@@ -18,9 +18,9 @@ namespace XBMCRemoteWP.RPCWrappers
         /// <returns>Player's speed after the operation</returns>
         public async static Task<int?> PlayPausePlayer()
         {
-            List<PlayerObject> ActivePlayers = await App.ReadMethods.GetActivePlayers();
+            List<PlayerItem> ActivePlayers = await Player.GetActivePlayers();
             int? speed = null; //If no player was active
-            foreach (PlayerObject p in ActivePlayers)
+            foreach (PlayerItem p in ActivePlayers)
             {
                 JObject requestObject =
                     new JObject(
@@ -33,17 +33,52 @@ namespace XBMCRemoteWP.RPCWrappers
                 string requestData = requestObject.ToString();
                 HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
                 string responseString = await response.Content.ReadAsStringAsync();
-                Debug.WriteLine(responseString);
                 dynamic responseObject = JObject.Parse(responseString);
                 speed = responseObject.result.speed;               
             }
             return speed;
         }
 
+        public static async Task<dynamic> GetItem(int playerId)
+        {
+            JObject requestObject =
+                    new JObject(
+                        new JProperty("jsonrpc", "2.0"),
+                        new JProperty("id", 234),
+                        new JProperty("method", "Player.GetItem"),
+                        new JProperty("params",
+                            new JObject(
+                            new JProperty("playerid", playerId),
+                            new JProperty("properties",
+                                new JArray("title", "album", "artist", "season", "episode", "duration", "showtitle", "tvshowid", "thumbnail", "file", "fanart", "streamdetails")))));
+            string requestData = requestObject.ToString();
+            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            string responseString = await response.Content.ReadAsStringAsync();
+            Debug.WriteLine(responseString);
+            dynamic responseObject = JObject.Parse(responseString);
+            return responseObject;
+        }
+
+        public async static Task<List<PlayerItem>> GetActivePlayers()
+        {
+            JObject requestObject =
+                new JObject(
+                    new JProperty("jsonrpc", "2.0"),
+                    new JProperty("id", 234),
+                    new JProperty("method", "Player.GetActivePlayers"));
+            string requestData = requestObject.ToString();
+            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            string responseString = await response.Content.ReadAsStringAsync();
+            JObject responseObject = JObject.Parse(responseString);
+            JArray activePlayersList = (JArray)responseObject["result"];
+            List<PlayerItem> listToReturn = activePlayersList.ToObject<List<PlayerItem>>();
+            return listToReturn;
+        }
+
         public async static void GoTo(string goTo)
         {
-            List<PlayerObject> ActivePlayers = await App.ReadMethods.GetActivePlayers();
-            foreach (PlayerObject p in ActivePlayers)
+            List<PlayerItem> ActivePlayers = await Player.GetActivePlayers();
+            foreach (PlayerItem p in ActivePlayers)
             {
                 JObject requestObject = 
                     new JObject(

@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using XBMCRemoteWP.Helpers;
+using XBMCRemoteWP.Models;
 
 namespace XBMCRemoteWP
 {
@@ -21,7 +22,12 @@ namespace XBMCRemoteWP
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ConnectionManager.CurrentConnection = "http://192.168.1.4:8080/jsonrpc?request=";
+            ConnectionManager.CurrentConnection = new ConnectionItem
+            {
+                ConnectionName = "Test",
+                IpAddress = "192.168.1.4",
+                Port = 8080
+            };
         }
         private void Player_Click(object sender, RoutedEventArgs e)
         {

@@ -31,7 +31,7 @@ namespace XBMCRemoteWP.Models
     //List type
     public class PlayerListReturn : RPCBase
     {
-        public List<PlayerObject> Result { get; set; }
+        public List<PlayerItem> Result { get; set; }
     }
 
 }

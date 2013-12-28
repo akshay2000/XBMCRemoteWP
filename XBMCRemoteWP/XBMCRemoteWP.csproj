@@ -122,6 +122,7 @@
     </Compile>
     <Compile Include="RPCWrappers\AudioLibrary.cs" />
     <Compile Include="RPCWrappers\Input.cs" />
+    <Compile Include="RPCWrappers\JSONRPC.cs" />
     <Compile Include="RPCWrappers\Player.cs" />
     <Compile Include="InputPage.xaml.cs">
       <DependentUpon>InputPage.xaml</DependentUpon>
@@ -130,7 +131,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\CommonReturnTypes.cs" />
-    <Compile Include="Models\PlayerObject.cs" />
+    <Compile Include="Models\PlayerItem.cs" />
     <Compile Include="Models\RPCBase.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -143,7 +144,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\ConnectionManager.cs" />
-    <Compile Include="Helpers\ReadMethods.cs" />
     <Compile Include="RPCWrappers\VideoLibrary.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ObservableCollection.cs" />

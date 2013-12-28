@@ -30,11 +30,11 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
                 <TextBlock Text="Name" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                <TextBox x:Name="NameTextBox"/>
+                <TextBox x:Name="NameTextBox" InputScope="PersonalFullName"/>
                 <TextBlock Text="IP Address" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                <TextBox x:Name="IPTextBox"/>
+                <TextBox x:Name="IPTextBox" InputScope="Number"/>
                 <TextBlock Text="Port" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                <TextBox x:Name="PortTextBox"/>
+                <TextBox x:Name="PortTextBox" InputScope="Number"/>
                 <TextBlock Text="Username" Style="{StaticResource PhoneTextSubtleStyle}"/>
                 <TextBox x:Name="UsernameTextBox"/>
                 <TextBlock Text="Password" Style="{StaticResource PhoneTextSubtleStyle}"/>
