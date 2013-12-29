@@ -34,7 +34,7 @@ namespace XBMCRemoteWP
         protected async override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);            
-            List<PlayerItem> ActivePlayers = await Player.GetActivePlayers(); //TODO do something with this list.
+            List<PlayerItem> ActivePlayers = await Player.GetActivePlayers();
             dynamic nowPlaying = await Player.GetItem(ActivePlayers[0].PlayerId);
 
             //Let's update UI.
@@ -43,8 +43,6 @@ namespace XBMCRemoteWP
             var encodedt = HttpUtility.UrlEncode(t);
             var thumbnailUrl = "http://192.168.1.4:8080/image/image://" + encodedt;
             AlbumArtImage.Source = new BitmapImage(new Uri(thumbnailUrl));
-
-            //App.ReadMethods.GetNowPlaying();
         }
 
         #endregion

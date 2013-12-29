@@ -5,13 +5,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using XBMCRemoteWP.Models.Common;
 using XBMCRemoteWP.Models.Video;
 
 namespace XBMCRemoteWP.RPCWrappers
 {
     public class VideoLibrary
     {
-        public static async Task<List<Episode>> GetRecentlyAddedEpisodes()
+        public static async Task<List<Episode>> GetRecentlyAddedEpisodes(Limits limits)
         {
             JObject requestObject =
                     new JObject(
@@ -22,7 +23,13 @@ namespace XBMCRemoteWP.RPCWrappers
                             new JObject(
                                 new JProperty("properties",
                                     new JArray("title", "plot", "votes", "rating", "writer", "firstaired", "playcount", "runtime", "director", "productioncode", "season", "episode", "originaltitle", "showtitle", "streamdetails", "lastplayed", "fanart", "thumbnail", "file", "resume", "tvshowid", "dateadded", "uniqueid", "art")
-                                    ))));
+                                    ),
+                                new JProperty("limits",
+                                    new JObject(
+                                        new JProperty("start", limits.Start),
+                                        new JProperty("end", limits.End)
+                                        )                                        
+                                        ))));
             string requestData = requestObject.ToString();
             HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();

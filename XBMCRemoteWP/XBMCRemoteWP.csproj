@@ -113,6 +113,7 @@
       <DependentUpon>FirstPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Audio\Album.cs" />
+    <Compile Include="Models\Common\Limits.cs" />
     <Compile Include="Models\ConnectionItem.cs" />
     <Compile Include="Models\MainDataContext.cs" />
     <Compile Include="Models\NotifyBase.cs" />

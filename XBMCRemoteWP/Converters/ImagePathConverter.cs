@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using XBMCRemoteWP.Helpers;
 
 namespace XBMCRemoteWP.Converters
 {
@@ -18,7 +19,8 @@ namespace XBMCRemoteWP.Converters
             {
                 string uri = imagePath.Substring(8);
                 var encodedUri = HttpUtility.UrlEncode(uri);
-                imageURL = "http://192.168.1.4:8080/image/image://" + encodedUri; //TODO Use this connectionstring properly!
+                string baseUrlString = "http://" + ConnectionManager.CurrentConnection.IpAddress + ":" + ConnectionManager.CurrentConnection.Port.ToString() + "/image/image://";
+                imageURL = baseUrlString + encodedUri;
             }
             else
             {

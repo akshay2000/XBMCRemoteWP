@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using XBMCRemoteWP.RPCWrappers;
+using XBMCRemoteWP.Models.Common;
 
 namespace XBMCRemoteWP
 {
@@ -20,10 +21,10 @@ namespace XBMCRemoteWP
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var albums = await AudioLibrary.GetRecentlyAddedAlbums();
+            var albums = await AudioLibrary.GetRecentlyAddedAlbums(new Limits { Start = 0, End = 8 });
             MusicLLS.ItemsSource = albums;
 
-            var episodes = await VideoLibrary.GetRecentlyAddedEpisodes();
+            var episodes = await VideoLibrary.GetRecentlyAddedEpisodes(new Limits { Start = 0, End = 8 });
             TVShowsLLS.ItemsSource = episodes;
             base.OnNavigatedTo(e);
         }
