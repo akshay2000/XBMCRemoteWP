@@ -19,14 +19,21 @@
         <phone:Panorama Title="xbmc remote">
 
             <!--Panorama item one-->
-            <phone:PanoramaItem Header="music" Orientation="Horizontal" Width="600">
-                <Grid>
-                    <phone:LongListSelector x:Name="MusicLLS" LayoutMode="Grid" GridCellSize="140,140">
+            <phone:PanoramaItem Header="music" Orientation="Horizontal" Width="795">
+                <Grid >
+                    <phone:LongListSelector x:Name="MusicLLS" LayoutMode="Grid" GridCellSize="187,187" Margin="15,0,0,0">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Margin="20">
-                                    <Image Width="100" Height="100" Stretch="Uniform" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
-                                </StackPanel>
+                                <Grid x:Name="AlbumWrapper" Tap="AlbumWrapper_Tap" Margin="0,0,12,12">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Width="175" Height="175" Stretch="UniformToFill" Grid.RowSpan="2" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                    <Rectangle Grid.Row="1" Fill="Black" Opacity="0.75"/>
+                                    <TextBlock Grid.Row="1" Margin="5,0,5,2" Text="{Binding Label}"/>
+                                    
+                                </Grid>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>

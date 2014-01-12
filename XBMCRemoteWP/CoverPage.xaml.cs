@@ -9,6 +9,8 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using XBMCRemoteWP.RPCWrappers;
 using XBMCRemoteWP.Models.Common;
+using XBMCRemoteWP.Models.Audio;
+using Newtonsoft.Json.Linq;
 
 namespace XBMCRemoteWP
 {
@@ -27,6 +29,13 @@ namespace XBMCRemoteWP
             var episodes = await VideoLibrary.GetRecentlyAddedEpisodes(new Limits { Start = 0, End = 8 });
             TVShowsLLS.ItemsSource = episodes;
             base.OnNavigatedTo(e);
+        }
+
+        private async void AlbumWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            Album tappedAlbum = (sender as Grid).DataContext as Album;
+            string tappedAlbumId = tappedAlbum.AlbumId.ToString();
+            NavigationService.Navigate(new Uri("/Pages/Audio/AlbumPage.xaml?albumId=" + tappedAlbumId, UriKind.Relative));
         }
     }
 }

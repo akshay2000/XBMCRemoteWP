@@ -106,6 +106,7 @@
       <DependentUpon>ConnectionsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ImagePathConverter.cs" />
+    <Compile Include="Converters\ListToStringConverter.cs" />
     <Compile Include="CoverPage.xaml.cs">
       <DependentUpon>CoverPage.xaml</DependentUpon>
     </Compile>
@@ -113,13 +114,18 @@
       <DependentUpon>FirstPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Audio\Album.cs" />
+    <Compile Include="Models\Audio\Song.cs" />
     <Compile Include="Models\Common\Limits.cs" />
     <Compile Include="Models\ConnectionItem.cs" />
     <Compile Include="Models\MainDataContext.cs" />
     <Compile Include="Models\NotifyBase.cs" />
     <Compile Include="Models\Video\Episode.cs" />
+    <Compile Include="Models\Views\AlbumView.cs" />
     <Compile Include="Pages\AddConnectionPage.xaml.cs">
       <DependentUpon>AddConnectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Audio\AlbumPage.xaml.cs">
+      <DependentUpon>AlbumPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="RPCWrappers\AudioLibrary.cs" />
     <Compile Include="RPCWrappers\Input.cs" />
@@ -182,6 +188,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Audio\AlbumPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\FeedbackPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -205,6 +215,7 @@
     </Content>
     <Content Include="Assets\DesignTime\AlbumArt.jpg" />
     <Content Include="Assets\DesignTime\NowPlayingBack.jpg" />
+    <Content Include="Assets\DesignTime\AlbumView.png" />
     <Content Include="Assets\Glyphs\add.png" />
     <Content Include="Assets\Glyphs\appbar.back.rest.png" />
     <Content Include="Assets\Glyphs\appbar.down.png" />
@@ -247,9 +258,7 @@
       <HintPath>packages\Microsoft.Net.Http.2.2.18\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Audio\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

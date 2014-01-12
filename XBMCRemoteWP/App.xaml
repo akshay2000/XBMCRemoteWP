@@ -11,6 +11,7 @@
     <Application.Resources>        
         <ResourceDictionary>
             <converters:ImagePathConverter x:Key="ImagePathConverter"/>
+            <converters:ListToStringConverter x:Key="ListToStringConverter"/>
             <!--App name is held as a resource-->
             <sys:String x:Key="AppName">XBMC REMOTE</sys:String>
         </ResourceDictionary>

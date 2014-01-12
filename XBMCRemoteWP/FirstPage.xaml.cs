@@ -25,7 +25,7 @@ namespace XBMCRemoteWP
             ConnectionManager.CurrentConnection = new ConnectionItem
             {
                 ConnectionName = "Test",
-                IpAddress = "192.168.1.4",
+                IpAddress = "10.0.0.3",
                 Port = 8080
             };
         }
@@ -47,6 +47,11 @@ namespace XBMCRemoteWP
         private void Connections_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/ConnectionsPage.xaml", UriKind.Relative));
+        }
+
+        private void Album_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/Audio/AlbumPage.xaml", UriKind.Relative));
         }
     }
 }
