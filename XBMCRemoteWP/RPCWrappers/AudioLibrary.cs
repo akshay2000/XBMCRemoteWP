@@ -53,7 +53,7 @@ namespace XBMCRemoteWP.RPCWrappers
                                 new JProperty("properties",
                                     new JArray("title", "description", "artist", "genre", "theme", "mood", "style", "type", "albumlabel", "rating", "year", "musicbrainzalbumid", "musicbrainzalbumartistid", "fanart", "thumbnail", "playcount", "genreid", "artistid", "displayartist")
                                     ),
-                                    new JProperty("limits",
+                                new JProperty("limits",
                                     new JObject(
                                         new JProperty("start", limits.Start),
                                         new JProperty("end", limits.End)

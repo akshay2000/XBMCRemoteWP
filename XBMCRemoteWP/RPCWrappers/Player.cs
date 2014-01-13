@@ -12,6 +12,11 @@ namespace XBMCRemoteWP.RPCWrappers
 {
     class Player
     {
+        private static JObject defaultPlayerOptions = new JObject(
+            new JProperty("repeat", null),
+            new JProperty("resume", false),
+            new JProperty("shuffled", null));
+
         /// <summary>
         /// Calls Player.PlayPause to toggle all active players
         /// </summary>
@@ -92,9 +97,28 @@ namespace XBMCRemoteWP.RPCWrappers
                 string requestData = requestObject.ToString();
                 HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
                 string responseString = await response.Content.ReadAsStringAsync();
-                Debug.WriteLine(responseString);
                 dynamic responseObject = JObject.Parse(responseString);
             }
+        }
+
+        public async static Task Open(JObject item, JObject options = null)
+        {
+            if (options == null)
+                options = defaultPlayerOptions;
+
+            JObject requestObject =
+                   new JObject(
+                       new JProperty("jsonrpc", "2.0"),
+                       new JProperty("id", 234),
+                       new JProperty("method", "Player.Open"),
+                       new JProperty("params",
+                           new JObject(
+                               new JProperty("item", item),
+                               new JProperty("options", options))));
+            string requestData = requestObject.ToString();
+            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            string responseString = await response.Content.ReadAsStringAsync();
+            dynamic responseObject = JObject.Parse(responseString);
         }
     }
 }

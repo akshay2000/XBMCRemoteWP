@@ -20,19 +20,38 @@ namespace XBMCRemoteWP.Pages.Audio
             InitializeComponent();
         }
 
+        private List<Song> songsInAlbum;
+        private Album currentAlbum;
+
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             string albumId;
             if(NavigationContext.QueryString.TryGetValue("albumId", out albumId))
             {
                 JObject filter = new JObject(new JProperty("albumid", int.Parse(albumId)));
-                List<Song> songsInAlbum = await AudioLibrary.GetSongs(filter);
+                songsInAlbum = await AudioLibrary.GetSongs(filter);
                 SongsLLS.ItemsSource = songsInAlbum;
 
-                Album currentAlbum = await AudioLibrary.GetAlbumDetails(int.Parse(albumId));
+                currentAlbum = await AudioLibrary.GetAlbumDetails(int.Parse(albumId));
                 AlbumInfoGrid.DataContext = currentAlbum;
             }
             base.OnNavigatedTo(e);
+        }
+
+        private async void SongItemWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            Song tappedSong = (sender as StackPanel).DataContext as Song;
+            int tappedIndex = songsInAlbum.IndexOf(tappedSong);
+
+            await Playlist.Clear(PlayelistType.Audio);
+            JObject itemToAdd = new JObject(
+                new JProperty("albumid", currentAlbum.AlbumId));
+            await Playlist.Add(PlayelistType.Audio, itemToAdd);
+
+            JObject itemToOpen = new JObject(
+                new JProperty("playlistid", 0),
+                new JProperty("position", tappedIndex));
+            Player.Open(itemToOpen);
         }
     }
 }
