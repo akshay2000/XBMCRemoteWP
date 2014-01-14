@@ -113,7 +113,9 @@
     <Compile Include="FirstPage.xaml.cs">
       <DependentUpon>FirstPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\GlobalVariables.cs" />
     <Compile Include="Models\Audio\Album.cs" />
+    <Compile Include="Models\Audio\Artist.cs" />
     <Compile Include="Models\Audio\Song.cs" />
     <Compile Include="Models\Common\Limits.cs" />
     <Compile Include="Models\ConnectionItem.cs" />
@@ -126,6 +128,9 @@
     </Compile>
     <Compile Include="Pages\Audio\AlbumPage.xaml.cs">
       <DependentUpon>AlbumPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Audio\AllMusicPivot.xaml.cs">
+      <DependentUpon>AllMusicPivot.xaml</DependentUpon>
     </Compile>
     <Compile Include="RPCWrappers\AudioLibrary.cs" />
     <Compile Include="RPCWrappers\Input.cs" />
@@ -190,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Audio\AlbumPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Audio\AllMusicPivot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

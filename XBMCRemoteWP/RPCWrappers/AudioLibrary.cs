@@ -40,9 +40,6 @@ namespace XBMCRemoteWP.RPCWrappers
         }
         public static async Task<List<Album>> GetRecentlyAddedAlbums(Limits limits = null)
         {
-            if (limits == null)
-                limits = defaultLimits;
-
             JObject requestObject =
                     new JObject(
                         new JProperty("jsonrpc", "2.0"),
@@ -52,13 +49,15 @@ namespace XBMCRemoteWP.RPCWrappers
                             new JObject(
                                 new JProperty("properties",
                                     new JArray("title", "description", "artist", "genre", "theme", "mood", "style", "type", "albumlabel", "rating", "year", "musicbrainzalbumid", "musicbrainzalbumartistid", "fanart", "thumbnail", "playcount", "genreid", "artistid", "displayartist")
-                                    ),
-                                new JProperty("limits",
-                                    new JObject(
-                                        new JProperty("start", limits.Start),
-                                        new JProperty("end", limits.End)
-                                        )
-                                        ))));
+                                    ))));
+
+            if (limits != null)
+            {
+                requestObject["params"]["limits"] = new JObject(
+                                            new JProperty("start", limits.Start),
+                                            new JProperty("end", limits.End));
+            }
+
             string requestData = requestObject.ToString();
             HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
@@ -68,33 +67,73 @@ namespace XBMCRemoteWP.RPCWrappers
             return listToReturn;
         }
 
-        public static async Task<List<Song>> GetSongs(JObject filter, Limits limits = null)
-        {
-            if (limits == null)
-                limits = defaultLimits;
-
+        public static async Task<List<Song>> GetSongs(JObject filter = null, Limits limits = null)
+        {    
             JObject requestObject =
-                    new JObject(
-                        new JProperty("jsonrpc", "2.0"),
-                        new JProperty("id", 234),
-                        new JProperty("method", "AudioLibrary.GetSongs"),
-                        new JProperty("params",
-                            new JObject(
-                                new JProperty("filter", filter),
-                                new JProperty("properties",
-                                    new JArray("album", "albumartist", "albumartistid", "albumid", "comment", "disc", "duration", "file", "lastplayed", "lyrics", "musicbrainzartistid", "musicbrainztrackid", "playcount", "track")),
-                                new JProperty("limits",
-                                    new JObject(
-                                        new JProperty("start", limits.Start),
-                                        new JProperty("end", limits.End)
-                                        )))));
+                        new JObject(
+                            new JProperty("jsonrpc", "2.0"),
+                            new JProperty("id", 234),
+                            new JProperty("method", "AudioLibrary.GetSongs"),
+                            new JProperty("params",
+                                new JObject(
+                                    new JProperty("properties",
+                                        new JArray("album", "albumartist", "albumartistid", "albumid", "comment", "disc", "duration", "file", "lastplayed", "lyrics", "musicbrainzartistid", "musicbrainztrackid", "playcount", "track"))
+                                            )));
+
+            if (limits != null)
+            {
+                requestObject["params"]["limits"] = new JObject(
+                                            new JProperty("start", limits.Start),
+                                            new JProperty("end", limits.End));
+            }
+
+            if(filter!=null)
+            {
+                requestObject["params"]["filter"] = filter;
+            }
+       
             string requestData = requestObject.ToString();
             HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
             JArray songListObject = (JArray)responseObject["result"]["songs"];
             List<Song> listToReturn = songListObject.ToObject<List<Song>>();
-            return listToReturn;                                
+            return listToReturn;
+        }
+
+        public static async Task<List<Artist>> GetArtists(JObject filter = null, Limits limits = null)
+        {
+            JObject requestObject =
+                        new JObject(
+                            new JProperty("jsonrpc", "2.0"),
+                            new JProperty("id", 234),
+                            new JProperty("method", "AudioLibrary.GetArtists"),
+                            new JProperty("params",
+                                new JObject(
+                                    new JProperty("properties",
+                                        new JArray("born", "description", "died", "disbanded", "formed", "instrument", "mood", "musicbrainzartistid", "style", "yearsactive"))
+                                            )));
+
+            if (limits != null)
+            {
+                requestObject["params"]["limits"] = new JObject(
+                                            new JProperty("start", limits.Start),
+                                            new JProperty("end", limits.End));
+            }
+
+            if (filter != null)
+            {
+                requestObject["params"]["filter"] = filter;
+            }
+
+            string requestData = requestObject.ToString();
+            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            string responseString = await response.Content.ReadAsStringAsync();
+            JObject responseObject = JObject.Parse(responseString);
+
+            JArray artistListObject = (JArray)responseObject["result"]["artists"];
+            List<Artist> listToReturn = artistListObject.ToObject<List<Artist>>();
+            return listToReturn;
         }
     }
 }

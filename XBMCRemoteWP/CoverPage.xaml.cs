@@ -11,6 +11,7 @@ using XBMCRemoteWP.RPCWrappers;
 using XBMCRemoteWP.Models.Common;
 using XBMCRemoteWP.Models.Audio;
 using Newtonsoft.Json.Linq;
+using XBMCRemoteWP.Helpers;
 
 namespace XBMCRemoteWP
 {
@@ -31,11 +32,17 @@ namespace XBMCRemoteWP
             base.OnNavigatedTo(e);
         }
 
-        private async void AlbumWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        private void AlbumWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             Album tappedAlbum = (sender as Grid).DataContext as Album;
-            string tappedAlbumId = tappedAlbum.AlbumId.ToString();
-            NavigationService.Navigate(new Uri("/Pages/Audio/AlbumPage.xaml?albumId=" + tappedAlbumId, UriKind.Relative));
+            int tappedAlbumId = tappedAlbum.AlbumId;
+            GlobalVariables.CurrentAlbumId = tappedAlbumId;
+            NavigationService.Navigate(new Uri("/Pages/Audio/AlbumPage.xaml", UriKind.Relative));
+        }
+
+        private void AllMusicTextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/Audio/AllMusicPivot.xaml", UriKind.Relative));
         }
     }
 }

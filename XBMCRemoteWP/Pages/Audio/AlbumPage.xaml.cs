@@ -10,6 +10,7 @@ using Microsoft.Phone.Shell;
 using XBMCRemoteWP.RPCWrappers;
 using Newtonsoft.Json.Linq;
 using XBMCRemoteWP.Models.Audio;
+using XBMCRemoteWP.Helpers;
 
 namespace XBMCRemoteWP.Pages.Audio
 {
@@ -25,16 +26,14 @@ namespace XBMCRemoteWP.Pages.Audio
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string albumId;
-            if(NavigationContext.QueryString.TryGetValue("albumId", out albumId))
-            {
-                JObject filter = new JObject(new JProperty("albumid", int.Parse(albumId)));
-                songsInAlbum = await AudioLibrary.GetSongs(filter);
-                SongsLLS.ItemsSource = songsInAlbum;
 
-                currentAlbum = await AudioLibrary.GetAlbumDetails(int.Parse(albumId));
-                AlbumInfoGrid.DataContext = currentAlbum;
-            }
+            JObject filter = new JObject(new JProperty("albumid", GlobalVariables.CurrentAlbumId));
+            songsInAlbum = await AudioLibrary.GetSongs(filter);
+            SongsLLS.ItemsSource = songsInAlbum;
+
+            currentAlbum = await AudioLibrary.GetAlbumDetails(GlobalVariables.CurrentAlbumId);
+            AlbumInfoGrid.DataContext = currentAlbum;
+
             base.OnNavigatedTo(e);
         }
 
@@ -51,7 +50,7 @@ namespace XBMCRemoteWP.Pages.Audio
             JObject itemToOpen = new JObject(
                 new JProperty("playlistid", 0),
                 new JProperty("position", tappedIndex));
-            Player.Open(itemToOpen);
+            await Player.Open(itemToOpen);
         }
     }
 }

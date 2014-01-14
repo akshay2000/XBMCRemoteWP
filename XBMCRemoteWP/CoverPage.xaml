@@ -18,9 +18,14 @@
     <Grid x:Name="LayoutRoot">
         <phone:Panorama Title="xbmc remote">
 
-            <!--Panorama item one-->
+            <!--Music: Panorama item one-->
             <phone:PanoramaItem Header="music" Orientation="Horizontal" Width="795">
                 <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="400"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
                     <phone:LongListSelector x:Name="MusicLLS" LayoutMode="Grid" GridCellSize="187,187" Margin="15,0,0,0">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
@@ -37,10 +42,12 @@
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
+                    
+                    <TextBlock x:Name="AllMusicTextBlock" Tap="AllMusicTextBlock_Tap" Text="all music" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2"/>
                 </Grid>
             </phone:PanoramaItem>
 
-            <!--Panorama item two-->
+            <!--TV: Panorama item two-->
             <phone:PanoramaItem Header="tv shows">
                 <Grid>
                     <phone:LongListSelector x:Name="TVShowsLLS" >
