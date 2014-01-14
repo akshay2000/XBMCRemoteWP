@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using XBMCRemoteWP.Helpers;
 using XBMCRemoteWP.Models.Common;
 using XBMCRemoteWP.Models.Video;
 
@@ -31,7 +32,7 @@ namespace XBMCRemoteWP.RPCWrappers
                                         )                                        
                                         ))));
             string requestData = requestObject.ToString();
-            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
             JArray episodeListObject = (JArray)responseObject["result"]["episodes"];

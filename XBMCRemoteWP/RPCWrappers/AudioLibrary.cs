@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using XBMCRemoteWP.Helpers;
 using XBMCRemoteWP.Models.Audio;
 using XBMCRemoteWP.Models.Common;
 
@@ -28,7 +29,7 @@ namespace XBMCRemoteWP.RPCWrappers
                                    )
                                        )));
             string requestData = requestObject.ToString();
-            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
             JObject albumJSON = (JObject)responseObject["result"]["albumdetails"];
@@ -62,7 +63,7 @@ namespace XBMCRemoteWP.RPCWrappers
             }
 
             string requestData = requestObject.ToString();
-            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
             JArray albumListObject = (JArray)responseObject["result"]["albums"];
@@ -101,7 +102,7 @@ namespace XBMCRemoteWP.RPCWrappers
             }
 
             string requestData = requestObject.ToString();
-            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
             JArray songListObject = (JArray)responseObject["result"]["songs"];
@@ -140,7 +141,7 @@ namespace XBMCRemoteWP.RPCWrappers
             }
 
             string requestData = requestObject.ToString();
-            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
 
@@ -180,7 +181,7 @@ namespace XBMCRemoteWP.RPCWrappers
             }
 
             string requestData = requestObject.ToString();
-            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
 

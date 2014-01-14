@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using XBMCRemoteWP.Helpers;
 
 namespace XBMCRemoteWP.RPCWrappers
 {
@@ -20,7 +21,7 @@ namespace XBMCRemoteWP.RPCWrappers
                     method = "Input." + command.ToString()
                 });
             string requestData = requestObject.ToString();
-            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
         }
 
         public static async void ExecuteAction(string action)
@@ -33,7 +34,7 @@ namespace XBMCRemoteWP.RPCWrappers
                     new JObject(
                         new JProperty("action", action))));
             string requestData = requestObject.ToString();
-            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
         }
     }
 }

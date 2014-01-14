@@ -58,7 +58,7 @@ namespace XBMCRemoteWP.Helpers
             }
         }       
 
-        public async Task<HttpResponseMessage> ExecuteRequest(string requestData)
+        public static async Task<HttpResponseMessage> ExecuteRequest(string requestData)
         {
             HttpClientHandler handler = new HttpClientHandler();
             HttpClient httpClient = new HttpClient(handler);

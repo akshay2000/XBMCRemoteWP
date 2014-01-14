@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using XBMCRemoteWP.Helpers;
 
 namespace XBMCRemoteWP.RPCWrappers
 {
@@ -37,7 +38,7 @@ namespace XBMCRemoteWP.RPCWrappers
                                new JProperty("item", item),
                                new JProperty("playlistid", playlistId))));
             string requestData = requestObject.ToString();
-            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
             dynamic responseObject = JObject.Parse(responseString);
         }
@@ -67,7 +68,7 @@ namespace XBMCRemoteWP.RPCWrappers
                            new JObject(
                                new JProperty("playlistid", playlistId))));
             string requestData = requestObject.ToString();
-            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
             dynamic responseObject = JObject.Parse(responseString);
         }
