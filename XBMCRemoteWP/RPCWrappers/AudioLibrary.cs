@@ -13,8 +13,6 @@ namespace XBMCRemoteWP.RPCWrappers
 {
     public class AudioLibrary
     {
-        private static Limits defaultLimits = new Limits { Start = 0, End = 2147483647 };
-
         public static async Task<Album> GetAlbumDetails(int albumid)
         {
             JObject requestObject =
@@ -38,7 +36,7 @@ namespace XBMCRemoteWP.RPCWrappers
             return albumToRetun;
 
         }
-        public static async Task<List<Album>> GetRecentlyAddedAlbums(Limits limits = null)
+        public static async Task<List<Album>> GetRecentlyAddedAlbums(Limits limits = null, JObject sort = null)
         {
             JObject requestObject =
                     new JObject(
@@ -58,6 +56,11 @@ namespace XBMCRemoteWP.RPCWrappers
                                             new JProperty("end", limits.End));
             }
 
+            if(sort !=null)
+            {
+                requestObject["params"]["sort"] = sort;
+            }
+
             string requestData = requestObject.ToString();
             HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
@@ -67,7 +70,7 @@ namespace XBMCRemoteWP.RPCWrappers
             return listToReturn;
         }
 
-        public static async Task<List<Song>> GetSongs(JObject filter = null, Limits limits = null)
+        public static async Task<List<Song>> GetSongs(JObject filter = null, Limits limits = null, JObject sort = null)
         {    
             JObject requestObject =
                         new JObject(
@@ -91,7 +94,12 @@ namespace XBMCRemoteWP.RPCWrappers
             {
                 requestObject["params"]["filter"] = filter;
             }
-       
+
+            if (sort != null)
+            {
+                requestObject["params"]["sort"] = sort;
+            }
+
             string requestData = requestObject.ToString();
             HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
@@ -101,7 +109,7 @@ namespace XBMCRemoteWP.RPCWrappers
             return listToReturn;
         }
 
-        public static async Task<List<Artist>> GetArtists(JObject filter = null, Limits limits = null)
+        public static async Task<List<Artist>> GetArtists(JObject filter = null, Limits limits = null, JObject sort = null)
         {
             JObject requestObject =
                         new JObject(
@@ -126,6 +134,11 @@ namespace XBMCRemoteWP.RPCWrappers
                 requestObject["params"]["filter"] = filter;
             }
 
+            if (sort != null)
+            {
+                requestObject["params"]["sort"] = sort;
+            }
+
             string requestData = requestObject.ToString();
             HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
@@ -133,6 +146,46 @@ namespace XBMCRemoteWP.RPCWrappers
 
             JArray artistListObject = (JArray)responseObject["result"]["artists"];
             List<Artist> listToReturn = artistListObject.ToObject<List<Artist>>();
+            return listToReturn;
+        }
+
+        public static async Task<List<Album>> GetAlbums(JObject filter = null, Limits limits = null, JObject sort = null)
+        {
+            JObject requestObject =
+                        new JObject(
+                            new JProperty("jsonrpc", "2.0"),
+                            new JProperty("id", 234),
+                            new JProperty("method", "AudioLibrary.GetAlbums"),
+                            new JProperty("params",
+                                new JObject(
+                                    new JProperty("properties",
+                                        new JArray("title", "description", "artist", "genre", "theme", "mood", "style", "type", "albumlabel", "rating", "year", "musicbrainzalbumid", "musicbrainzalbumartistid", "fanart", "thumbnail", "playcount", "genreid", "artistid", "displayartist"))
+                                            )));
+
+            if (limits != null)
+            {
+                requestObject["params"]["limits"] = new JObject(
+                                            new JProperty("start", limits.Start),
+                                            new JProperty("end", limits.End));
+            }
+
+            if (filter != null)
+            {
+                requestObject["params"]["filter"] = filter;
+            }
+
+            if (sort != null)
+            {
+                requestObject["params"]["sort"] = sort;
+            }
+
+            string requestData = requestObject.ToString();
+            HttpResponseMessage response = await App.ConnManager.ExecuteRequest(requestData);
+            string responseString = await response.Content.ReadAsStringAsync();
+            JObject responseObject = JObject.Parse(responseString);
+
+            JArray albumListObject = (JArray)responseObject["result"]["albums"];
+            List<Album> listToReturn = albumListObject.ToObject<List<Album>>();
             return listToReturn;
         }
     }

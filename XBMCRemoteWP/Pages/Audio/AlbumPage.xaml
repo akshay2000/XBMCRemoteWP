@@ -41,9 +41,9 @@
                         <Image Width="173" Height="173" Stretch="UniformToFill" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
                         <StackPanel Grid.Column="1">
                             <TextBlock Text="{Binding Label}" FontSize="36" TextWrapping="Wrap" LineHeight="40" FontFamily="Segoe WP SemiLight" Margin="14,-10,0,0" LineStackingStrategy="BaselineToBaseline"/>
-                            <TextBlock Text="{Binding Artist, Converter={StaticResource ListToStringConverter}}" Margin="16,-5,0,0" />
+                            <TextBlock Text="{Binding Artist, Converter={StaticResource ListToStringConverter}}" Margin="16,-5,0,0" TextWrapping="Wrap" />
                             <!--<TextBlock Text="All Things Bright and Beautiful" FontSize="36" LineHeight="40" TextWrapping="Wrap" FontFamily="Segoe WP SemiLight" Margin="14,-10,0,0" LineStackingStrategy="BaselineToBaseline"/>
-                            <TextBlock Text="Avril Lavigne, Linkin Park, Owl City" Margin="16,-5,0,0" TextWrapping="Wrap" />-->
+                            <TextBlock Text="Avril Lavigne, Linkin Park, Owl City" Style="{StaticResource PhoneTextSmallStyle}" Margin="16,-5,0,0" TextWrapping="Wrap" />-->
                         </StackPanel>
                     </Grid>
                     <!--<ListBox Margin="0,36,0,0">
