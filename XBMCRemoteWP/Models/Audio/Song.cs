@@ -8,7 +8,6 @@ namespace XBMCRemoteWP.Models.Audio
 {
     public class Song
     {
-
         public string Album { get; set; }
         public List<string> AlbumArtist { get; set; }
         public List<int> AlbumArtistiId { get; set; }

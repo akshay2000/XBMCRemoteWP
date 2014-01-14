@@ -65,6 +65,23 @@
                     </phone:LongListSelector>
                 </Grid>
             </phone:PivotItem>
+            
+            <phone:PivotItem Header="songs">
+                <Grid>
+                    <phone:LongListSelector x:Name="AllSongsLLS">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel x:Name="SongItemWrapper" Orientation="Horizontal" Margin="8,0,0,40" Tap="SongItemWrapper_Tap">
+                                    <Border BorderBrush="{StaticResource PhoneContrastBackgroundBrush}" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
+                                        <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="{StaticResource PhoneContrastBackgroundBrush}"/>
+                                    </Border>
+                                    <TextBlock Text="{Binding Label}" Margin="14,-1,0,0" FontSize="36"  FontFamily="Segoe WP SemiLight"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </Grid>
+            </phone:PivotItem>
         </phone:Pivot>
     </Grid>
     

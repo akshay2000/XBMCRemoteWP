@@ -18,6 +18,7 @@ namespace XBMCRemoteWP.Pages.Audio
     {
         private List<Artist> allArtists;
         private List<Album> allAlbums;
+        private List<Song> allSongs;
         public AllMusicPivot()
         {
             InitializeComponent();
@@ -31,6 +32,9 @@ namespace XBMCRemoteWP.Pages.Audio
             JObject sortWith = new JObject(new JProperty("method", "label"));
             allAlbums = await AudioLibrary.GetAlbums(sort: sortWith);
             AllAlbumsLLS.ItemsSource = allAlbums;
+
+            allSongs = await AudioLibrary.GetSongs(sort: sortWith);
+            AllSongsLLS.ItemsSource = allSongs;
             base.OnNavigatedTo(e);
         }
 
@@ -56,6 +60,11 @@ namespace XBMCRemoteWP.Pages.Audio
             Album tappedAlbum = (sender as StackPanel).DataContext as Album;
             GlobalVariables.CurrentAlbumId = tappedAlbum.AlbumId;
             NavigationService.Navigate(new Uri("/Pages/Audio/AlbumPage.xaml", UriKind.Relative));
+        }
+
+        private void SongItemWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            //Song tappedSong = (sender as StackPanel).DataContext as Song;
         }
     }
 }
