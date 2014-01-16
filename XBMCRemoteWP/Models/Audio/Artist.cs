@@ -23,5 +23,8 @@ namespace XBMCRemoteWP.Models.Audio
         public string MusicbrainzArtistId { get; set; }
         public List<string> Style { get; set; }
         public List<string> YearsActive { get; set; }
+        public string Thumbnail { get; set; }
+        public string Fanart { get; set; }
+
     }
 }

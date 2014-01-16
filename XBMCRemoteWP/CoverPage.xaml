@@ -16,7 +16,7 @@
     
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <phone:Panorama Title="xbmc remote">
+        <phone:Panorama Title="xbmc remote" Foreground="White" Background="Black" >
 
             <!--Music: Panorama item one-->
             <phone:PanoramaItem Header="music" Orientation="Horizontal" Width="795">
@@ -25,7 +25,7 @@
                         <RowDefinition Height="400"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <phone:LongListSelector x:Name="MusicLLS" LayoutMode="Grid" GridCellSize="187,187" Margin="15,0,0,0">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
@@ -36,8 +36,7 @@
                                     </Grid.RowDefinitions>
                                     <Image Width="175" Height="175" Stretch="UniformToFill" Grid.RowSpan="2" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
                                     <Rectangle Grid.Row="1" Fill="Black" Opacity="0.75"/>
-                                    <TextBlock Grid.Row="1" Margin="5,0,5,2" Text="{Binding Label}"/>
-                                    
+                                    <TextBlock Grid.Row="1" Margin="5,0,5,2" Text="{Binding Label}" Foreground="White"/>                                    
                                 </Grid>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>

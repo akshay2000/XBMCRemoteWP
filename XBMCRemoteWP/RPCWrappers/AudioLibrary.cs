@@ -120,7 +120,7 @@ namespace XBMCRemoteWP.RPCWrappers
                             new JProperty("params",
                                 new JObject(
                                     new JProperty("properties",
-                                        new JArray("born", "description", "died", "disbanded", "formed", "instrument", "mood", "musicbrainzartistid", "style", "yearsactive"))
+                                        new JArray("born", "description", "died", "disbanded", "formed", "instrument", "mood", "musicbrainzartistid", "style", "yearsactive", "thumbnail", "fanart"))
                                             )));
 
             if (limits != null)

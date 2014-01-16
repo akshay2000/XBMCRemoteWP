@@ -40,12 +40,16 @@ namespace XBMCRemoteWP.Pages.Audio
 
         private void PlayArtistBorder_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-
+            Artist tappedArtist = (sender as Border).DataContext as Artist;
+            JObject artistToPlay = new JObject(new JProperty("artistid", tappedArtist.ArtistId));
+            Player.Open(artistToPlay);
         }
 
         private void ArtistNameTextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-
+            Artist tappedArtist = (sender as TextBlock).DataContext as Artist;
+            GlobalVariables.CurrentArtist = tappedArtist;
+            NavigationService.Navigate(new Uri("/Pages/Audio/ArtistDetailsPanorama.xaml", UriKind.Relative));
         }
 
         private void AlbumArtWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -60,11 +64,6 @@ namespace XBMCRemoteWP.Pages.Audio
             Album tappedAlbum = (sender as StackPanel).DataContext as Album;
             GlobalVariables.CurrentAlbumId = tappedAlbum.AlbumId;
             NavigationService.Navigate(new Uri("/Pages/Audio/AlbumPage.xaml", UriKind.Relative));
-        }
-
-        private void SongItemWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            //Song tappedSong = (sender as StackPanel).DataContext as Song;
-        }
+        }        
     }
 }

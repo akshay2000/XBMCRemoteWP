@@ -11,12 +11,12 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Black">
         <!--Pivot Control-->
-        <phone:Pivot Title="{StaticResource AppName}">
+        <phone:Pivot Title="{StaticResource AppName}" Foreground="White">
             <!--Pivot item one-->
             <phone:PivotItem Header="artists">
                 <Grid>
@@ -24,10 +24,10 @@
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel x:Name="ArtistItemWrapper" Orientation="Horizontal" Margin="8,0,0,40">
-                                    <Border x:Name="PlayArtistBorder" Tap="PlayArtistBorder_Tap" BorderBrush="{StaticResource PhoneContrastBackgroundBrush}" Margin="0,0,0,0" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
-                                        <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="{StaticResource PhoneContrastBackgroundBrush}"/>
+                                    <Border x:Name="PlayArtistBorder" Tap="PlayArtistBorder_Tap" BorderBrush="White" Margin="0,0,0,0" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
+                                        <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="White"/>
                                     </Border>
-                                    <TextBlock x:Name="ArtistNameTextBlock" Tap="ArtistNameTextBlock_Tap" Text="{Binding Label}" Margin="14,-1,0,0" FontSize="36"  FontFamily="Segoe WP SemiLight"/>
+                                    <TextBlock x:Name="ArtistNameTextBlock" Tap="ArtistNameTextBlock_Tap" Text="{Binding Label}" Margin="14,-1,0,0" FontSize="36"  FontFamily="Segoe WP SemiLight" Foreground="White"/>
                                 </StackPanel>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
@@ -56,8 +56,8 @@
                                     </Grid>
 
                                     <StackPanel x:Name="AlbumDetailsWrapper" Tap="AlbumDetailsWrapper_Tap" Grid.Column="1">
-                                        <TextBlock Text="{Binding Label}" FontSize="36" TextWrapping="Wrap" LineHeight="40" FontFamily="Segoe WP SemiLight" Margin="14,-10,0,0" LineStackingStrategy="BaselineToBaseline"/>
-                                        <TextBlock Text="{Binding Artist, Converter={StaticResource ListToStringConverter}}" Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap" Margin="16,-5,0,0"/>
+                                        <TextBlock Text="{Binding Label}" FontSize="36" TextWrapping="Wrap" LineHeight="40" FontFamily="Segoe WP SemiLight" Margin="14,-10,0,0" LineStackingStrategy="BaselineToBaseline" Foreground="White"/>
+                                        <TextBlock Text="{Binding Artist, Converter={StaticResource ListToStringConverter}}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="White" TextWrapping="Wrap" Margin="16,-5,0,0"/>
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
@@ -68,18 +68,7 @@
             
             <phone:PivotItem Header="songs">
                 <Grid>
-                    <phone:LongListSelector x:Name="AllSongsLLS">
-                        <phone:LongListSelector.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel x:Name="SongItemWrapper" Orientation="Horizontal" Margin="8,0,0,40" Tap="SongItemWrapper_Tap">
-                                    <Border BorderBrush="{StaticResource PhoneContrastBackgroundBrush}" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
-                                        <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="{StaticResource PhoneContrastBackgroundBrush}"/>
-                                    </Border>
-                                    <TextBlock Text="{Binding Label}" Margin="14,-1,0,0" FontSize="36"  FontFamily="Segoe WP SemiLight"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </phone:LongListSelector.ItemTemplate>
-                    </phone:LongListSelector>
+                    <phone:LongListSelector x:Name="AllSongsLLS" ItemTemplate="{StaticResource SongItemDataTemplate}"/>
                 </Grid>
             </phone:PivotItem>
         </phone:Pivot>

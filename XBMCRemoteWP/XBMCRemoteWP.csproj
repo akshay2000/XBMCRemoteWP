@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Converters\ImagePathConverter.cs" />
     <Compile Include="Converters\ListToStringConverter.cs" />
+    <Compile Include="Converters\StringToImageBrushConverter.cs" />
     <Compile Include="CoverPage.xaml.cs">
       <DependentUpon>CoverPage.xaml</DependentUpon>
     </Compile>
@@ -131,6 +132,9 @@
     </Compile>
     <Compile Include="Pages\Audio\AllMusicPivot.xaml.cs">
       <DependentUpon>AllMusicPivot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Audio\ArtistDetailsPanorama.xaml.cs">
+      <DependentUpon>ArtistDetailsPanorama.xaml</DependentUpon>
     </Compile>
     <Compile Include="RPCWrappers\AudioLibrary.cs" />
     <Compile Include="RPCWrappers\Input.cs" />
@@ -202,6 +206,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Audio\ArtistDetailsPanorama.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\FeedbackPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -224,6 +232,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\DesignTime\AlbumArt.jpg" />
+    <Content Include="Assets\DesignTime\FanArt.jpg" />
     <Content Include="Assets\DesignTime\NowPlayingBack.jpg" />
     <Content Include="Assets\DesignTime\AlbumView.png" />
     <Content Include="Assets\Glyphs\add.png" />

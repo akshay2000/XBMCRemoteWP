@@ -18,9 +18,16 @@ namespace XBMCRemoteWP.Converters
             if (imagePath.Length > 8)
             {
                 string uri = imagePath.Substring(8);
-                var encodedUri = HttpUtility.UrlEncode(uri);
-                string baseUrlString = "http://" + ConnectionManager.CurrentConnection.IpAddress + ":" + ConnectionManager.CurrentConnection.Port.ToString() + "/image/image://";
-                imageURL = baseUrlString + encodedUri;
+                if (uri.StartsWith("http"))
+                {
+                    imageURL = HttpUtility.UrlDecode(uri).TrimEnd('/');
+                }
+                else
+                {
+                    var encodedUri = HttpUtility.UrlEncode(uri);
+                    string baseUrlString = "http://" + ConnectionManager.CurrentConnection.IpAddress + ":" + ConnectionManager.CurrentConnection.Port.ToString() + "/image/image://";
+                    imageURL = baseUrlString + encodedUri;
+                }
             }
             else
             {
