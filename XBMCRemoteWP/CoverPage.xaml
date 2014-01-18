@@ -56,11 +56,7 @@
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
-<<<<<<< Updated upstream
-=======
-
                     <TextBlock x:Name="AllTVTextBlock" Foreground="White" Tap="AllTVTextBlock_Tap" Text="all tv shows" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2"/>
->>>>>>> Stashed changes
                 </Grid>
             </phone:PanoramaItem>
         </phone:Panorama>
