@@ -20,7 +20,7 @@
             <!--info:Panorama item one-->
             <phone:PanoramaItem Header="info">
                 <ScrollViewer>
-                    <Grid>
+                    <Grid Margin="12,0,0,12">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="212"/>
                             <ColumnDefinition Width="*"/>
@@ -29,14 +29,14 @@
                             <RowDefinition Height="200"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Column="0" Grid.Row="0" Margin="12,0,0,0" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}" Stretch="UniformToFill"/>
+                        <Image Grid.Column="0" Grid.Row="0" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}" Stretch="UniformToFill"/>
                         <StackPanel Grid.Column="1" Grid.Row="0">
-                            <TextBlock Margin="12,-12,0,0" Text="mood" Style="{StaticResource PhoneTextTitle2Style}"/>
-                            <TextBlock Margin="12,0,0,0" Text="{Binding Mood, Converter={StaticResource ListToStringConverter}}" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+                            <TextBlock Margin="12,-12,0,0" Text="mood" Foreground="White" Style="{StaticResource PhoneTextTitle2Style}"/>
+                            <TextBlock Margin="12,0,0,0" Text="{Binding Mood, Converter={StaticResource ListToStringConverter}}" TextWrapping="Wrap" Foreground="White"/>
                         </StackPanel>
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" >
-                            <TextBlock Margin="12,24,0,0" Text="bio" Style="{StaticResource PhoneTextTitle2Style}"/>
-                            <TextBlock TextWrapping="Wrap" Margin="12,0,0,12" Text="{Binding Description}"/>
+                            <TextBlock Foreground="White" Margin="0,24,0,0" Text="bio" Style="{StaticResource PhoneTextTitle2Style}"/>
+                            <TextBlock Foreground="White" TextWrapping="Wrap" Text="{Binding Description}"/>
                         </StackPanel>
                     </Grid>
                 </ScrollViewer>

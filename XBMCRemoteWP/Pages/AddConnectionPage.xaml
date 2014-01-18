@@ -14,7 +14,7 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -22,24 +22,24 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="{StaticResource AppName}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="add connection" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="{StaticResource AppName}" Foreground="White" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="add connection" Foreground="White" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
-                <TextBlock Text="Name" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                <TextBox x:Name="NameTextBox" InputScope="PersonalFullName"/>
-                <TextBlock Text="IP Address" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                <TextBlock Text="Name" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
+                <TextBox x:Name="NameTextBox" InputScope="PersonalFullName" Foreground="White"/>
+                <TextBlock Text="IP Address" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
                 <TextBox x:Name="IPTextBox" InputScope="Number"/>
-                <TextBlock Text="Port" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                <TextBlock Text="Port" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
                 <TextBox x:Name="PortTextBox" InputScope="Number"/>
-                <TextBlock Text="Username" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                <TextBlock Text="Username" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
                 <TextBox x:Name="UsernameTextBox"/>
-                <TextBlock Text="Password" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                <TextBlock Text="Password" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
                 <TextBox x:Name="PasswordTextBox"/>
-                <TextBlock Text="Note: Usernames and passwords are stored and transmitted in plain text. Make sure you are not using the same password anywhere else" TextWrapping="Wrap" Style="{StaticResource PhoneTextSmallStyle}"/>
+                <TextBlock Text="Note: Usernames and passwords are stored and transmitted in plain text. Make sure you are not using the same password anywhere else" TextWrapping="Wrap" Style="{StaticResource PhoneTextSmallStyle}" Foreground="#FF999999"/>
             </StackPanel>
         </Grid>
     </Grid>

@@ -7,19 +7,7 @@ using Newtonsoft.Json;
 
 namespace XBMCRemoteWP.Models.Video
 {
-    public class Art
-    {
-        public string Thumb { get; set; }
-
-        [JsonProperty(PropertyName="tvshow.banner")]
-        public string Banner { get; set; }
-
-        [JsonProperty(PropertyName="tvshow.fanart")]
-        public string Fanart { get; set; }
-
-        [JsonProperty(PropertyName="tvshow.poster")]
-        public string Poster { get; set; }
-    }
+    
 
     public class Resume
     {
@@ -41,7 +29,8 @@ namespace XBMCRemoteWP.Models.Video
 
     public class Episode
     {
-        public Art Art { get; set; }
+        [JsonProperty(PropertyName="art")]
+        public EpisodeArt Art { get; set; }
         public string DateAdded { get; set; }
 
         [JsonProperty(PropertyName="director")]

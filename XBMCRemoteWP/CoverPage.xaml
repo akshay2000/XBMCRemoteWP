@@ -42,7 +42,7 @@
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
                     
-                    <TextBlock x:Name="AllMusicTextBlock" Tap="AllMusicTextBlock_Tap" Text="all music" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2"/>
+                    <TextBlock x:Name="AllMusicTextBlock" Foreground="White" Tap="AllMusicTextBlock_Tap" Text="all music" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2"/>
                 </Grid>
             </phone:PanoramaItem>
 
@@ -56,6 +56,11 @@
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
+<<<<<<< Updated upstream
+=======
+
+                    <TextBlock x:Name="AllTVTextBlock" Foreground="White" Tap="AllTVTextBlock_Tap" Text="all tv shows" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2"/>
+>>>>>>> Stashed changes
                 </Grid>
             </phone:PanoramaItem>
         </phone:Panorama>

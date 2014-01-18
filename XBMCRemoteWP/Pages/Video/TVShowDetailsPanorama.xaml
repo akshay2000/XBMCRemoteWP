@@ -1,0 +1,87 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="XBMCRemoteWP.Pages.Video.TVShowDetailsPanorama"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False">
+
+
+    <!--LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Black">
+        <phone:Panorama Title="{Binding Label}" Background="{Binding Fanart, Converter={StaticResource StringToImageBrushConverter}}" Foreground="White">
+
+            <!--Panorama item one-->
+            <phone:PanoramaItem Header="info" Foreground="White">
+                <ScrollViewer>
+                    <Grid Margin="12,0,0,12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="300"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="204"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}" Stretch="UniformToFill"/>
+
+                        <StackPanel Grid.Row="0" Grid.Column="1">
+                            <TextBlock Text="Genre" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
+                            <TextBlock Text="{Binding Genre, Converter={StaticResource ListToStringConverter}}" Foreground="White" Style="{StaticResource PhoneTextTitle3Style}" TextWrapping="Wrap"/>
+
+                            <TextBlock Text="Studio" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999" Margin="12,6,12,0"/>
+                            <TextBlock Text="{Binding Studio, Converter={StaticResource ListToStringConverter}}" Foreground="White" Style="{StaticResource PhoneTextTitle3Style}"/>
+
+                            <TextBlock Text="Rating" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999" Margin="12,6,12,0"/>
+                            <TextBlock Text="{Binding Rating}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="White"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                            <TextBlock Margin="0,24,0,0" Text="plot" Foreground="White" Style="{StaticResource PhoneTextTitle2Style}"/>
+                            <TextBlock Text="{Binding Plot}" TextWrapping="Wrap" Foreground="White"/>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </phone:PanoramaItem>
+
+            <!--Panorama item two-->
+            <phone:PanoramaItem Header="cast" Foreground="White">
+                <Grid Margin="12,0,0,0">
+                    <phone:LongListSelector x:Name="CastLLS" ItemsSource="{Binding Cast}">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Height="144" Margin="0,0,0,12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="98"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Image Grid.RowSpan="2" Stretch="UniformToFill" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                    <TextBlock Text="{Binding Name}" Margin="12,-10,12,0" Grid.Row="0" Grid.Column="1" Style="{StaticResource PhoneTextTitle2Style}" Foreground="White"/>
+                                    <TextBlock Text="{Binding Role}" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
+                                </Grid>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </Grid>
+            </phone:PanoramaItem>
+            
+            <phone:PanoramaItem Header="seasons" Foreground="White">
+                <Grid></Grid>
+            </phone:PanoramaItem>
+        </phone:Panorama>
+    </Grid>
+
+</phone:PhoneApplicationPage>

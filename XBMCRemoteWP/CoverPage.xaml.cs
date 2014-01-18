@@ -44,5 +44,20 @@ namespace XBMCRemoteWP
         {
             NavigationService.Navigate(new Uri("/Pages/Audio/AllMusicPivot.xaml", UriKind.Relative));
         }
+<<<<<<< Updated upstream
+=======
+
+        private void EpisodeWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            Episode tappedEpisode = (sender as Grid).DataContext as Episode;
+            JObject episodeToOpen = new JObject(new JProperty("episodeid", tappedEpisode.EpisodeId));
+            Player.Open(episodeToOpen);
+        }
+
+        private void AllTVTextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/Video/AllTVShowsPage.xaml", UriKind.Relative));
+        }        
+>>>>>>> Stashed changes
     }
 }

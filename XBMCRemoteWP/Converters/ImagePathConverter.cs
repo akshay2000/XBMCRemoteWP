@@ -13,7 +13,7 @@ namespace XBMCRemoteWP.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            string imagePath = (string)value;
+            string imagePath = (value == null) ? string.Empty : (string)value;
             string imageURL = string.Empty;
             if (imagePath.Length > 8)
             {

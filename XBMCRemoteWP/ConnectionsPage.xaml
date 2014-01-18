@@ -33,7 +33,7 @@
                     <DataTemplate>
                         <StackPanel x:Name="ConnectionItemWrapper" Tap="ConnectionItemWrapper_Tap">
                             <TextBlock Text="{Binding ConnectionName}" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                            <TextBlock Text="{Binding IpAddress}" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <TextBlock Text="{Binding IpAddress}" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
                         </StackPanel>
                     </DataTemplate>
                 </phone:LongListSelector.ItemTemplate>

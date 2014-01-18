@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using XBMCRemoteWP.Models;
 using XBMCRemoteWP.Models.Audio;
+using XBMCRemoteWP.Models.Video;
 
 namespace XBMCRemoteWP.Helpers
 {
@@ -16,5 +17,6 @@ namespace XBMCRemoteWP.Helpers
 
         public static Artist CurrentArtist { get; set; }
 
+        public static TVShow CurrentTVShow { get; set; }
     }
 }
