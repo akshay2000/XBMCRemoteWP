@@ -13,6 +13,8 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using XBMCRemoteWP.Helpers;
+using XBMCRemoteWP.ViewModels;
+using XBMCRemoteWP.Models;
 
 namespace XBMCRemoteWP
 {
@@ -23,22 +25,22 @@ namespace XBMCRemoteWP
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
-
-        private static ReadMethods _readMethods;
-        public static ReadMethods ReadMethods
-        {
-            get
-            {
-                return _readMethods;
-            }
-        }
-
+               
         private static ConnectionManager _connManager;
         public static ConnectionManager ConnManager
         {
             get
             {
                 return _connManager;
+            }
+        }
+
+        private static MainViewModel _mainVM;
+        public static MainViewModel MainVM
+        {
+            get
+            {
+                return _mainVM;
             }
         }
 
@@ -56,9 +58,21 @@ namespace XBMCRemoteWP
             // Phone-specific initialization
             InitializePhoneApplication();
 
+            string DBConnectionString = "Data Source=isostore:/MainDB.sdf";
+
+            // Create the database if it does not exist.
+            using (MainDataContext db = new MainDataContext(DBConnectionString))
+            {
+                if (db.DatabaseExists() == false)
+                {
+                    // Create the local database.
+                    db.CreateDatabase();
+                }
+            }
+
             //Create viewmodels
             _connManager = new ConnectionManager();
-            _readMethods = new ReadMethods();
+            _mainVM = new MainViewModel(DBConnectionString);
             
 
             // Show graphics profiling information while debugging.

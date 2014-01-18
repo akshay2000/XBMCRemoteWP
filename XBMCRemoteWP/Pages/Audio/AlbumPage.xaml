@@ -1,0 +1,84 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="XBMCRemoteWP.Pages.Audio.AlbumPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c4d="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--<Image Source="/Assets/DesignTime/AlbumView.png" Margin="10,-180,0,0" Grid.RowSpan="10"/>-->
+        
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{StaticResource AppName}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="songs" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="26,0,0,0">
+            <ScrollViewer>
+                <StackPanel>
+                    <Grid x:Name="AlbumInfoGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Width="173" Height="173" Stretch="UniformToFill" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="{Binding Label}" FontSize="36" TextWrapping="Wrap" LineHeight="40" FontFamily="Segoe WP SemiLight" Margin="14,-10,0,0" LineStackingStrategy="BaselineToBaseline"/>
+                            <TextBlock Text="{Binding Artist, Converter={StaticResource ListToStringConverter}}" Margin="16,-5,0,0" TextWrapping="Wrap" />
+                            <!--<TextBlock Text="All Things Bright and Beautiful" FontSize="36" LineHeight="40" TextWrapping="Wrap" FontFamily="Segoe WP SemiLight" Margin="14,-10,0,0" LineStackingStrategy="BaselineToBaseline"/>
+                            <TextBlock Text="Avril Lavigne, Linkin Park, Owl City" Style="{StaticResource PhoneTextSmallStyle}" Margin="16,-5,0,0" TextWrapping="Wrap" />-->
+                        </StackPanel>
+                    </Grid>
+                    <!--<ListBox Margin="0,36,0,0">
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal" Margin="8,0,0,40" Opacity="0.5">
+                                <Border BorderBrush="{StaticResource PhoneContrastBackgroundBrush}" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
+                                    <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="{StaticResource PhoneContrastBackgroundBrush}"/>
+                                </Border>
+                                <TextBlock Text="Black Star" Margin="14,-1,0,0" FontSize="36" FontFamily="Segoe WP SemiLight"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal" Opacity="0.5">
+                                <Border BorderBrush="{StaticResource PhoneContrastBackgroundBrush}" Margin="8,0,0,0" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
+                                    <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="{StaticResource PhoneContrastBackgroundBrush}"/>
+                                </Border>
+                                <TextBlock Text="Black Star" Margin="14,-1,0,0" FontSize="36" FontFamily="Segoe WP SemiLight"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>-->
+                    <phone:LongListSelector x:Name="SongsLLS" Margin="0,36,0,0">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel x:Name="SongItemWrapper" Orientation="Horizontal" Margin="8,0,0,40" Tap="SongItemWrapper_Tap">
+                                    <Border BorderBrush="{StaticResource PhoneContrastBackgroundBrush}" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
+                                        <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="{StaticResource PhoneContrastBackgroundBrush}"/>
+                                    </Border>
+                                    <TextBlock Text="{Binding Label}" Margin="14,-1,0,0" FontSize="36"  FontFamily="Segoe WP SemiLight"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

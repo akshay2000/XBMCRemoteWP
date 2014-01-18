@@ -24,13 +24,12 @@ namespace XBMCRemoteWP.Helpers
         public ConnectionManager()
         { }
 
-        //Property holding the connection address of currently connected server.
-        private static string _currentConnection;
-        public static string CurrentConnection
+        private static ConnectionItem _currentConnection;
+        public static ConnectionItem CurrentConnection
         {
-            get
+            get 
             {
-                return _currentConnection;
+                return _currentConnection; 
             }
             set
             {
@@ -39,13 +38,32 @@ namespace XBMCRemoteWP.Helpers
                     _currentConnection = value;
                 }
             }
+        }
+        
+
+        //Property holding the connection address of currently connected server.
+        private static string _currentConnectionString;
+        public static string CurrentConnectionString
+        {
+            get
+            {
+                return _currentConnectionString;
+            }
+            set
+            {
+                if (_currentConnectionString != value)
+                {
+                    _currentConnectionString = value;
+                }
+            }
         }       
 
-        public async Task<HttpResponseMessage> ExecuteRequest(string requestData)
+        public static async Task<HttpResponseMessage> ExecuteRequest(string requestData)
         {
             HttpClientHandler handler = new HttpClientHandler();
             HttpClient httpClient = new HttpClient(handler);
-            httpClient.BaseAddress = new Uri(ConnectionManager.CurrentConnection);
+            string uriString = "http://" + CurrentConnection.IpAddress + ":" + CurrentConnection.Port.ToString() + "/jsonrpc?request=";
+            httpClient.BaseAddress = new Uri(uriString);
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "");
 
             request.Content = new StringContent(requestData);

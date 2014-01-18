@@ -13,6 +13,7 @@ using Microsoft.Phone.Controls;
 using XBMCRemoteWP.Models;
 using XBMCRemoteWP.Helpers;
 using System.Windows.Media.Imaging;
+using XBMCRemoteWP.RPCWrappers;
 
 namespace XBMCRemoteWP
 {
@@ -32,19 +33,16 @@ namespace XBMCRemoteWP
 
         protected async override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-            ConnectionManager.CurrentConnection = "http://10.0.0.3:8080/jsonrpc?request=";
-            List<Player> ActivePlayers = await App.ReadMethods.GetActivePlayers(); //TODO do something with this list.
-            dynamic nowPlaying = await ReadMethods.GetNowPlaying(0);
+            base.OnNavigatedTo(e);            
+            List<PlayerItem> ActivePlayers = await Player.GetActivePlayers();
+            dynamic nowPlaying = await Player.GetItem(ActivePlayers[0].PlayerId);
 
             //Let's update UI.
             string imgPath = nowPlaying.result.item.thumbnail;
             var t = imgPath.Substring(8);
             var encodedt = HttpUtility.UrlEncode(t);
-            var thumbnailUrl = "http://10.0.0.3:8080/image/image://" + encodedt;
+            var thumbnailUrl = "http://192.168.1.4:8080/image/image://" + encodedt;
             AlbumArtImage.Source = new BitmapImage(new Uri(thumbnailUrl));
-
-            //App.ReadMethods.GetNowPlaying();
         }
 
         #endregion
@@ -65,7 +63,7 @@ namespace XBMCRemoteWP
 
         private async void PlayPauseButton_Click(object sender, RoutedEventArgs e)
         {
-            int? playerSpeed = await PlayerControls.PlayPausePlayer();
+            int? playerSpeed = await Player.PlayPausePlayer();
             switch (playerSpeed)
             {
                 case 0:
@@ -79,12 +77,12 @@ namespace XBMCRemoteWP
 
         private void PreviousButton_Click(object sender, RoutedEventArgs e)
         {
-            PlayerControls.GoTo("previous");
+            Player.GoTo("previous");
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            PlayerControls.GoTo("next");
+            Player.GoTo("next");
         }
     }
 }
