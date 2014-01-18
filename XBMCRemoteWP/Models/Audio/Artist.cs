@@ -25,6 +25,5 @@ namespace XBMCRemoteWP.Models.Audio
         public List<string> YearsActive { get; set; }
         public string Thumbnail { get; set; }
         public string Fanart { get; set; }
-
     }
 }

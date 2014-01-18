@@ -12,6 +12,7 @@ using XBMCRemoteWP.Models.Common;
 using XBMCRemoteWP.Models.Audio;
 using Newtonsoft.Json.Linq;
 using XBMCRemoteWP.Helpers;
+using XBMCRemoteWP.Models.Video;
 
 namespace XBMCRemoteWP
 {
@@ -44,8 +45,6 @@ namespace XBMCRemoteWP
         {
             NavigationService.Navigate(new Uri("/Pages/Audio/AllMusicPivot.xaml", UriKind.Relative));
         }
-<<<<<<< Updated upstream
-=======
 
         private void EpisodeWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
@@ -57,7 +56,6 @@ namespace XBMCRemoteWP
         private void AllTVTextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Pages/Video/AllTVShowsPage.xaml", UriKind.Relative));
-        }        
->>>>>>> Stashed changes
+        }
     }
 }
