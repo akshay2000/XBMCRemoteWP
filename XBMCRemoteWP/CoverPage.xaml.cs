@@ -12,6 +12,7 @@ using XBMCRemoteWP.Models.Common;
 using XBMCRemoteWP.Models.Audio;
 using Newtonsoft.Json.Linq;
 using XBMCRemoteWP.Helpers;
+using XBMCRemoteWP.Models.Video;
 
 namespace XBMCRemoteWP
 {
@@ -43,6 +44,18 @@ namespace XBMCRemoteWP
         private void AllMusicTextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Pages/Audio/AllMusicPivot.xaml", UriKind.Relative));
+        }
+
+        private void EpisodeWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            Episode tappedEpisode = (sender as Grid).DataContext as Episode;
+            JObject episodeToOpen = new JObject(new JProperty("episodeid", tappedEpisode.EpisodeId));
+            Player.Open(episodeToOpen);
+        }
+
+        private void AllTVTextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+
         }
     }
 }

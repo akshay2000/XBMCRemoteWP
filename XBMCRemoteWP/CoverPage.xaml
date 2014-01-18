@@ -22,7 +22,7 @@
             <phone:PanoramaItem Header="music" Orientation="Horizontal" Width="795">
                 <Grid >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="400"/>
+                        <RowDefinition Height="408"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
@@ -49,13 +49,35 @@
             <!--TV: Panorama item two-->
             <phone:PanoramaItem Header="tv shows">
                 <Grid>
-                    <phone:LongListSelector x:Name="TVShowsLLS" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="408"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <phone:LongListSelector x:Name="TVShowsLLS" Margin="15,0,0,0" >
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <Image Width="350" Stretch="Uniform" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                <Grid x:Name="EpisodeWrapper" Height="192" Tap="EpisodeWrapper_Tap" Margin="0,0,0,24">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="54"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="54"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Stretch="UniformToFill" Grid.RowSpan="2" Grid.ColumnSpan="2" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                    <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="Black" Opacity="0.75"/>
+                                    <Border BorderBrush="White" Grid.Row="1" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
+                                        <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="White"/>
+                                    </Border>
+                                    <TextBlock Text="{Binding Label}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="5,0,5,2" Foreground="White"/>
+                                </Grid>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
+
+                    <TextBlock x:Name="AllTVTextBlock" Tap="AllTVTextBlock_Tap" Text="all tv shows" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2"/>
                 </Grid>
             </phone:PanoramaItem>
         </phone:Panorama>
