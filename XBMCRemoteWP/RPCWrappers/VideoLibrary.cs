@@ -13,7 +13,7 @@ namespace XBMCRemoteWP.RPCWrappers
 {
     public class VideoLibrary
     {
-        public static async Task<List<Episode>> GetRecentlyAddedEpisodes(Limits limits)
+        public static async Task<List<Episode>> GetRecentlyAddedEpisodes(Limits limits = null, JObject sort = null)
         {
             JObject requestObject =
                     new JObject(
@@ -24,19 +24,60 @@ namespace XBMCRemoteWP.RPCWrappers
                             new JObject(
                                 new JProperty("properties",
                                     new JArray("title", "plot", "votes", "rating", "writer", "firstaired", "playcount", "runtime", "director", "productioncode", "season", "episode", "originaltitle", "showtitle", "streamdetails", "lastplayed", "fanart", "thumbnail", "file", "resume", "tvshowid", "dateadded", "uniqueid", "art")
-                                    ),
-                                new JProperty("limits",
-                                    new JObject(
-                                        new JProperty("start", limits.Start),
-                                        new JProperty("end", limits.End)
-                                        )                                        
-                                        ))));
+                                    ))));
+
+            if (limits != null)
+            {
+                requestObject["params"]["limits"] = new JObject(
+                                            new JProperty("start", limits.Start),
+                                            new JProperty("end", limits.End));
+            }
+
+            if (sort != null)
+            {
+                requestObject["params"]["sort"] = sort;
+            }
+
             string requestData = requestObject.ToString();
             HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
             JArray episodeListObject = (JArray)responseObject["result"]["episodes"];
             List<Episode> listToReturn = episodeListObject.ToObject<List<Episode>>();
+            return listToReturn;
+        }
+
+        public static async Task<List<Movie>> GetRecentlyAddedMovies(Limits limits = null, JObject sort = null)
+        {
+            JObject requestObject =
+                    new JObject(
+                        new JProperty("jsonrpc", "2.0"),
+                        new JProperty("id", 234),
+                        new JProperty("method", "VideoLibrary.GetRecentlyAddedMovies"),
+                        new JProperty("params",
+                            new JObject(
+                                new JProperty("properties",
+                                    new JArray("title", "genre", "year", "rating", "director", "trailer", "tagline", "plot", "plotoutline", "originaltitle", "lastplayed", "playcount", "writer", "studio", "mpaa", "cast", "country", "imdbnumber", "runtime", "set", "showlink", "streamdetails", "top250", "votes", "fanart", "thumbnail", "file", "sorttitle", "resume", "setid", "dateadded", "tag", "art")
+                                    ))));
+
+            if (limits != null)
+            {
+                requestObject["params"]["limits"] = new JObject(
+                                            new JProperty("start", limits.Start),
+                                            new JProperty("end", limits.End));
+            }
+
+            if (sort != null)
+            {
+                requestObject["params"]["sort"] = sort;
+            }
+
+            string requestData = requestObject.ToString();
+            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
+            string responseString = await response.Content.ReadAsStringAsync();
+            JObject responseObject = JObject.Parse(responseString);
+            JArray movieListObject = (JArray)responseObject["result"]["movies"];
+            List<Movie> listToReturn = movieListObject.ToObject<List<Movie>>();
             return listToReturn;
         }
 

@@ -18,5 +18,7 @@ namespace XBMCRemoteWP.Helpers
         public static Artist CurrentArtist { get; set; }
 
         public static TVShow CurrentTVShow { get; set; }
+
+        public static Movie CurrentMovie { get; set; }
     }
 }

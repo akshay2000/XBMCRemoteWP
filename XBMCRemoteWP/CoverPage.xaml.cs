@@ -30,6 +30,9 @@ namespace XBMCRemoteWP
 
             var episodes = await VideoLibrary.GetRecentlyAddedEpisodes(new Limits { Start = 0, End = 8 });
             TVShowsLLS.ItemsSource = episodes;
+
+            var movies = await VideoLibrary.GetRecentlyAddedMovies(new Limits { Start = 0, End = 6 });
+            MoviesLLS.ItemsSource = movies;
             base.OnNavigatedTo(e);
         }
 
@@ -56,6 +59,18 @@ namespace XBMCRemoteWP
         private void AllTVTextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Pages/Video/AllTVShowsPage.xaml", UriKind.Relative));
+        }
+
+        private void MovieWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            Movie tappedMovie = (sender as Grid).DataContext as Movie;
+            GlobalVariables.CurrentMovie = tappedMovie;
+            NavigationService.Navigate(new Uri("/Pages/Video/MovieDetailsPanorama.xaml", UriKind.Relative));
+        }
+
+        private void AllMoviesTextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/Video/AllMoviesPage.xaml", UriKind.Relative));
         }
     }
 }

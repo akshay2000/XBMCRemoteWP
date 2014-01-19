@@ -6,22 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace XBMCRemoteWP.Models.Video
-{
-    
-
-    public class Resume
-    {
-        public int Position { get; set; }
-        public int Total { get; set; }
-    }
-
-    public class StreamDetails
-    {
-        public List<object> Audio { get; set; }
-        public List<object> Subtitle { get; set; }
-        public List<object> Video { get; set; }
-    }
-
+{ 
     public class Uniqueid
     {
         public string Unknown { get; set; }

@@ -81,6 +81,58 @@
 
                 </Grid>
             </phone:PanoramaItem>
+            
+            <!--Movies: Panorama item three-->
+            <phone:PanoramaItem Header="movies" Orientation="Horizontal" Foreground="White" Width="480">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="408"/>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <phone:LongListSelector x:Name="MoviesLLS" Margin="12,0,0,0" LayoutMode="Grid" GridCellSize="144,204">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:Name="MovieWrapper" Height="192" Margin="0,0,12,12" Tap="MovieWrapper_Tap">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.RowSpan="2" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                    <Rectangle Grid.Row="1" Fill="Black" Opacity="0.6"/>
+                                    <TextBlock Grid.Row="1" Text="{Binding Label}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                    
+                    <!--<ListBox>
+                        <ListBoxItem>
+                            <Grid Height="192" Margin="0,0,12,12">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.RowSpan="2" Source="/Assets/DesignTime/TVArt.jpg"/>
+                                <Rectangle Grid.Row="1" Fill="Black" Opacity="0.6"/>
+                                <TextBlock Grid.Row="1" Text="The Wolvarine"/>
+                            </Grid>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <Grid Height="192">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.RowSpan="2" Source="/Assets/DesignTime/TVArt.jpg"/>
+                                <Rectangle Grid.Row="1" Fill="Black" Opacity="0.6"/>
+                                <TextBlock Grid.Row="1" Text="The Wolvarine"/>
+                            </Grid>
+                        </ListBoxItem>
+                    </ListBox>-->
+                    <TextBlock x:Name="AllMoviesTextBlock" Tap="AllMoviesTextBlock_Tap" Text="all movies" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="1"/>
+                </Grid>
+            </phone:PanoramaItem>
         </phone:Panorama>
     </Grid>
 

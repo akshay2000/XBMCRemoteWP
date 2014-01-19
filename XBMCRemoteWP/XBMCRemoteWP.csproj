@@ -107,6 +107,8 @@
     </Compile>
     <Compile Include="Converters\ImagePathConverter.cs" />
     <Compile Include="Converters\ListToStringConverter.cs" />
+    <Compile Include="Converters\ListTrimmer.cs" />
+    <Compile Include="Converters\MinutesToStringConverter.cs" />
     <Compile Include="Converters\StringToImageBrushConverter.cs" />
     <Compile Include="CoverPage.xaml.cs">
       <DependentUpon>CoverPage.xaml</DependentUpon>
@@ -125,6 +127,9 @@
     <Compile Include="Models\Video\Art.cs" />
     <Compile Include="Models\Video\Cast.cs" />
     <Compile Include="Models\Video\Episode.cs" />
+    <Compile Include="Models\Video\Movie.cs" />
+    <Compile Include="Models\Video\Resume.cs" />
+    <Compile Include="Models\Video\StreamDetails.cs" />
     <Compile Include="Models\Video\TVShow.cs" />
     <Compile Include="Models\Views\AlbumView.cs" />
     <Compile Include="Pages\AddConnectionPage.xaml.cs">
@@ -139,8 +144,14 @@
     <Compile Include="Pages\Audio\ArtistDetailsPanorama.xaml.cs">
       <DependentUpon>ArtistDetailsPanorama.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Video\AllMoviesPage.xaml.cs">
+      <DependentUpon>AllMoviesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Video\AllTVShowsPage.xaml.cs">
       <DependentUpon>AllTVShowsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Video\MovieDetailsPanorama.xaml.cs">
+      <DependentUpon>MovieDetailsPanorama.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Video\TVShowDetailsPanorama.xaml.cs">
       <DependentUpon>TVShowDetailsPanorama.xaml</DependentUpon>
@@ -227,7 +238,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Video\AllMoviesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Video\AllTVShowsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Video\MovieDetailsPanorama.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,6 +13,8 @@
             <converters:ImagePathConverter x:Key="ImagePathConverter"/>
             <converters:ListToStringConverter x:Key="ListToStringConverter"/>
             <converters:StringToImageBrushConverter x:Key="StringToImageBrushConverter"/>
+            <converters:MinutesToStringConverter x:Key="MinutesToStringConverter"/>
+            <converters:ListTrimmer x:Key="ListTrimmer"/>
 
             <DataTemplate x:Key="SongItemDataTemplate">
                 <StackPanel x:Name="SongItemWrapper" Orientation="Horizontal" Margin="8,0,0,40">
