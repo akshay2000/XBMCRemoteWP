@@ -25,7 +25,7 @@ namespace XBMCRemoteWP
             ConnectionManager.CurrentConnection = new ConnectionItem
             {
                 ConnectionName = "Test",
-                IpAddress = "10.0.0.3",
+                IpAddress = "192.168.1.9",
                 Port = 8080
             };
         }

@@ -43,7 +43,8 @@ namespace XBMCRemoteWP.RPCWrappers
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
             JArray episodeListObject = (JArray)responseObject["result"]["episodes"];
-            List<Episode> listToReturn = episodeListObject.ToObject<List<Episode>>();
+
+            List<Episode> listToReturn = episodeListObject != null ? episodeListObject.ToObject<List<Episode>>() : new List<Episode>();
             return listToReturn;
         }
 
@@ -77,7 +78,8 @@ namespace XBMCRemoteWP.RPCWrappers
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
             JArray movieListObject = (JArray)responseObject["result"]["movies"];
-            List<Movie> listToReturn = movieListObject.ToObject<List<Movie>>();
+
+            List<Movie> listToReturn = movieListObject != null ? movieListObject.ToObject<List<Movie>>() : new List<Movie>();
             return listToReturn;
         }
 
@@ -116,7 +118,8 @@ namespace XBMCRemoteWP.RPCWrappers
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
             JArray tvShowsListObject = (JArray)responseObject["result"]["tvshows"];
-            List<TVShow> listToReturn = tvShowsListObject.ToObject<List<TVShow>>();
+
+            List<TVShow> listToReturn = tvShowsListObject != null ? tvShowsListObject.ToObject<List<TVShow>>() : new List<TVShow>();
             return listToReturn;
         }
     }

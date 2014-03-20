@@ -67,7 +67,8 @@ namespace XBMCRemoteWP.RPCWrappers
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
             JArray albumListObject = (JArray)responseObject["result"]["albums"];
-            List<Album> listToReturn = albumListObject.ToObject<List<Album>>();
+
+            List<Album> listToReturn = albumListObject != null ? albumListObject.ToObject<List<Album>>() : new List<Album>();
             return listToReturn;
         }
 
@@ -106,7 +107,8 @@ namespace XBMCRemoteWP.RPCWrappers
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
             JArray songListObject = (JArray)responseObject["result"]["songs"];
-            List<Song> listToReturn = songListObject.ToObject<List<Song>>();
+
+            List<Song> listToReturn = songListObject != null ? songListObject.ToObject<List<Song>>() : new List<Song>();
             return listToReturn;
         }
 
@@ -146,7 +148,8 @@ namespace XBMCRemoteWP.RPCWrappers
             JObject responseObject = JObject.Parse(responseString);
 
             JArray artistListObject = (JArray)responseObject["result"]["artists"];
-            List<Artist> listToReturn = artistListObject.ToObject<List<Artist>>();
+
+            List<Artist> listToReturn = artistListObject != null ? artistListObject.ToObject<List<Artist>>() : new List<Artist>();
             return listToReturn;
         }
 
@@ -184,9 +187,9 @@ namespace XBMCRemoteWP.RPCWrappers
             HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
             string responseString = await response.Content.ReadAsStringAsync();
             JObject responseObject = JObject.Parse(responseString);
-
             JArray albumListObject = (JArray)responseObject["result"]["albums"];
-            List<Album> listToReturn = albumListObject.ToObject<List<Album>>();
+
+            List<Album> listToReturn = albumListObject != null ? albumListObject.ToObject<List<Album>>() : new List<Album>();
             return listToReturn;
         }
     }
