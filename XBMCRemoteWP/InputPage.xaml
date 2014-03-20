@@ -13,28 +13,55 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
+	<phone:PhoneApplicationPage.Resources>
+		<Style x:Key="RemoteButton" TargetType="Button">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+			<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}"/>
+			<Setter Property="Padding" Value="10,5,10,6"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid Background="Transparent">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ContentArrow">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneButtonBasePressedForegroundBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ButtonBackground">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneAccentBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+                            <Path x:Name="ButtonBackground" Stroke="{TemplateBinding BorderBrush}" Margin="0,30,0,-10" StrokeThickness="3" Data="m 0,0 a 190,190 0 0 1 268.7,0 l -77.8,77.8 a 80,80 0 0 0 -113.1,0 z" />
+							<!--<Border x:Name="ButtonBackground" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="0" Margin="{StaticResource PhoneTouchTargetOverhang}">-->
+								<!--<ContentControl x:Name="ContentContainer" Foreground="{TemplateBinding Foreground}" >-->
+                            							<!--</Border>-->
+                            <Path x:Name="ContentArrow" Fill="{TemplateBinding Foreground}" Data="m 0,25 l 50,0 l -25,-25 z" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-40,0,0" Height="auto"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="Input" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
-
+         
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            
-            <StackPanel Orientation="Horizontal">
+        <Grid x:Name="ContentPanel" Margin="12,0,12,0">
+                        
+            <!--<StackPanel Orientation="Horizontal">
                 <TextBox x:Name="InputCommand" Width="350"/>
                 <Button x:Name="SubmitButton" Content="Go" Click="SubmitButton_Click"/>
             </StackPanel>
@@ -63,6 +90,29 @@
                 <Button x:Name="MenuButton" Click="MenuButton_Click" Grid.Row="2" Grid.Column="2" Content="C" Height="80" Width="80"/>
                 <Button x:Name="InfoButton" Click="InfoButton_Click" Grid.Row="3" Grid.Column="0" Content="i" Height="80" Width="80"/>
                 
+            </Grid>-->
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="400" Width="400">
+                <Button x:Name="UpButton" Click="UpButton_Click" Style="{StaticResource RemoteButton}" VerticalAlignment="Top" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Margin="0,30,0,0">
+                    <Button.RenderTransform>
+                        <CompositeTransform Rotation="0"/>
+                    </Button.RenderTransform>
+                </Button>
+                <Button x:Name="RightButton" Click="RightButton_Click" Style="{StaticResource RemoteButton}" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,-55,0">
+                    <Button.RenderTransform>
+                        <CompositeTransform Rotation="90"/>
+                    </Button.RenderTransform>
+                </Button>
+                <Button x:Name="DownButton" Click="DownButton_Click" Style="{StaticResource RemoteButton}" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30">
+                    <Button.RenderTransform>
+                        <CompositeTransform Rotation="180"/>
+                    </Button.RenderTransform>
+                </Button>
+                <Button x:Name="LeftButton" Click="LeftButton_Click" Style="{StaticResource RemoteButton}" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="-55,0,0,0">
+                    <Button.RenderTransform>
+                        <CompositeTransform Rotation="270"/>
+                    </Button.RenderTransform>
+                </Button>
+                <Border Width="160" Height="160" CornerRadius="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="White" BorderThickness="3"/>
             </Grid>
         </Grid>
     </Grid>

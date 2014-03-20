@@ -39,24 +39,6 @@ namespace XBMCRemoteWP.Helpers
                 }
             }
         }
-        
-
-        //Property holding the connection address of currently connected server.
-        private static string _currentConnectionString;
-        public static string CurrentConnectionString
-        {
-            get
-            {
-                return _currentConnectionString;
-            }
-            set
-            {
-                if (_currentConnectionString != value)
-                {
-                    _currentConnectionString = value;
-                }
-            }
-        }       
 
         public static async Task<HttpResponseMessage> ExecuteRequest(string requestData)
         {

@@ -26,14 +26,14 @@ namespace XBMCRemoteWP
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
                
-        private static ConnectionManager _connManager;
-        public static ConnectionManager ConnManager
-        {
-            get
-            {
-                return _connManager;
-            }
-        }
+        //private static ConnectionManager _connManager;
+        //public static ConnectionManager ConnManager
+        //{
+        //    get
+        //    {
+        //        return _connManager;
+        //    }
+        //}
 
         private static MainViewModel _mainVM;
         public static MainViewModel MainVM
@@ -71,7 +71,7 @@ namespace XBMCRemoteWP
             }
 
             //Create viewmodels
-            _connManager = new ConnectionManager();
+            //_connManager = new ConnectionManager();
             _mainVM = new MainViewModel(DBConnectionString);
             
 

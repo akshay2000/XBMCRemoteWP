@@ -27,7 +27,7 @@ namespace XBMCRemoteWP.Pages
                 return;
             }
 
-            if (int.TryParse(PortTextBox.Text, out port))
+            if (!int.TryParse(PortTextBox.Text, out port))
             {
                 MessageBox.Show("Please, enter a valid port number.", "Invalid Port", MessageBoxButton.OK);
                 return;

@@ -132,6 +132,9 @@
     <Compile Include="Models\Video\StreamDetails.cs" />
     <Compile Include="Models\Video\TVShow.cs" />
     <Compile Include="Models\Views\AlbumView.cs" />
+    <Compile Include="Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddConnectionPage.xaml.cs">
       <DependentUpon>AddConnectionPage.xaml</DependentUpon>
     </Compile>
@@ -183,7 +186,6 @@
     <Compile Include="RPCWrappers\Playlist.cs" />
     <Compile Include="RPCWrappers\VideoLibrary.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\ObservableCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -207,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -33,7 +33,7 @@
                 <Button x:Name="Navigation" Click="Navigation_Click" Content="Navigation"/>
                 <Button x:Name="Cover" Click="Cover_Click" Content="Cover"/>
                 <Button x:Name="Connections" Click="Connections_Click" Content="Connections"/>
-                <Button x:Name="Album" Click="Album_Click" Content="Album"/>
+                <Button x:Name="Page1" Click="Album_Click" Content="Album"/>
             </StackPanel>
         </Grid>
     </Grid>

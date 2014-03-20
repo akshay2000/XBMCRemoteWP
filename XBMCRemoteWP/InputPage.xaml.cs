@@ -71,7 +71,7 @@ namespace XBMCRemoteWP
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            Input.ExecuteAction(InputCommand.Text);
+            //Input.ExecuteAction(InputCommand.Text);
         }
     }
 }

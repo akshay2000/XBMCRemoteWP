@@ -51,7 +51,7 @@ namespace XBMCRemoteWP
 
         private void Album_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Pages/Audio/AlbumPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/Page1.xaml", UriKind.Relative));
         }
     }
 }
