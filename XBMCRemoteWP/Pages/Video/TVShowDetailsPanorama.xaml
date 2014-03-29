@@ -55,7 +55,7 @@
             <!--Panorama item two-->
             <phone:PanoramaItem Header="cast" Foreground="White">
                 <Grid Margin="12,0,0,0">
-                    <phone:LongListSelector x:Name="CastLLS" ItemsSource="{Binding Cast}">
+                    <phone:LongListSelector x:Name="CastLLS" ItemsSource="{Binding Cast, Converter={StaticResource ListTrimmer}}">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <Grid Height="144" Margin="0,0,0,12">

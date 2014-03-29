@@ -19,13 +19,14 @@ namespace XBMCRemoteWP.Pages.Video
         public AllTVShowsPage()
         {
             InitializeComponent();
+            if(allTVShows == null)
+                LoadTVShows();
         }
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        private async void LoadTVShows()
         {
             allTVShows = await VideoLibrary.GetTVShows();
             AllTVShowsLLS.ItemsSource = allTVShows;
-            base.OnNavigatedTo(e);
         }
 
         private void TVShowWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -33,6 +34,11 @@ namespace XBMCRemoteWP.Pages.Video
             TVShow tappedTVShow = (sender as Grid).DataContext as TVShow;
             GlobalVariables.CurrentTVShow = tappedTVShow;
             NavigationService.Navigate(new Uri("/Pages/Video/TVShowDetailsPanorama.xaml", UriKind.Relative));
+        }
+
+        private void RefreshAppBarButton_Click(object sender, EventArgs e)
+        {
+            LoadTVShows();
         }
     }
 }

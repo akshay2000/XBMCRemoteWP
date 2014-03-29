@@ -136,4 +136,14 @@
         </phone:Panorama>
     </Grid>
 
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Minimized">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="RemoteMenuItem" Click="RemoteMenuItem_Click" Text="remote"/>
+                <shell:ApplicationBarMenuItem x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click" Text="settings"/>
+                <shell:ApplicationBarMenuItem x:Name="AboutMenuItem" Click="AboutMenuItem_Click" Text="about"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    
 </phone:PhoneApplicationPage>

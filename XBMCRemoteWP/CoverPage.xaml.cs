@@ -72,5 +72,20 @@ namespace XBMCRemoteWP
         {
             NavigationService.Navigate(new Uri("/Pages/Video/AllMoviesPage.xaml", UriKind.Relative));
         }
+
+        private void RemoteMenuItem_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/InputPage.xaml", UriKind.Relative));
+        }
+
+        private void SettingsMenuItem_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/SettingsPage.xaml", UriKind.Relative));
+        }
+
+        private void AboutMenuItem_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/AboutPage.xaml", UriKind.Relative));
+        }
     }
 }

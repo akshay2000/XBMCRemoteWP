@@ -290,6 +290,7 @@
     <Content Include="Assets\Glyphs\cancel.png" />
     <Content Include="Assets\Glyphs\check.png" />
     <Content Include="Assets\Glyphs\delete.png" />
+    <Content Include="Assets\Glyphs\refresh.png" />
     <Content Include="Assets\Glyphs\save.png" />
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

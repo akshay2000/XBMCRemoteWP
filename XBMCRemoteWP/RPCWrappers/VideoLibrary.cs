@@ -122,5 +122,45 @@ namespace XBMCRemoteWP.RPCWrappers
             List<TVShow> listToReturn = tvShowsListObject != null ? tvShowsListObject.ToObject<List<TVShow>>() : new List<TVShow>();
             return listToReturn;
         }
+
+        public static async Task<List<Movie>> GetMovies(Limits limits = null, JObject filter = null, JObject sort = null)
+        {
+            JObject requestObject =
+                    new JObject(
+                        new JProperty("jsonrpc", "2.0"),
+                        new JProperty("id", 234),
+                        new JProperty("method", "VideoLibrary.GetMovies"),
+                        new JProperty("params",
+                            new JObject(
+                                new JProperty("properties",
+                                    new JArray("title", "genre", "year", "rating", "director", "trailer", "tagline", "plot", "plotoutline", "originaltitle", "lastplayed", "playcount", "writer", "studio", "mpaa", "cast", "country", "imdbnumber", "runtime", "set", "showlink", "streamdetails", "top250", "votes", "fanart", "thumbnail", "file", "sorttitle", "resume", "setid", "dateadded", "tag", "art")
+                                    ))));
+
+            if (limits != null)
+            {
+                requestObject["params"]["limits"] = new JObject(
+                                            new JProperty("start", limits.Start),
+                                            new JProperty("end", limits.End));
+            }
+
+            if (filter != null)
+            {
+                requestObject["params"]["filter"] = filter;
+            }
+
+            if (sort != null)
+            {
+                requestObject["params"]["sort"] = sort;
+            }
+
+            string requestData = requestObject.ToString();
+            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
+            string responseString = await response.Content.ReadAsStringAsync();
+            JObject responseObject = JObject.Parse(responseString);
+            JArray movieListObject = (JArray)responseObject["result"]["movies"];
+
+            List<Movie> listToReturn = movieListObject != null ? movieListObject.ToObject<List<Movie>>() : new List<Movie>();
+            return listToReturn;
+        }
     }
 }

@@ -12,11 +12,12 @@ namespace XBMCRemoteWP.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+            int resultCount = 6;
             List<Cast> castList = (value == null) ? new List<Cast>() : (List<Cast>)value;
-            if (castList.Count > 8)
+            if (castList.Count > resultCount)
             {
-                int countToRemove = castList.Count - 8;
-                castList.RemoveRange(8, countToRemove);
+                int countToRemove = castList.Count - resultCount;
+                castList.RemoveRange(resultCount, countToRemove);
             }
             return castList;
         }
