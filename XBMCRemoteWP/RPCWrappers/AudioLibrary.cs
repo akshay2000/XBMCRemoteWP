@@ -16,179 +16,137 @@ namespace XBMCRemoteWP.RPCWrappers
     {
         public static async Task<Album> GetAlbumDetails(int albumid)
         {
-            JObject requestObject =
-                   new JObject(
-                       new JProperty("jsonrpc", "2.0"),
-                       new JProperty("id", 234),
-                       new JProperty("method", "AudioLibrary.GetAlbumDetails"),
-                       new JProperty("params",
-                           new JObject(
-                               new JProperty("albumid", albumid),
-                               new JProperty("properties",
-                                   new JArray("title", "description", "artist", "genre", "theme", "mood", "style", "type", "albumlabel", "rating", "year", "musicbrainzalbumid", "musicbrainzalbumartistid", "fanart", "thumbnail", "playcount", "genreid", "artistid", "displayartist")
-                                   )
-                                       )));
-            string requestData = requestObject.ToString();
-            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
-            string responseString = await response.Content.ReadAsStringAsync();
-            JObject responseObject = JObject.Parse(responseString);
+            JObject parameters = new JObject(
+                new JProperty("albumid", albumid),
+                new JProperty("properties",
+                    new JArray("title", "description", "artist", "genre", "theme", "mood", "style", "type", "albumlabel", "rating", "year", "musicbrainzalbumid", "musicbrainzalbumartistid", "fanart", "thumbnail", "playcount", "genreid", "artistid", "displayartist")
+                    ));
+
+            JObject responseObject = await ConnectionManager.ExecuteRPCRequest("AudioLibrary.GetAlbumDetails", parameters);
+
             JObject albumJSON = (JObject)responseObject["result"]["albumdetails"];
             Album albumToRetun = albumJSON.ToObject<Album>();
             return albumToRetun;
 
         }
+
         public static async Task<List<Album>> GetRecentlyAddedAlbums(Limits limits = null, JObject sort = null)
         {
-            JObject requestObject =
-                    new JObject(
-                        new JProperty("jsonrpc", "2.0"),
-                        new JProperty("id", 234),
-                        new JProperty("method", "AudioLibrary.GetRecentlyAddedAlbums"),
-                        new JProperty("params",
-                            new JObject(
+            JObject parameters = new JObject(
                                 new JProperty("properties",
                                     new JArray("title", "description", "artist", "genre", "theme", "mood", "style", "type", "albumlabel", "rating", "year", "musicbrainzalbumid", "musicbrainzalbumartistid", "fanart", "thumbnail", "playcount", "genreid", "artistid", "displayartist")
-                                    ))));
+                                    ));
 
             if (limits != null)
             {
-                requestObject["params"]["limits"] = new JObject(
+                parameters["limits"] = new JObject(
                                             new JProperty("start", limits.Start),
                                             new JProperty("end", limits.End));
             }
 
-            if(sort !=null)
+            if (sort != null)
             {
-                requestObject["params"]["sort"] = sort;
+                parameters["sort"] = sort;
             }
 
-            string requestData = requestObject.ToString();
-            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
-            string responseString = await response.Content.ReadAsStringAsync();
-            JObject responseObject = JObject.Parse(responseString);
-            JArray albumListObject = (JArray)responseObject["result"]["albums"];
+            JObject responseObject = await ConnectionManager.ExecuteRPCRequest("AudioLibrary.GetRecentlyAddedAlbums", parameters);
 
+            JArray albumListObject = (JArray)responseObject["result"]["albums"];
             List<Album> listToReturn = albumListObject != null ? albumListObject.ToObject<List<Album>>() : new List<Album>();
             return listToReturn;
         }
 
         public static async Task<List<Song>> GetSongs(JObject filter = null, Limits limits = null, JObject sort = null)
-        {    
-            JObject requestObject =
-                        new JObject(
-                            new JProperty("jsonrpc", "2.0"),
-                            new JProperty("id", 234),
-                            new JProperty("method", "AudioLibrary.GetSongs"),
-                            new JProperty("params",
-                                new JObject(
-                                    new JProperty("properties",
-                                        new JArray("album", "albumartist", "albumartistid", "albumid", "comment", "disc", "duration", "file", "lastplayed", "lyrics", "musicbrainzartistid", "musicbrainztrackid", "playcount", "track"))
-                                            )));
+        {
+            JObject parameters = new JObject(
+                                     new JProperty("properties",
+                                         new JArray("album", "albumartist", "albumartistid", "albumid", "comment", "disc", "duration", "file", "lastplayed", "lyrics", "musicbrainzartistid", "musicbrainztrackid", "playcount", "track"))
+                                             );
 
             if (limits != null)
             {
-                requestObject["params"]["limits"] = new JObject(
+                parameters["limits"] = new JObject(
                                             new JProperty("start", limits.Start),
                                             new JProperty("end", limits.End));
             }
 
-            if(filter!=null)
+            if (filter != null)
             {
-                requestObject["params"]["filter"] = filter;
+                parameters["filter"] = filter;
             }
 
             if (sort != null)
             {
-                requestObject["params"]["sort"] = sort;
+                parameters["sort"] = sort;
             }
 
-            string requestData = requestObject.ToString();
-            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
-            string responseString = await response.Content.ReadAsStringAsync();
-            JObject responseObject = JObject.Parse(responseString);
-            JArray songListObject = (JArray)responseObject["result"]["songs"];
+            JObject responseObject = await ConnectionManager.ExecuteRPCRequest("AudioLibrary.GetSongs", parameters);
 
+            JArray songListObject = (JArray)responseObject["result"]["songs"];
             List<Song> listToReturn = songListObject != null ? songListObject.ToObject<List<Song>>() : new List<Song>();
             return listToReturn;
         }
 
         public static async Task<List<Artist>> GetArtists(JObject filter = null, Limits limits = null, JObject sort = null)
         {
-            JObject requestObject =
-                        new JObject(
-                            new JProperty("jsonrpc", "2.0"),
-                            new JProperty("id", 234),
-                            new JProperty("method", "AudioLibrary.GetArtists"),
-                            new JProperty("params",
-                                new JObject(
-                                    new JProperty("properties",
-                                        new JArray("born", "description", "died", "disbanded", "formed", "instrument", "mood", "musicbrainzartistid", "style", "yearsactive", "thumbnail", "fanart"))
-                                            )));
+            JObject parameters = new JObject(
+                                     new JProperty("properties",
+                                         new JArray("born", "description", "died", "disbanded", "formed", "instrument", "mood", "musicbrainzartistid", "style", "yearsactive", "thumbnail", "fanart"))
+                                             );
 
             if (limits != null)
             {
-                requestObject["params"]["limits"] = new JObject(
+                parameters["limits"] = new JObject(
                                             new JProperty("start", limits.Start),
                                             new JProperty("end", limits.End));
             }
 
             if (filter != null)
             {
-                requestObject["params"]["filter"] = filter;
+                parameters["filter"] = filter;
             }
 
             if (sort != null)
             {
-                requestObject["params"]["sort"] = sort;
+                parameters["sort"] = sort;
             }
 
-            string requestData = requestObject.ToString();
-            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
-            string responseString = await response.Content.ReadAsStringAsync();
-            JObject responseObject = JObject.Parse(responseString);
+            JObject responseObject = await ConnectionManager.ExecuteRPCRequest("AudioLibrary.GetArtists", parameters);
 
             JArray artistListObject = (JArray)responseObject["result"]["artists"];
-
             List<Artist> listToReturn = artistListObject != null ? artistListObject.ToObject<List<Artist>>() : new List<Artist>();
             return listToReturn;
         }
 
         public static async Task<List<Album>> GetAlbums(JObject filter = null, Limits limits = null, JObject sort = null)
         {
-            JObject requestObject =
-                        new JObject(
-                            new JProperty("jsonrpc", "2.0"),
-                            new JProperty("id", 234),
-                            new JProperty("method", "AudioLibrary.GetAlbums"),
-                            new JProperty("params",
+            JObject parameters =
                                 new JObject(
                                     new JProperty("properties",
                                         new JArray("title", "description", "artist", "genre", "theme", "mood", "style", "type", "albumlabel", "rating", "year", "musicbrainzalbumid", "musicbrainzalbumartistid", "fanart", "thumbnail", "playcount", "genreid", "artistid", "displayartist"))
-                                            )));
+                                            );
 
             if (limits != null)
             {
-                requestObject["params"]["limits"] = new JObject(
+                parameters["limits"] = new JObject(
                                             new JProperty("start", limits.Start),
                                             new JProperty("end", limits.End));
             }
 
             if (filter != null)
             {
-                requestObject["params"]["filter"] = filter;
+                parameters["filter"] = filter;
             }
 
             if (sort != null)
             {
-                requestObject["params"]["sort"] = sort;
+                parameters["sort"] = sort;
             }
 
-            string requestData = requestObject.ToString();
-            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
-            string responseString = await response.Content.ReadAsStringAsync();
-            JObject responseObject = JObject.Parse(responseString);
-            JArray albumListObject = (JArray)responseObject["result"]["albums"];
 
+            JObject responseObject = await ConnectionManager.ExecuteRPCRequest("AudioLibrary.GetAlbums", parameters);
+
+            JArray albumListObject = (JArray)responseObject["result"]["albums"];
             List<Album> listToReturn = albumListObject != null ? albumListObject.ToObject<List<Album>>() : new List<Album>();
             return listToReturn;
         }

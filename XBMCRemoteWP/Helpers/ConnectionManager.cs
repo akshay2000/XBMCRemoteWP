@@ -55,17 +55,25 @@ namespace XBMCRemoteWP.Helpers
             return response;            
         }
 
-        ///Network service discovery is supposed to happen here.
-        ///XBMC announces it's JSON-RPC availability over zeroconf and string is "_http._tcp"
-        ///Pseudo code is written below. Zeroconf is nicely provided by project here: https://github.com/onovotny/Zeroconf
-       
-        //public async Task<List<string>> GetAvailableServers()
-        //{
-        //    var list = zaroconf.searchforservers("_http._tcp");
-        //    return list;
-        //}
+        private static JObject ConstructRequestObject(string methodName, JObject parameters)
+        {
+            JObject requestObject =
+                   new JObject(
+                       new JProperty("jsonrpc", "2.0"),
+                       new JProperty("id", 234),
+                       new JProperty("method", methodName),
+                       new JProperty("params", parameters));
+            return requestObject;
+        }
 
-        ///The Zeroconf there doesn't support Windows Phone 7 (bummer).
-        ///Looks like we'll have to implement an UI to do the job.
+        public static async Task<JObject> ExecuteRPCRequest(string methodName, JObject parameters)
+        {
+            JObject requestObject = ConstructRequestObject(methodName, parameters);
+            string requestData = requestObject.ToString();
+            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
+            string responseString = await response.Content.ReadAsStringAsync();
+            JObject responseObject = JObject.Parse(responseString);
+            return responseObject;
+        }
     }
 }
