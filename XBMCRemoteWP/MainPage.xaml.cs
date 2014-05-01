@@ -29,24 +29,6 @@ namespace XBMCRemoteWP
            
         }
 
-        #region Overrides
-
-        protected async override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);            
-            List<PlayerItem> ActivePlayers = await Player.GetActivePlayers();
-            dynamic nowPlaying = await Player.GetItem(ActivePlayers[0].PlayerId);
-
-            //Let's update UI.
-            string imgPath = nowPlaying.result.item.thumbnail;
-            var t = imgPath.Substring(8);
-            var encodedt = HttpUtility.UrlEncode(t);
-            var thumbnailUrl = "http://192.168.1.4:8080/image/image://" + encodedt;
-            AlbumArtImage.Source = new BitmapImage(new Uri(thumbnailUrl));
-        }
-
-        #endregion
-
         #region Appbar buttons and menus
 
         private void SettingsMenuItem_Click(object sender, EventArgs e)
@@ -62,27 +44,12 @@ namespace XBMCRemoteWP
         #endregion
 
         private async void PlayPauseButton_Click(object sender, RoutedEventArgs e)
-        {
-            int? playerSpeed = await Player.PlayPausePlayer();
-            switch (playerSpeed)
-            {
-                case 0:
-                    PlayPauseButton.ImageSource = PlayIcon;
-                    break;
-                case 1:
-                    PlayPauseButton.ImageSource = PauseIcon;
-                    break;
-            }
-        }
+        { }
 
         private void PreviousButton_Click(object sender, RoutedEventArgs e)
-        {
-            Player.GoTo("previous");
-        }
+        { }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
-        {
-            Player.GoTo("next");
-        }
+        { }
     }
 }

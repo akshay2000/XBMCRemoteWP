@@ -40,7 +40,7 @@ namespace XBMCRemoteWP.Helpers
             }
         }
 
-        public static async Task<HttpResponseMessage> ExecuteRequest(string requestData)
+        private static async Task<HttpResponseMessage> ExecuteRequest(string requestData)
         {
             HttpClientHandler handler = new HttpClientHandler();
             HttpClient httpClient = new HttpClient(handler);
@@ -55,18 +55,21 @@ namespace XBMCRemoteWP.Helpers
             return response;            
         }
 
-        private static JObject ConstructRequestObject(string methodName, JObject parameters)
+        private static JObject ConstructRequestObject(string methodName, JObject parameters = null)
         {
             JObject requestObject =
                    new JObject(
                        new JProperty("jsonrpc", "2.0"),
                        new JProperty("id", 234),
-                       new JProperty("method", methodName),
-                       new JProperty("params", parameters));
+                       new JProperty("method", methodName));
+
+            if (parameters != null)
+                requestObject["params"] = parameters;
+
             return requestObject;
         }
 
-        public static async Task<JObject> ExecuteRPCRequest(string methodName, JObject parameters)
+        public static async Task<JObject> ExecuteRPCRequest(string methodName, JObject parameters = null)
         {
             JObject requestObject = ConstructRequestObject(methodName, parameters);
             string requestData = requestObject.ToString();

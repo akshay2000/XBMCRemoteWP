@@ -13,28 +13,14 @@ namespace XBMCRemoteWP.RPCWrappers
     public class Input
     {
         public static async void ExecuteAction(InputCommands command)
-        {
-            JObject requestObject = JObject.FromObject(new
-                {
-                    jsonrpc = "2.0",
-                    id = 234,
-                    method = "Input." + command.ToString()
-                });
-            string requestData = requestObject.ToString();
-            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
+        {           
+            await ConnectionManager.ExecuteRPCRequest("Input." + command.ToString());
         }
 
         public static async void ExecuteAction(string action)
         {
-            JObject requestObject = new JObject(
-                new JProperty("jsonrpc", "2.0"),
-                new JProperty("id", 234),
-                new JProperty("method", "Input.ExecuteAction"),
-                new JProperty("params",
-                    new JObject(
-                        new JProperty("action", action))));
-            string requestData = requestObject.ToString();
-            HttpResponseMessage response = await ConnectionManager.ExecuteRequest(requestData);
+            JObject parameters = new JObject(new JProperty("action", action));
+            await ConnectionManager.ExecuteRPCRequest("Input.ExecuteAction", parameters);
         }
     }
 }
