@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -31,7 +32,7 @@
             <phone:LongListSelector x:Name="ConnectionsLLS" ItemsSource="{Binding ConnectionItems}">
                 <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel x:Name="ConnectionItemWrapper" Tap="ConnectionItemWrapper_Tap">
+                        <StackPanel x:Name="ConnectionItemWrapper" Tap="ConnectionItemWrapper_Tap" toolkit:TiltEffect.IsTiltEnabled="True">
                             <TextBlock Text="{Binding ConnectionName}" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
                             <TextBlock Text="{Binding IpAddress}" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
                         </StackPanel>

@@ -26,15 +26,25 @@ namespace XBMCRemoteWP.Pages.Audio
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            allArtists = await AudioLibrary.GetArtists();
-            AllArtistsLLS.ItemsSource = allArtists;
+            if (allArtists == null)
+            {
+                allArtists = await AudioLibrary.GetArtists();
+                AllArtistsLLS.ItemsSource = allArtists;
+            }
 
             JObject sortWith = new JObject(new JProperty("method", "label"));
-            allAlbums = await AudioLibrary.GetAlbums(sort: sortWith);
-            AllAlbumsLLS.ItemsSource = allAlbums;
+            if (allAlbums == null)
+            {
+                allAlbums = await AudioLibrary.GetAlbums(sort: sortWith);
+                AllAlbumsLLS.ItemsSource = allAlbums;
+            }
 
-            allSongs = await AudioLibrary.GetSongs(sort: sortWith);
-            AllSongsLLS.ItemsSource = allSongs;
+            if (allSongs == null)
+            {
+                allSongs = await AudioLibrary.GetSongs(sort: sortWith);
+                AllSongsLLS.ItemsSource = allSongs;
+            }
+
             base.OnNavigatedTo(e);
         }
 
