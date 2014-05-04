@@ -125,5 +125,42 @@ namespace XBMCRemoteWP.RPCWrappers
             List<Movie> listToReturn = movieListObject != null ? movieListObject.ToObject<List<Movie>>() : new List<Movie>();
             return listToReturn;
         }
+
+        public static async Task<List<Episode>> GetEpisodes(Limits limits = null, JObject filter = null, JObject sort = null, int? tvShowID = null)
+        {
+            JObject parameters = new JObject(
+                               new JProperty("properties",
+                                   new JArray("title", "plot", "votes", "rating", "writer", "firstaired", "playcount", "runtime", "director", "productioncode", "season", "episode", "originaltitle", "showtitle", "streamdetails", "lastplayed", "fanart", "thumbnail", "file", "resume", "tvshowid", "dateadded", "uniqueid", "art")
+                                   ));
+
+            if (tvShowID != null)
+            {
+                parameters["tvshowid"] = tvShowID;
+            }
+
+            if (limits != null)
+            {
+                parameters["limits"] = new JObject(
+                                            new JProperty("start", limits.Start),
+                                            new JProperty("end", limits.End));
+            }
+
+            if (filter != null)
+            {
+                parameters["filter"] = filter;
+            }
+
+            if (sort != null)
+            {
+                parameters["sort"] = sort;
+            }
+
+
+            JObject responseObject = await ConnectionManager.ExecuteRPCRequest("VideoLibrary.GetEpisodes", parameters);
+            JArray episodeListObject = (JArray)responseObject["result"]["episodes"];
+
+            List<Episode> listToReturn = episodeListObject != null ? episodeListObject.ToObject<List<Episode>>() : new List<Episode>();
+            return listToReturn;
+        }
     }
 }
