@@ -302,6 +302,7 @@
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+    <Content Include="Untitled-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Coding4Fun.Toolkit.Controls">

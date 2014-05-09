@@ -1,25 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{d252985c-da29-41f2-8f5c-6c3f6a9ed77f}" Title="XBMCRemoteWP" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="XBMCRemoteWP author" Description="Sample description" Publisher="XBMCRemoteWP" PublisherID="{38fadada-329e-4f10-80fa-2a0739a2b9ad}">
-    <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
+  <App xmlns="" ProductID="{d252985c-da29-41f2-8f5c-6c3f6a9ed77f}" Title="XBMC Assist" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="XBMCRemoteWP author" Description="Sample description" Publisher="XBMCRemoteWP" PublisherID="{38fadada-329e-4f10-80fa-2a0739a2b9ad}">
+    <IconPath IsRelative="true" IsResource="false">Untitled-1.png</IconPath>
     <Capabilities>
-      <Capability Name="ID_CAP_GAMERSERVICES" />
-      <Capability Name="ID_CAP_IDENTITY_DEVICE" />
-      <Capability Name="ID_CAP_IDENTITY_USER" />
-      <Capability Name="ID_CAP_LOCATION" />
-      <Capability Name="ID_CAP_MICROPHONE" />
-      <Capability Name="ID_CAP_NETWORKING" />
-      <Capability Name="ID_CAP_PHONEDIALER" />
-      <Capability Name="ID_CAP_PUSH_NOTIFICATION" />
-      <Capability Name="ID_CAP_SENSORS" />
-      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
-      <Capability Name="ID_CAP_ISV_CAMERA" />
-      <Capability Name="ID_CAP_CONTACTS" />
-      <Capability Name="ID_CAP_APPOINTMENTS" />
-      <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
-      <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
-      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="ConnectionsPage.xaml" />
@@ -27,10 +11,10 @@
     <Tokens>
       <PrimaryToken TokenID="XBMCRemoteWPToken" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsResource="false" IsRelative="true">Background.png</SmallImageURI>
+          <SmallImageURI IsResource="false" IsRelative="true">Untitled-1.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsResource="false" IsRelative="true">Background.png</BackgroundImageURI>
-          <Title>XBMCRemoteWP</Title>
+          <BackgroundImageURI IsResource="false" IsRelative="true">Untitled-1.png</BackgroundImageURI>
+          <Title>XBMC Assist</Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>

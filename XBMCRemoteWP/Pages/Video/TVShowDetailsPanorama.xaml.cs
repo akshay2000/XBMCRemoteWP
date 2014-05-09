@@ -30,10 +30,7 @@ namespace XBMCRemoteWP.Pages.Video
             JObject filter = new JObject(new JProperty("tvshowid", GlobalVariables.CurrentTVShow.TvShowId));
             List<Episode> episodes = await VideoLibrary.GetEpisodes(tvShowID: GlobalVariables.CurrentTVShow.TvShowId);
 
-            List<SeasonItem<Episode>> seasons = GroupEpisodes<Episode>(episodes, epi => epi.Season);
-            
-            
-
+            List<SeasonItem<Episode>> seasons = GroupEpisodes<Episode>(episodes, epi => epi.Season);         
             SeasonsLLS.ItemsSource = seasons;
         }
 
