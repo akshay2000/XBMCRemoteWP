@@ -28,16 +28,23 @@ namespace XBMCRemoteWP
 
         private async void ConnectionItemWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            ConnectionItem selectedConnection = (ConnectionItem)(sender as StackPanel).DataContext;
-            bool isSuccessful = await JSONRPC.Ping(selectedConnection);
-            if(isSuccessful)
+            try
             {
-                ConnectionManager.CurrentConnection = selectedConnection;
-                NavigationService.Navigate(new Uri("/CoverPage.xaml", UriKind.Relative));
+                ConnectionItem selectedConnection = (ConnectionItem)(sender as StackPanel).DataContext;
+                bool isSuccessful = await JSONRPC.Ping(selectedConnection);
+                if (isSuccessful)
+                {
+                    ConnectionManager.CurrentConnection = selectedConnection;
+                    NavigationService.Navigate(new Uri("/CoverPage.xaml", UriKind.Relative));
+                }
+                else
+                {
+                    MessageBox.Show("Could not reach the server.", "Connection Unsuccessful", MessageBoxButton.OK);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Could not reach the server.", "Connection Unsuccessful", MessageBoxButton.OK);
+                MessageBox.Show(ex.Message, "Tell this message to dev", MessageBoxButton.OK);
             }
         }
     }

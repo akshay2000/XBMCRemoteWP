@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{d252985c-da29-41f2-8f5c-6c3f6a9ed77f}" Title="XBMC Assist" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="XBMCRemoteWP author" Description="Sample description" Publisher="XBMCRemoteWP" PublisherID="{38fadada-329e-4f10-80fa-2a0739a2b9ad}">
+  <App xmlns="" ProductID="{d252985c-da29-41f2-8f5c-6c3f6a9ed77f}" Title="XBMC Assist" RuntimeType="Silverlight" Version="1.0.0.2" Genre="apps.normal" Author="Akshay Zade" Description="Sample description" Publisher="akshay2000" PublisherID="{38fadada-329e-4f10-80fa-2a0739a2b9ad}">
     <IconPath IsRelative="true" IsResource="false">Untitled-1.png</IconPath>
     <Capabilities>
+      <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_IDENTITY_DEVICE" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="ConnectionsPage.xaml" />
