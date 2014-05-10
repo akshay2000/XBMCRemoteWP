@@ -30,7 +30,7 @@ namespace XBMCRemoteWP
         {
             ConnectionItem selectedConnection = (ConnectionItem)(sender as StackPanel).DataContext;
             bool isSuccessful = await JSONRPC.Ping(selectedConnection);
-            if(isSuccessful)
+            if (isSuccessful)
             {
                 ConnectionManager.CurrentConnection = selectedConnection;
                 NavigationService.Navigate(new Uri("/CoverPage.xaml", UriKind.Relative));
@@ -38,6 +38,17 @@ namespace XBMCRemoteWP
             else
             {
                 MessageBox.Show("Could not reach the server.", "Connection Unsuccessful", MessageBoxButton.OK);
+            }
+        }
+
+        private void ContextMenuDeleteConnection_Click(object sender, RoutedEventArgs e)
+        {
+            var t = sender as MenuItem;
+            if (t != null)
+            {
+                ConnectionItem connectionItem = t.DataContext as ConnectionItem;
+                App.MainVM.RemoveConnectionItem(connectionItem);
+
             }
         }
     }
