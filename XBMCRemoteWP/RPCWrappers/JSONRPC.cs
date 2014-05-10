@@ -22,12 +22,16 @@ namespace XBMCRemoteWP.RPCWrappers
 
             HttpClientHandler handler = new HttpClientHandler();
             HttpClient httpClient = new HttpClient(handler);
+            
             string uriString = "http://" + connectionItem.IpAddress + ":" + connectionItem.Port.ToString() + "/jsonrpc?request=";
             httpClient.BaseAddress = new Uri(uriString);
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "");
 
             request.Content = new StringContent(requestData);
             request.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json"); //Required to be recognized as valid JSON request.
+
+            if (connectionItem.Password != String.Empty)
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(String.Format("{0}:{1}", connectionItem.Username, connectionItem.Password))));
 
             HttpResponseMessage response = await httpClient.SendAsync(request);
             string responseString = await response.Content.ReadAsStringAsync();
