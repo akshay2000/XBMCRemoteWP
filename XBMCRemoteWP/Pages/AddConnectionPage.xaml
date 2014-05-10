@@ -32,7 +32,7 @@
                 <TextBlock Text="Name" Style="{StaticResource PhoneTextSubtleStyle}" />
                 <TextBox x:Name="NameTextBox" InputScope="PersonalFullName"/>
                 <TextBlock Text="IP Address" Style="{StaticResource PhoneTextSubtleStyle}" />
-                <TextBox x:Name="IPTextBox" InputScope="Number"/>
+                <TextBox x:Name="IPTextBox" InputScope="Number" LostFocus="IPTextBox_LostFocus"/>
                 <TextBlock Text="Port" Style="{StaticResource PhoneTextSubtleStyle}" />
                 <TextBox x:Name="PortTextBox" InputScope="Number"/>
                 <TextBlock Text="Username" Style="{StaticResource PhoneTextSubtleStyle}" />

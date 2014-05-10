@@ -65,5 +65,10 @@ namespace XBMCRemoteWP.Pages
             }
             return isValid;
         }
+
+        private void IPTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            IPTextBox.Text = IPTextBox.Text.Replace(',', '.');
+        }
     }
 }
