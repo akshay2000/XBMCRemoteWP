@@ -23,20 +23,21 @@ namespace XBMCRemoteWP.Helpers
                 JObject playerResult = (JObject)player["result"]["item"];
 
                 GlobalVariables.NowPlaying.PlayerType = activePlayers[0];
-                GlobalVariables.NowPlaying.Title = playerResult["title"].ToString();
-                GlobalVariables.NowPlaying.Thumbnail = playerResult["thumbnail"].ToString();
-                GlobalVariables.NowPlaying.Fanart = playerResult["fanart"].ToString();
+                GlobalVariables.NowPlaying.Title = playerResult["title"] != null ? playerResult["title"].ToString() : String.Empty;
+                GlobalVariables.NowPlaying.Thumbnail = playerResult["thumbnail"] != null ? playerResult["thumbnail"].ToString() : String.Empty;
+                GlobalVariables.NowPlaying.Fanart = playerResult["fanart"] != null ? playerResult["fanart"].ToString() : String.Empty;
                 if (playerResult["type"].ToString() == "movie")
                 {
-                    GlobalVariables.NowPlaying.Subtitle = playerResult["tagline"].ToString();
+                    GlobalVariables.NowPlaying.Subtitle = playerResult["tagline"] != null ? playerResult["tagline"].ToString() : String.Empty;
                 }
                 else if (playerResult["type"].ToString() == "episode")
                 {
-                    GlobalVariables.NowPlaying.Subtitle = playerResult["showtitle"].ToString();
+                    GlobalVariables.NowPlaying.Subtitle = playerResult["showtitle"] != null ? playerResult["showtitle"].ToString() : String.Empty;
                 }
                 else if (playerResult["type"].ToString() == "song")
                 {
-                    GlobalVariables.NowPlaying.Subtitle = ((JArray)playerResult["artist"])[0].ToString();
+                    if (((JArray)playerResult["artist"]).Count > 0)
+                        GlobalVariables.NowPlaying.Subtitle = ((JArray)playerResult["artist"])[0].ToString();
                 }
             }
         }
