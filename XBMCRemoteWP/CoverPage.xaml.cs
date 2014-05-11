@@ -13,6 +13,8 @@ using XBMCRemoteWP.Models.Audio;
 using Newtonsoft.Json.Linq;
 using XBMCRemoteWP.Helpers;
 using XBMCRemoteWP.Models.Video;
+using System.Windows.Media.Imaging;
+using XBMCRemoteWP.Models;
 
 namespace XBMCRemoteWP
 {
@@ -21,10 +23,15 @@ namespace XBMCRemoteWP
         public CoverPage()
         {
             InitializeComponent();
+            if (GlobalVariables.NowPlaying == null)
+                GlobalVariables.NowPlaying = new NowPlayingItem();
+            NowPlayingGrid.DataContext = GlobalVariables.NowPlaying;
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            PlayerHelper.RefreshNowPlaying();
+
             var albums = await AudioLibrary.GetRecentlyAddedAlbums(new Limits { Start = 0, End = 8 });
             MusicLLS.ItemsSource = albums;
 
@@ -86,6 +93,27 @@ namespace XBMCRemoteWP
         private void AboutMenuItem_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/Pages/AboutPage.xaml", UriKind.Relative));
+        }
+
+        private void PreviousButton_Click(object sender, RoutedEventArgs e)
+        {
+            Player.GoTo(GlobalVariables.NowPlaying.PlayerType, GoTo.Previous);
+            PlayerHelper.RefreshNowPlaying();
+        }
+
+        private async void PlayPauseButton_Click(object sender, RoutedEventArgs e)
+        {
+            int speed = await Player.PlayPause(GlobalVariables.NowPlaying.PlayerType);
+            if (speed == 0)
+                PlayPauseButton.ImageSource = new BitmapImage(new Uri("/Assets/Glyphs/appbar.transport.play.rest.png", UriKind.Relative));
+            else
+                PlayPauseButton.ImageSource = new BitmapImage(new Uri("/Assets/Glyphs/appbar.transport.pause.rest.png", UriKind.Relative));
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            Player.GoTo(GlobalVariables.NowPlaying.PlayerType, GoTo.Next);
+            PlayerHelper.RefreshNowPlaying();
         }
     }
 }

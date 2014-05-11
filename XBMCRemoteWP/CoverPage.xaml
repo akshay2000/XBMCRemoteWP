@@ -2,6 +2,7 @@
     x:Class="XBMCRemoteWP.CoverPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -16,10 +17,38 @@
     
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <phone:Panorama Title="xbmc remote" Foreground="White" Background="Black" >
+        <phone:Panorama Title="xbmc assist" Foreground="White" Background="Black" >
 
+            <!--Now Playing: Panorama item zero-->
+            <phone:PanoramaItem x:Name="NowPlayingPanoramaItem" Header="now playing">
+                <Grid Margin="16,0,0,0" x:Name="NowPlayingGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="253"/>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="253"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Width="253" Height="253" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="UniformToFill"/>
+                    
+                    <StackPanel Grid.Row="1" Margin="0,10">
+                        <TextBlock x:Name="NowPlayingItemNameTextBlock" Text="{Binding Title}"/>
+                        <TextBlock x:Name="NowPlayingByNameTextBlock" Text="{Binding Subtitle}"/>
+                    </StackPanel>
+                    
+                    <Grid Grid.Row="2" Margin="-10,0">
+                        <c4f:RoundButton x:Name="PreviousButton" Click="PreviousButton_Click" ImageSource="Assets/Glyphs/appbar.transport.rew.rest.png" HorizontalAlignment="Left"/>
+                        <c4f:RoundButton x:Name="PlayPauseButton" Click="PlayPauseButton_Click" ImageSource="Assets/Glyphs/appbar.transport.pause.rest.png" HorizontalAlignment="Center" />
+                        <c4f:RoundButton x:Name="NextButton" Click="NextButton_Click" ImageSource="Assets/Glyphs/appbar.transport.ff.rest.png" HorizontalAlignment="Right" />
+                    </Grid>
+                </Grid>
+            </phone:PanoramaItem>
+            
             <!--Music: Panorama item one-->
-            <phone:PanoramaItem Header="music" Orientation="Horizontal" Width="795">
+            <phone:PanoramaItem Header="music">
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="408"/>

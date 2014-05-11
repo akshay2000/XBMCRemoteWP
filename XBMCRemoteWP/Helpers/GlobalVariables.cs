@@ -20,5 +20,7 @@ namespace XBMCRemoteWP.Helpers
         public static TVShow CurrentTVShow { get; set; }
 
         public static Movie CurrentMovie { get; set; }
+
+        public static NowPlayingItem NowPlaying { get; set; }
     }
 }

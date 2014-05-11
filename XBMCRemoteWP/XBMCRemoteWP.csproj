@@ -114,6 +114,7 @@
       <DependentUpon>CoverPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GlobalVariables.cs" />
+    <Compile Include="Helpers\PlayerHelper.cs" />
     <Compile Include="Models\Audio\Album.cs" />
     <Compile Include="Models\Audio\Artist.cs" />
     <Compile Include="Models\Audio\Song.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Models\ConnectionItem.cs" />
     <Compile Include="Models\MainDataContext.cs" />
     <Compile Include="Models\NotifyBase.cs" />
+    <Compile Include="Models\NowPlayingItem.cs" />
     <Compile Include="Models\Video\Art.cs" />
     <Compile Include="Models\Video\Cast.cs" />
     <Compile Include="Models\Video\Episode.cs" />
@@ -156,19 +158,16 @@
     <Compile Include="Pages\Video\TVShowDetailsPanorama.xaml.cs">
       <DependentUpon>TVShowDetailsPanorama.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\RPCWrappers\AudioLibrary.cs" />
-    <Compile Include="ViewModels\RPCWrappers\Input.cs" />
-    <Compile Include="ViewModels\RPCWrappers\JSONRPC.cs" />
-    <Compile Include="ViewModels\RPCWrappers\Player.cs" />
+    <Compile Include="RPCWrappers\AudioLibrary.cs" />
+    <Compile Include="RPCWrappers\Input.cs" />
+    <Compile Include="RPCWrappers\JSONRPC.cs" />
+    <Compile Include="RPCWrappers\Player.cs" />
     <Compile Include="InputPage.xaml.cs">
       <DependentUpon>InputPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\CommonReturnTypes.cs" />
-    <Compile Include="Models\PlayerItem.cs" />
-    <Compile Include="Models\RPCBase.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
@@ -180,8 +179,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\ConnectionManager.cs" />
-    <Compile Include="ViewModels\RPCWrappers\Playlist.cs" />
-    <Compile Include="ViewModels\RPCWrappers\VideoLibrary.cs" />
+    <Compile Include="RPCWrappers\Playlist.cs" />
+    <Compile Include="RPCWrappers\VideoLibrary.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
