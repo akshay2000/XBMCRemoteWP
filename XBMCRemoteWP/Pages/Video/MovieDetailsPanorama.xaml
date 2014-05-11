@@ -97,4 +97,10 @@
         </phone:Panorama>
     </Grid>
 
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton x:Name="PlayMovieAppBarButton" Click="PlayMovieAppBarButton_Click" Text="play" IconUri="/Assets/Glyphs/appbar.transport.play.rest.png" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    
 </phone:PhoneApplicationPage>

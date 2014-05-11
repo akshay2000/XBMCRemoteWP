@@ -52,5 +52,12 @@ namespace XBMCRemoteWP.Pages.Video
             }
             public int SeasonKey { get; private set; }
         }
+
+        private void EpisodeWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            var tappedEpisode = (sender as StackPanel).DataContext as Episode;
+            JObject episodeToPlay = new JObject(new JProperty("episodeid", tappedEpisode.EpisodeId));
+            Player.Open(episodeToPlay);
+        }
     }
 }
