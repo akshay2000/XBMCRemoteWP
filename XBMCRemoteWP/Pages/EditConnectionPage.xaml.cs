@@ -7,22 +7,27 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using XBMCRemoteWP.Models;
 using XBMCRemoteWP.Helpers;
 
 namespace XBMCRemoteWP.Pages
 {
-    public partial class AddConnectionPage : PhoneApplicationPage
+    public partial class EditConnectionPage : PhoneApplicationPage
     {
-        public AddConnectionPage()
+        public EditConnectionPage()
         {
             InitializeComponent();
+            DataContext = ConnectionManager.CurrentConnection;
+        }
+
+        private void CancelAppBarButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.GoBack();
         }
 
         private void SaveConnectionAppBarButton_Click(object sender, EventArgs e)
         {
             int port;
-            if(!ConnectionManager.IsIpAddressValid(IPTextBox.Text))
+            if (!ConnectionManager.IsIpAddressValid(IPTextBox.Text))
             {
                 MessageBox.Show("Please, enter a valid IPv4 address.", "Invalid IP Address", MessageBoxButton.OK);
                 return;
@@ -34,26 +39,14 @@ namespace XBMCRemoteWP.Pages
                 return;
             }
 
-            var newConnection = new ConnectionItem
-            {
-                ConnectionName = NameTextBox.Text,
-                IpAddress = IPTextBox.Text,
-                Port = port,
-                Username = UsernameTextBox.Text,
-                Password = PasswordTextBox.Text
-            };
-            App.MainVM.AddConnectionItem(newConnection);
+            var connection = ConnectionManager.CurrentConnection;
+            connection.ConnectionName = NameTextBox.Text;
+            connection.IpAddress = IPTextBox.Text;
+            connection.Port = int.Parse(PortTextBox.Text);
+            connection.Username = UsernameTextBox.Text;
+            connection.Password = PasswordTextBox.Text;
+            App.MainVM.SubmitChanges();
             NavigationService.GoBack();
-        }
-
-        private void CancelAppBarButton_Click(object sender, EventArgs e)
-        {
-            NavigationService.GoBack();
-        }
-
-        private void IPTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            IPTextBox.Text = IPTextBox.Text.Replace(',', '.');
         }
     }
 }

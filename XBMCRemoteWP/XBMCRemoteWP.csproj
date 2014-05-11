@@ -147,6 +147,9 @@
     <Compile Include="Pages\Audio\ArtistDetailsPanorama.xaml.cs">
       <DependentUpon>ArtistDetailsPanorama.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EditConnectionPage.xaml.cs">
+      <DependentUpon>EditConnectionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Video\AllMoviesPage.xaml.cs">
       <DependentUpon>AllMoviesPage.xaml</DependentUpon>
     </Compile>
@@ -159,10 +162,10 @@
     <Compile Include="Pages\Video\TVShowDetailsPanorama.xaml.cs">
       <DependentUpon>TVShowDetailsPanorama.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RPCWrappers\AudioLibrary.cs" />
-    <Compile Include="RPCWrappers\Input.cs" />
-    <Compile Include="RPCWrappers\JSONRPC.cs" />
-    <Compile Include="RPCWrappers\Player.cs" />
+    <Compile Include="ViewModels\RPCWrappers\AudioLibrary.cs" />
+    <Compile Include="ViewModels\RPCWrappers\Input.cs" />
+    <Compile Include="ViewModels\RPCWrappers\JSONRPC.cs" />
+    <Compile Include="ViewModels\RPCWrappers\Player.cs" />
     <Compile Include="InputPage.xaml.cs">
       <DependentUpon>InputPage.xaml</DependentUpon>
     </Compile>
@@ -183,8 +186,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\ConnectionManager.cs" />
-    <Compile Include="RPCWrappers\Playlist.cs" />
-    <Compile Include="RPCWrappers\VideoLibrary.cs" />
+    <Compile Include="ViewModels\RPCWrappers\Playlist.cs" />
+    <Compile Include="ViewModels\RPCWrappers\VideoLibrary.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +236,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Audio\ArtistDetailsPanorama.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditConnectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

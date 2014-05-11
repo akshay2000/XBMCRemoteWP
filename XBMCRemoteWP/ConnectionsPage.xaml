@@ -35,7 +35,8 @@
                         <StackPanel x:Name="ConnectionItemWrapper" Tap="ConnectionItemWrapper_Tap" toolkit:TiltEffect.IsTiltEnabled="True">
                             <toolkit:ContextMenuService.ContextMenu>
                                 <toolkit:ContextMenu>
-                                   <toolkit:MenuItem Header="delete connection" Click="ContextMenuDeleteConnection_Click"/>
+                                    <toolkit:MenuItem Header="edit" Click="ContextMenuEditConnection_Click"/>
+                                    <toolkit:MenuItem Header="delete" Click="ContextMenuDeleteConnection_Click"/>
                                 </toolkit:ContextMenu>
                             </toolkit:ContextMenuService.ContextMenu>
                             <TextBlock Text="{Binding ConnectionName}" Style="{StaticResource PhoneTextExtraLargeStyle}"/>

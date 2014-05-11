@@ -56,7 +56,17 @@ namespace XBMCRemoteWP
             {
                 ConnectionItem connectionItem = t.DataContext as ConnectionItem;
                 App.MainVM.RemoveConnectionItem(connectionItem);
+            }
+        }
 
+        private void ContextMenuEditConnection_Click(object sender, RoutedEventArgs e)
+        {
+            var t = sender as MenuItem;
+            if (t != null)
+            {
+                ConnectionItem connectionItem = t.DataContext as ConnectionItem;
+                ConnectionManager.CurrentConnection = connectionItem;
+                NavigationService.Navigate(new Uri("/Pages/EditConnectionPage.xaml", UriKind.Relative));
             }
         }
     }
