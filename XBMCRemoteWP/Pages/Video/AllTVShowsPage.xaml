@@ -14,7 +14,7 @@
     shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Black">
+    <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -22,8 +22,8 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="{StaticResource AppName}" Foreground="White" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="tv shows" Margin="9,-7,0,0" Foreground="White" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="{StaticResource AppName}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="tv shows" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -37,8 +37,12 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
-                            <Image Stretch="UniformToFill" Source="{Binding Path=Art.Banner, Converter={StaticResource ImagePathConverter}}"/>
-                            <TextBlock Text="{Binding Label}" Grid.Row="1" Foreground="White"/>
+                            <Image Stretch="UniformToFill" >
+                                <Image.Source>
+                                    <BitmapImage DecodePixelType="Logical" DecodePixelWidth="456" UriSource="{Binding Path=Art.Banner, Converter={StaticResource ImagePathConverter}}"/>
+                                </Image.Source>
+                            </Image>
+                            <TextBlock Text="{Binding Label}" Grid.Row="1"/>
                         </Grid>
                     </DataTemplate>
                 </phone:LongListSelector.ItemTemplate>
@@ -49,11 +53,6 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar>
             <shell:ApplicationBarIconButton x:Name="RefreshAppBarButton" Click="RefreshAppBarButton_Click" IconUri="/Assets/Glyphs/refresh.png" Text="reload"/>
-            <shell:ApplicationBar.MenuItems>
-                <!--<shell:ApplicationBarMenuItem x:Name="RemoteMenuItem" Click="RemoteMenuItem_Click" Text="remote"/>
-                <shell:ApplicationBarMenuItem x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click" Text="settings"/>
-                <shell:ApplicationBarMenuItem x:Name="AboutMenuItem" Click="AboutMenuItem_Click" Text="about"/>-->
-            </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 

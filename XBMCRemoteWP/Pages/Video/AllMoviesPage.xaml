@@ -36,9 +36,13 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                            <Image Grid.RowSpan="2" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                            <Image Grid.RowSpan="2" Stretch="UniformToFill">
+                                <Image.Source>
+                                    <BitmapImage DecodePixelHeight="192" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                </Image.Source>
+                            </Image>
                             <Rectangle Grid.Row="1" Fill="Black" Opacity="0.6"/>
-                            <TextBlock Grid.Row="1" Text="{Binding Label}"/>
+                            <TextBlock Grid.Row="1" Text="{Binding Label}" Foreground="White" Margin="5,0"/>
                         </Grid>
                     </DataTemplate>
                 </phone:LongListSelector.ItemTemplate>

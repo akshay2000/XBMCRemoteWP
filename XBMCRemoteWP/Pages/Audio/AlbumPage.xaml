@@ -38,32 +38,17 @@
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Width="173" Height="173" Stretch="UniformToFill" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                        <Image Width="173" Height="173" Stretch="UniformToFill">
+                            <Image.Source>
+                                <BitmapImage DecodePixelType="Logical" DecodePixelHeight="173" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                            </Image.Source>
+                        </Image>
                         <StackPanel Grid.Column="1">
                             <TextBlock Text="{Binding Label}" FontSize="36" TextWrapping="Wrap" LineHeight="40" FontFamily="Segoe WP SemiLight" Margin="14,-10,0,0" LineStackingStrategy="BaselineToBaseline"/>
                             <TextBlock Text="{Binding Artist, Converter={StaticResource ListToStringConverter}}" Margin="16,-5,0,0" TextWrapping="Wrap" />
-                            <!--<TextBlock Text="All Things Bright and Beautiful" FontSize="36" LineHeight="40" TextWrapping="Wrap" FontFamily="Segoe WP SemiLight" Margin="14,-10,0,0" LineStackingStrategy="BaselineToBaseline"/>
-                            <TextBlock Text="Avril Lavigne, Linkin Park, Owl City" Style="{StaticResource PhoneTextSmallStyle}" Margin="16,-5,0,0" TextWrapping="Wrap" />-->
                         </StackPanel>
                     </Grid>
-                    <!--<ListBox Margin="0,36,0,0">
-                        <ListBoxItem>
-                            <StackPanel Orientation="Horizontal" Margin="8,0,0,40" Opacity="0.5">
-                                <Border BorderBrush="{StaticResource PhoneContrastBackgroundBrush}" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
-                                    <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="{StaticResource PhoneContrastBackgroundBrush}"/>
-                                </Border>
-                                <TextBlock Text="Black Star" Margin="14,-1,0,0" FontSize="36" FontFamily="Segoe WP SemiLight"/>
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <StackPanel Orientation="Horizontal" Opacity="0.5">
-                                <Border BorderBrush="{StaticResource PhoneContrastBackgroundBrush}" Margin="8,0,0,0" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
-                                    <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="{StaticResource PhoneContrastBackgroundBrush}"/>
-                                </Border>
-                                <TextBlock Text="Black Star" Margin="14,-1,0,0" FontSize="36" FontFamily="Segoe WP SemiLight"/>
-                            </StackPanel>
-                        </ListBoxItem>
-                    </ListBox>-->
+                   
                     <phone:LongListSelector x:Name="SongsLLS" Margin="0,36,0,0">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>

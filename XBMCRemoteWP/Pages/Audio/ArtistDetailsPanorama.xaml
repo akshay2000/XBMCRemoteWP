@@ -29,7 +29,11 @@
                             <RowDefinition Height="200"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Column="0" Grid.Row="0" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}" Stretch="UniformToFill"/>
+                        <Image Grid.Column="0" Grid.Row="0" Stretch="UniformToFill">
+                            <Image.Source>
+                                <BitmapImage DecodePixelType="Logical" DecodePixelHeight="200" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}" />
+                            </Image.Source>
+                        </Image>
                         <StackPanel Grid.Column="1" Grid.Row="0">
                             <TextBlock Margin="12,-12,0,0" Text="mood" Foreground="White" Style="{StaticResource PhoneTextTitle2Style}"/>
                             <TextBlock Margin="12,0,0,0" Text="{Binding Mood, Converter={StaticResource ListToStringConverter}}" TextWrapping="Wrap" Foreground="White"/>
@@ -71,7 +75,11 @@
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
-                                    <Image Width="175" Height="175" Stretch="UniformToFill" Grid.RowSpan="2" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}" />
+                                    <Image Width="175" Height="175" Stretch="UniformToFill" Grid.RowSpan="2" >
+                                        <Image.Source>
+                                            <BitmapImage DecodePixelType="Logical" DecodePixelHeight="175" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}" />
+                                        </Image.Source>
+                                    </Image>
                                     <Rectangle Grid.Row="1" Fill="Black" Opacity="0.75"/>
                                     <TextBlock Grid.Row="1" Margin="5,0,5,2" Text="{Binding Label}" Foreground="White"/>
                                 </Grid>

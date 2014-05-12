@@ -48,7 +48,11 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Grid x:Name="AlbumArtWrapper" Tap="AlbumArtWrapper_Tap">
-                                        <Image Width="173" Height="173" Stretch="UniformToFill" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                        <Image Width="173" Height="173" Stretch="UniformToFill" >
+                                            <Image.Source>
+                                                <BitmapImage DecodePixelType="Logical" DecodePixelHeight="173" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                            </Image.Source>
+                                        </Image>
                                         <Rectangle Fill="Black" Opacity="0.1"/>
                                         <Border Margin="12" BorderBrush="White" HorizontalAlignment="Right" VerticalAlignment="Top" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
                                             <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="White"/>

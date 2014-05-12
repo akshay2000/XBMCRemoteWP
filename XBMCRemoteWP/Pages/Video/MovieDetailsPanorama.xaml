@@ -30,7 +30,11 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}" Stretch="UniformToFill"/>
+                        <Image Stretch="UniformToFill">
+                            <Image.Source>
+                                <BitmapImage DecodePixelType="Logical" DecodePixelHeight="300" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                            </Image.Source>
+                        </Image>
 
                         <StackPanel Grid.Row="0" Grid.Column="1">
                             <TextBlock Text="Director" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
@@ -64,15 +68,15 @@
             <phone:PanoramaItem Header="plot" Foreground="White">
                 <ScrollViewer>
                     <Grid>
-                        <TextBlock Text="{Binding Plot}" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Plot}" Foreground="White" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap"/>
                     </Grid>
                 </ScrollViewer>
             </phone:PanoramaItem>
 
-            <!--Cast: Panorama item two-->
+            <!--Cast: Panorama item three-->
             <phone:PanoramaItem Header="cast" Foreground="White">
                 <Grid Margin="12,0,0,0">
-                    <phone:LongListSelector x:Name="CastLLS" ItemsSource="{Binding Cast, Converter={StaticResource ListTrimmer}}">
+                    <phone:LongListSelector x:Name="CastLLS" ItemsSource="{Binding Cast, Converter={StaticResource ListTrimmer}}" >
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <Grid Height="144" Margin="0,0,0,12">
@@ -85,7 +89,11 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
-                                    <Image Grid.RowSpan="2" Stretch="UniformToFill" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                    <Image Grid.RowSpan="2" Stretch="UniformToFill" >
+                                        <Image.Source>
+                                            <BitmapImage DecodePixelType="Logical" DecodePixelHeight="144" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                        </Image.Source>
+                                    </Image>
                                     <TextBlock Text="{Binding Name}" Margin="12,-10,12,0" Grid.Row="0" Grid.Column="1" Style="{StaticResource PhoneTextTitle2Style}" Foreground="White"/>
                                     <TextBlock Text="{Binding Role}" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
                                 </Grid>
@@ -98,7 +106,7 @@
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar>
+        <shell:ApplicationBar BackgroundColor="#FF212121" ForegroundColor="White" >
             <shell:ApplicationBarIconButton x:Name="PlayMovieAppBarButton" Click="PlayMovieAppBarButton_Click" Text="play" IconUri="/Assets/Glyphs/appbar.transport.play.rest.png" />
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

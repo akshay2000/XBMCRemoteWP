@@ -17,7 +17,7 @@
     
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <phone:Panorama Title="xbmc assist" Foreground="White" Background="Black" >
+        <phone:Panorama Title="xbmc assist">
 
             <!--Now Playing: Panorama item zero-->
             <phone:PanoramaItem x:Name="NowPlayingPanoramaItem" Header="now playing">
@@ -32,8 +32,12 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Image Width="253" Height="253" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="UniformToFill"/>
-                    
+                    <Image Width="253" Height="253" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="UniformToFill">
+                        <Image.Source>
+                            <BitmapImage DecodePixelType="Logical" DecodePixelWidth="253" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                        </Image.Source>
+                    </Image>
+
                     <StackPanel Grid.Row="1" Margin="0,10">
                         <TextBlock x:Name="NowPlayingItemNameTextBlock" Text="{Binding Title}"/>
                         <TextBlock x:Name="NowPlayingByNameTextBlock" Text="{Binding Subtitle}"/>
@@ -63,7 +67,12 @@
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
-                                    <Image Width="175" Height="175" Stretch="UniformToFill" Grid.RowSpan="2" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                    <!--<Image Width="175" Height="175" Stretch="UniformToFill" Grid.RowSpan="2" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>-->
+                                    <Image Width="175" Height="175" Stretch="UniformToFill" Grid.RowSpan="2">
+                                        <Image.Source>
+                                            <BitmapImage DecodePixelHeight="175" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                        </Image.Source>
+                                    </Image>
                                     <Rectangle Grid.Row="1" Fill="Black" Opacity="0.75"/>
                                     <TextBlock Grid.Row="1" Margin="5,0,5,2" Text="{Binding Label}" Foreground="White"/>                                    
                                 </Grid>
@@ -71,7 +80,7 @@
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
                     
-                    <TextBlock x:Name="AllMusicTextBlock" Foreground="White" Tap="AllMusicTextBlock_Tap" Text="all music" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2"/>
+                    <TextBlock x:Name="AllMusicTextBlock" Tap="AllMusicTextBlock_Tap" Text="all music" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2"/>
                 </Grid>
             </phone:PanoramaItem>
 
@@ -95,7 +104,11 @@
                                         <ColumnDefinition Width="54"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Stretch="UniformToFill" Grid.RowSpan="2" Grid.ColumnSpan="2" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                    <Image Stretch="UniformToFill" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                                        <Image.Source>
+                                            <BitmapImage DecodePixelType="Logical" DecodePixelWidth="405" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                        </Image.Source>
+                                    </Image>
                                     <Rectangle Grid.Row="1" Grid.ColumnSpan="2" Fill="Black" Opacity="0.75"/>
                                     <Border BorderBrush="White" Grid.Row="1" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
                                         <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="White"/>
@@ -106,13 +119,13 @@
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
 
-                    <TextBlock x:Name="AllTVTextBlock" Foreground="White" Tap="AllTVTextBlock_Tap" Text="all tv shows" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2"/>
+                    <TextBlock x:Name="AllTVTextBlock" Tap="AllTVTextBlock_Tap" Text="all tv shows" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2"/>
 
                 </Grid>
             </phone:PanoramaItem>
             
             <!--Movies: Panorama item three-->
-            <phone:PanoramaItem Header="movies" Orientation="Horizontal" Foreground="White" Width="480">
+            <phone:PanoramaItem Header="movies" Orientation="Horizontal" Width="480">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="408"/>
@@ -127,38 +140,18 @@
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
-                                    <Image Grid.RowSpan="2" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                    <Image Grid.RowSpan="2" Stretch="UniformToFill">
+                                        <Image.Source>
+                                            <BitmapImage DecodePixelType="Logical" DecodePixelHeight="192" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                        </Image.Source>
+                                    </Image>
                                     <Rectangle Grid.Row="1" Fill="Black" Opacity="0.6"/>
-                                    <TextBlock Grid.Row="1" Text="{Binding Label}"/>
+                                    <TextBlock Grid.Row="1" Text="{Binding Label}" Foreground="White" Margin="5,0"/>
                                 </Grid>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
                     
-                    <!--<ListBox>
-                        <ListBoxItem>
-                            <Grid Height="192" Margin="0,0,12,12">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Image Grid.RowSpan="2" Source="/Assets/DesignTime/TVArt.jpg"/>
-                                <Rectangle Grid.Row="1" Fill="Black" Opacity="0.6"/>
-                                <TextBlock Grid.Row="1" Text="The Wolvarine"/>
-                            </Grid>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <Grid Height="192">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Image Grid.RowSpan="2" Source="/Assets/DesignTime/TVArt.jpg"/>
-                                <Rectangle Grid.Row="1" Fill="Black" Opacity="0.6"/>
-                                <TextBlock Grid.Row="1" Text="The Wolvarine"/>
-                            </Grid>
-                        </ListBoxItem>
-                    </ListBox>-->
                     <TextBlock x:Name="AllMoviesTextBlock" Tap="AllMoviesTextBlock_Tap" Text="all movies" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="1"/>
                 </Grid>
             </phone:PanoramaItem>
