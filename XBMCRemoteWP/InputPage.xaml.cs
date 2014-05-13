@@ -39,24 +39,14 @@ namespace XBMCRemoteWP
             Input.ExecuteAction(InputCommands.Down);
         }
 
-        private void OkayButton_Click(object sender, RoutedEventArgs e)
-        {
-            Input.ExecuteAction(InputCommands.Select);
-        }
-
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
             Input.ExecuteAction(InputCommands.Home);
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            Input.ExecuteAction(InputCommands.Back);
-        }
-
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
-            Input.ExecuteAction(InputCommands.ShowCodec);
+            Input.ExecuteAction(InputCommands.ContextMenu);
         }
 
         private void OSDButton_Click(object sender, RoutedEventArgs e)
@@ -69,9 +59,14 @@ namespace XBMCRemoteWP
             Input.ExecuteAction(InputCommands.Info);
         }
 
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
-            //Input.ExecuteAction(InputCommand.Text);
+            Input.ExecuteAction(InputCommands.Select);
+        }
+
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Input.ExecuteAction(InputCommands.Back);
         }
     }
 }

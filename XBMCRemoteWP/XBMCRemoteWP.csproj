@@ -272,6 +272,7 @@
     <Content Include="Assets\Glyphs\add.png" />
     <Content Include="Assets\Glyphs\appbar.back.rest.png" />
     <Content Include="Assets\Glyphs\appbar.down.png" />
+    <Content Include="Assets\Glyphs\appbar.lines.horizontal.4.png" />
     <Content Include="Assets\Glyphs\appbar.next.rest.png" />
     <Content Include="Assets\Glyphs\appbar.transport.ff.rest.png" />
     <Content Include="Assets\Glyphs\appbar.transport.pause.rest.png" />
@@ -282,6 +283,10 @@
     <Content Include="Assets\Glyphs\check.png" />
     <Content Include="Assets\Glyphs\delete.png" />
     <Content Include="Assets\Glyphs\feature.search.png" />
+    <Content Include="Assets\Glyphs\goback.png" />
+    <Content Include="Assets\Glyphs\home.png" />
+    <Content Include="Assets\Glyphs\menulines.png" />
+    <Content Include="Assets\Glyphs\page.png" />
     <Content Include="Assets\Glyphs\refresh.png" />
     <Content Include="Assets\Glyphs\save.png" />
     <Content Include="Background.png">
