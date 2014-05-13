@@ -40,5 +40,10 @@ namespace XBMCRemoteWP.Pages.Video
         {
             LoadMovies();
         }
+
+        private void SearchAppBarButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/Video/SearchMoviesPage.xaml", UriKind.Relative));
+        }
     }
 }

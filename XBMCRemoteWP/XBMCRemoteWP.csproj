@@ -155,6 +155,9 @@
     <Compile Include="Pages\Video\MovieDetailsPanorama.xaml.cs">
       <DependentUpon>MovieDetailsPanorama.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Video\SearchMoviesPage.xaml.cs">
+      <DependentUpon>SearchMoviesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Video\TVShowDetailsPanorama.xaml.cs">
       <DependentUpon>TVShowDetailsPanorama.xaml</DependentUpon>
     </Compile>
@@ -241,6 +244,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Video\SearchMoviesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Video\TVShowDetailsPanorama.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -274,6 +281,7 @@
     <Content Include="Assets\Glyphs\cancel.png" />
     <Content Include="Assets\Glyphs\check.png" />
     <Content Include="Assets\Glyphs\delete.png" />
+    <Content Include="Assets\Glyphs\feature.search.png" />
     <Content Include="Assets\Glyphs\refresh.png" />
     <Content Include="Assets\Glyphs\save.png" />
     <Content Include="Background.png">

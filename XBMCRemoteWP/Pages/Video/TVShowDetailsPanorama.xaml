@@ -84,7 +84,11 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
-                                    <Image Grid.RowSpan="2" Stretch="UniformToFill" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                    <Image Grid.RowSpan="2" Stretch="UniformToFill" >
+                                        <Image.Source>
+                                            <BitmapImage DecodePixelType="Logical" DecodePixelHeight="144" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
+                                        </Image.Source>
+                                    </Image>
                                     <TextBlock Text="{Binding Name}" Margin="12,-10,12,0" Grid.Row="0" Grid.Column="1" Style="{StaticResource PhoneTextTitle2Style}" Foreground="White"/>
                                     <TextBlock Text="{Binding Role}" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
                                 </Grid>

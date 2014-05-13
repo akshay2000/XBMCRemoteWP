@@ -6,6 +6,7 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -80,7 +81,7 @@
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
                     
-                    <TextBlock x:Name="AllMusicTextBlock" Tap="AllMusicTextBlock_Tap" Text="all music" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2"/>
+                    <TextBlock x:Name="AllMusicTextBlock" Tap="AllMusicTextBlock_Tap" Text="all music" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2" toolkit:TiltEffect.IsTiltEnabled="True"/>
                 </Grid>
             </phone:PanoramaItem>
 
@@ -119,7 +120,7 @@
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
 
-                    <TextBlock x:Name="AllTVTextBlock" Tap="AllTVTextBlock_Tap" Text="all tv shows" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2"/>
+                    <TextBlock x:Name="AllTVTextBlock" Tap="AllTVTextBlock_Tap" Text="all tv shows" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="2" toolkit:TiltEffect.IsTiltEnabled="True"/>
 
                 </Grid>
             </phone:PanoramaItem>
@@ -152,7 +153,7 @@
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
                     
-                    <TextBlock x:Name="AllMoviesTextBlock" Tap="AllMoviesTextBlock_Tap" Text="all movies" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="1"/>
+                    <TextBlock x:Name="AllMoviesTextBlock" Tap="AllMoviesTextBlock_Tap" Text="all movies" Style="{StaticResource PhoneTextLargeStyle}" Grid.Row="1" toolkit:TiltEffect.IsTiltEnabled="True"/>
                 </Grid>
             </phone:PanoramaItem>
         </phone:Panorama>
