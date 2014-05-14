@@ -161,6 +161,7 @@
     <Compile Include="Pages\Video\TVShowDetailsPanorama.xaml.cs">
       <DependentUpon>TVShowDetailsPanorama.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RPCWrappers\Applikation.cs" />
     <Compile Include="RPCWrappers\AudioLibrary.cs" />
     <Compile Include="RPCWrappers\Input.cs" />
     <Compile Include="RPCWrappers\JSONRPC.cs" />
@@ -289,6 +290,9 @@
     <Content Include="Assets\Glyphs\page.png" />
     <Content Include="Assets\Glyphs\refresh.png" />
     <Content Include="Assets\Glyphs\save.png" />
+    <Content Include="Assets\Glyphs\speeddown.png" />
+    <Content Include="Assets\Glyphs\speedup.png" />
+    <Content Include="Assets\Glyphs\power.png" />
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -109,38 +109,19 @@
          
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Margin="12,0,12,0">
-                        
-            <!--<StackPanel Orientation="Horizontal">
-                <TextBox x:Name="InputCommand" Width="350"/>
-                <Button x:Name="SubmitButton" Content="Go" Click="SubmitButton_Click"/>
-            </StackPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
             
-            <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
-
-                <Button x:Name="HomeButton" Click="HomeButton_Click" Grid.Row="0" Grid.Column="0" Content="H" Height="80" Width="80"/>                
-                <c4d:RoundButton x:Name="UpButton" Click="UpButton_Click" Grid.Row="0" Grid.Column="1" ImageSource="Assets/Glyphs/appbar.up.png" VerticalAlignment="Center"/>
-                <Button x:Name="BackButton" Click="BackButton_Click" Grid.Row="0" Grid.Column="2" Content="B" Height="80" Width="80"/>
-                <c4d:RoundButton x:Name="LeftButton" Click="LeftButton_Click" Grid.Row="1" Grid.Column="0" ImageSource="Assets/Glyphs/appbar.back.rest.png" VerticalAlignment="Center"/>
-                <Button x:Name="OkayButton" Click="OkayButton_Click" Grid.Row="1" Grid.Column="1" Content="Ok" Height="80"/>
-                <c4d:RoundButton x:Name="RightButton" Click="RightButton_Click" Grid.Row="1" Grid.Column="2" ImageSource="Assets/Glyphs/appbar.next.rest.png" VerticalAlignment="Center"/>
-                <Button x:Name="OSDButton" Click="OSDButton_Click" Grid.Row="2" Grid.Column="0" Content="O" Height="80" Width="80"/>
-                <c4d:RoundButton x:Name="DownButton" Click="DownButton_Click" Grid.Row="2" Grid.Column="1" ImageSource="Assets/Glyphs/appbar.down.png" VerticalAlignment="Center"/>
-                <Button x:Name="MenuButton" Click="MenuButton_Click" Grid.Row="2" Grid.Column="2" Content="C" Height="80" Width="80"/>
-                <Button x:Name="InfoButton" Click="InfoButton_Click" Grid.Row="3" Grid.Column="0" Content="i" Height="80" Width="80"/>
-                
-            </Grid>-->
-            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="400" Width="400">
+            <Grid Grid.Row="0" VerticalAlignment="Center">
+                <c4d:RoundButton x:Name="QuitButton" ImageSource="/Assets/Glyphs/power.png" Click="QuitButton_Click" />
+            </Grid>
+            
+            <!--Navigation-->
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="400" Width="400" Grid.Row="1">
                 <Button x:Name="UpButton" Click="UpButton_Click" Style="{StaticResource RemoteButton}" VerticalAlignment="Top" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Margin="0,30,0,0">
                     <Button.RenderTransform>
                         <CompositeTransform Rotation="0"/>
@@ -164,11 +145,24 @@
                 <Button x:Name="EnterButton" Width="180" Height="180" Content="X" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource EnterButtonStyle}" Click="EnterButton_Click" />
 
                 <c4d:RoundButton x:Name="GoBackButton" VerticalAlignment="Bottom" HorizontalAlignment="Left" ImageSource="/Assets/Glyphs/goback.png" Click="GoBackButton_Click"/>
-                <c4d:RoundButton x:Name="InfoButton" VerticalAlignment="Top" HorizontalAlignment="Right" ImageSource="/Assets/Glyphs/page.png" Click="InfoButton_Click"/>
+                <c4d:RoundButton x:Name="InfoButton" VerticalAlignment="Top" HorizontalAlignment="Right" ImageSource="/Assets/Glyphs/page.png" Click="InfoButton_Click" Margin="0,10,0,0"/>
                 <c4d:RoundButton x:Name="MenuButton" VerticalAlignment="Bottom" HorizontalAlignment="Right" ImageSource="/Assets/Glyphs/menulines.png" Click="MenuButton_Click"/>
-                <c4d:RoundButton x:Name="HomeButton" VerticalAlignment="Top" HorizontalAlignment="Left" ImageSource="/Assets/Glyphs/home.png" Click="HomeButton_Click"/>
+                <c4d:RoundButton x:Name="HomeButton" VerticalAlignment="Top" HorizontalAlignment="Left" ImageSource="/Assets/Glyphs/home.png" Click="HomeButton_Click" Margin="0,10,0,0"/>                
+            </Grid>
+            
+            <Grid Grid.Row="2" VerticalAlignment="Center">
+                <c4d:RoundButton x:Name="PreviousButton" HorizontalAlignment="Left" ImageSource="/Assets/Glyphs/appbar.transport.rew.rest.png" Click="PreviousButton_Click"/>
+                <c4d:RoundButton x:Name="SpeedDownButton" HorizontalAlignment="Left" ImageSource="/Assets/Glyphs/speeddown.png" Click="SpeedDownButton_Click" Margin="100,0,0,0"/>
+                <c4d:RoundButton x:Name="PlayPauseButton" HorizontalAlignment="Center" ImageSource="/Assets/Glyphs/appbar.transport.pause.rest.png" Click="PlayPauseButton_Click"/>
+                <c4d:RoundButton x:Name="SpeedUpButton" HorizontalAlignment="Right" ImageSource="/Assets/Glyphs/speedup.png" Click="SpeedUpButton_Click" Margin="0,0,100,0"/>
+                <c4d:RoundButton x:Name="NextButton" HorizontalAlignment="Right" ImageSource="/Assets/Glyphs/appbar.transport.ff.rest.png" Click="NextButton_Click"/>                
+            </Grid>
+            
+            <Grid Grid.Row="3" VerticalAlignment="Center">
+                <Slider x:Name="VolumeSlider" Loaded="VolumeSlider_Loaded" Maximum="100" MouseLeftButtonUp="VolumeSlider_MouseLeftButtonUp" />
             </Grid>
         </Grid>
+        
     </Grid>
 
 </phone:PhoneApplicationPage>

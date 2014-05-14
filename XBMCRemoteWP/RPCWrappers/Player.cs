@@ -72,6 +72,23 @@ namespace XBMCRemoteWP.RPCWrappers
             return responseObject;
         }
 
+        public async static Task<JObject> GetProperties(Players player, JArray items)
+        {
+            JObject parameters = new JObject(
+                new JProperty("playerid", getIdFromPlayers(player)),
+                new JProperty("properties", items));
+            JObject responseObject = await ConnectionManager.ExecuteRPCRequest("Player.GetProperties", parameters);
+            return (JObject)responseObject["result"];
+        }
+
+        public async static Task SetSpeed(Players player, int speed)
+        {
+            JObject parameters = new JObject(
+               new JProperty("playerid", getIdFromPlayers(player)),
+               new JProperty("speed", speed));
+            await ConnectionManager.ExecuteRPCRequest("Player.SetSpeed", parameters);
+        }
+
         private static int getIdFromPlayers(Players player)
         {
             switch (player)
