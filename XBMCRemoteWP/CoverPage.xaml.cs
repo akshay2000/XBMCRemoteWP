@@ -20,6 +20,10 @@ namespace XBMCRemoteWP
 {
     public partial class CoverPage : PhoneApplicationPage
     {
+        private List<Album> albums;
+        private List<Episode> episodes;
+        private List<Movie> movies;
+
         public CoverPage()
         {
             InitializeComponent();
@@ -32,14 +36,24 @@ namespace XBMCRemoteWP
         {
             PlayerHelper.RefreshNowPlaying();
 
-            var albums = await AudioLibrary.GetRecentlyAddedAlbums(new Limits { Start = 0, End = 8 });
-            MusicLLS.ItemsSource = albums;
+            if (albums == null)
+            {
+                albums = await AudioLibrary.GetRecentlyAddedAlbums(new Limits { Start = 0, End = 8 });
+                MusicLLS.ItemsSource = albums;
+            }
 
-            var episodes = await VideoLibrary.GetRecentlyAddedEpisodes(new Limits { Start = 0, End = 8 });
-            TVShowsLLS.ItemsSource = episodes;
+            if (episodes == null)
+            {
+                episodes = await VideoLibrary.GetRecentlyAddedEpisodes(new Limits { Start = 0, End = 8 });
+                TVShowsLLS.ItemsSource = episodes;
+            }
 
-            var movies = await VideoLibrary.GetRecentlyAddedMovies(new Limits { Start = 0, End = 6 });
-            MoviesLLS.ItemsSource = movies;
+            if (movies == null)
+            {
+                movies = await VideoLibrary.GetRecentlyAddedMovies(new Limits { Start = 0, End = 6 });
+                MoviesLLS.ItemsSource = movies;
+            }
+
             base.OnNavigatedTo(e);
         }
 

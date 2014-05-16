@@ -48,6 +48,13 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Grid x:Name="AlbumArtWrapper" Tap="AlbumArtWrapper_Tap">
+                                        <Grid.Background>
+                                            <ImageBrush Stretch="UniformToFill">
+                                                <ImageBrush.ImageSource>
+                                                    <BitmapImage DecodePixelType="Logical" DecodePixelHeight="175" UriSource="/Assets/DefaultArt.jpg"/>
+                                                </ImageBrush.ImageSource>
+                                            </ImageBrush>
+                                        </Grid.Background>
                                         <Image Width="173" Height="173" Stretch="UniformToFill" VerticalAlignment="Top" >
                                             <Image.Source>
                                                 <BitmapImage DecodePixelType="Logical" DecodePixelHeight="173" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>

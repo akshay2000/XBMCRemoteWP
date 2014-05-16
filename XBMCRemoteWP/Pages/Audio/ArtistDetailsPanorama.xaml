@@ -71,6 +71,13 @@
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <Grid x:Name="AlbumWrapper" Tap="AlbumWrapper_Tap" Margin="0,0,12,12">
+                                    <Grid.Background>
+                                        <ImageBrush Stretch="UniformToFill">
+                                            <ImageBrush.ImageSource>
+                                                <BitmapImage DecodePixelType="Logical" DecodePixelHeight="175" UriSource="/Assets/DefaultArt.jpg"/>
+                                            </ImageBrush.ImageSource>
+                                        </ImageBrush>
+                                    </Grid.Background>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="auto"/>

@@ -64,6 +64,13 @@
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <Grid x:Name="AlbumWrapper" Tap="AlbumWrapper_Tap" Margin="0,0,12,12">
+                                    <Grid.Background>
+                                        <ImageBrush Stretch="UniformToFill">
+                                            <ImageBrush.ImageSource>
+                                                <BitmapImage DecodePixelType="Logical" DecodePixelHeight="175" UriSource="/Assets/DefaultArt.jpg"/>
+                                            </ImageBrush.ImageSource>
+                                        </ImageBrush>
+                                    </Grid.Background>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="auto"/>
@@ -97,6 +104,13 @@
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <Grid x:Name="EpisodeWrapper" Height="192" Tap="EpisodeWrapper_Tap" Margin="0,0,0,24">
+                                    <Grid.Background>
+                                        <ImageBrush Stretch="UniformToFill">
+                                            <ImageBrush.ImageSource>
+                                                <BitmapImage DecodePixelType="Logical" DecodePixelWidth="405" UriSource="/Assets/DefaultArt.jpg"/>
+                                            </ImageBrush.ImageSource>
+                                        </ImageBrush>
+                                    </Grid.Background>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="54"/>
@@ -137,6 +151,13 @@
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <Grid x:Name="MovieWrapper" Height="192" Margin="0,0,12,12" Tap="MovieWrapper_Tap">
+                                    <Grid.Background>
+                                        <ImageBrush Stretch="UniformToFill">
+                                            <ImageBrush.ImageSource>
+                                                <BitmapImage DecodePixelType="Logical" DecodePixelHeight="192" UriSource="/Assets/DefaultArt.jpg"/>
+                                            </ImageBrush.ImageSource>
+                                        </ImageBrush>
+                                    </Grid.Background>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="auto"/>

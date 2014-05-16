@@ -33,7 +33,7 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="26,0,0,0">
             <ScrollViewer>
                 <StackPanel>
-                    <Grid x:Name="AlbumInfoGrid">
+                    <Grid x:Name="AlbumInfoGrid">                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>

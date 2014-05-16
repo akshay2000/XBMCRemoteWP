@@ -31,7 +31,7 @@ namespace XBMCRemoteWP.Converters
             }
             else
             {
-                imageURL = "/Assets/DesignTime/AlbumArt.jpg";
+                imageURL = "/Assets/DefaultArt.jpg";
             }
             Uri imageURI = new Uri(imageURL, UriKind.RelativeOrAbsolute);
             return imageURI;
