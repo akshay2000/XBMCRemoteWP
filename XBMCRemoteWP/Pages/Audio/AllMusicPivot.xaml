@@ -5,6 +5,7 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -23,7 +24,7 @@
                     <phone:LongListSelector x:Name="AllArtistsLLS">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel x:Name="ArtistItemWrapper" Orientation="Horizontal" Margin="8,0,0,40">
+                                <StackPanel x:Name="ArtistItemWrapper" Orientation="Horizontal" Margin="8,0,0,40" toolkit:TiltEffect.IsTiltEnabled="True">
                                     <Border x:Name="PlayArtistBorder" Tap="PlayArtistBorder_Tap" BorderBrush="White" Margin="0,0,0,0" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
                                         <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="White"/>
                                     </Border>
@@ -41,13 +42,13 @@
                     <phone:LongListSelector x:Name="AllAlbumsLLS" Margin="12,0,0,0">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <Grid x:Name="AlbumItemWrapper" Margin="0,0,0,24">
+                                <Grid x:Name="AlbumItemWrapper" Margin="0,0,0,24" toolkit:TiltEffect.IsTiltEnabled="True">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Grid x:Name="AlbumArtWrapper" Tap="AlbumArtWrapper_Tap">
+                                    <Grid x:Name="AlbumArtWrapper" Tap="AlbumArtWrapper_Tap" >
                                         <Grid.Background>
                                             <ImageBrush Stretch="UniformToFill">
                                                 <ImageBrush.ImageSource>
@@ -79,7 +80,7 @@
             
             <phone:PivotItem Header="songs">
                 <Grid>
-                    <phone:LongListSelector x:Name="AllSongsLLS" ItemTemplate="{StaticResource SongItemDataTemplate}"/>
+                    <phone:LongListSelector x:Name="AllSongsLLS" ItemTemplate="{StaticResource SongItemDataTemplate}" toolkit:TiltEffect.IsTiltEnabled="True"/>
                 </Grid>
             </phone:PivotItem>
         </phone:Pivot>

@@ -63,7 +63,7 @@
                     <phone:LongListSelector x:Name="MusicLLS" LayoutMode="Grid" GridCellSize="187,187" Margin="15,0,0,0">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <Grid x:Name="AlbumWrapper" Tap="AlbumWrapper_Tap" Margin="0,0,12,12">
+                                <Grid x:Name="AlbumWrapper" Tap="AlbumWrapper_Tap" Margin="0,0,12,12" toolkit:TiltEffect.IsTiltEnabled="True">
                                     <Grid.Background>
                                         <ImageBrush Stretch="UniformToFill">
                                             <ImageBrush.ImageSource>
@@ -103,7 +103,7 @@
                     <phone:LongListSelector x:Name="TVShowsLLS" Margin="15,0,0,0" >
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <Grid x:Name="EpisodeWrapper" Height="192" Tap="EpisodeWrapper_Tap" Margin="0,0,0,24">
+                                <Grid x:Name="EpisodeWrapper" Height="192" Tap="EpisodeWrapper_Tap" Margin="0,0,0,24" toolkit:TiltEffect.IsTiltEnabled="True">
                                     <Grid.Background>
                                         <ImageBrush Stretch="UniformToFill">
                                             <ImageBrush.ImageSource>
@@ -150,7 +150,7 @@
                     <phone:LongListSelector x:Name="MoviesLLS" Margin="12,0,0,0" LayoutMode="Grid" GridCellSize="144,204">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <Grid x:Name="MovieWrapper" Height="192" Margin="0,0,12,12" Tap="MovieWrapper_Tap">
+                                <Grid x:Name="MovieWrapper" Height="192" Margin="0,0,12,12" Tap="MovieWrapper_Tap" toolkit:TiltEffect.IsTiltEnabled="True">
                                     <Grid.Background>
                                         <ImageBrush Stretch="UniformToFill">
                                             <ImageBrush.ImageSource>

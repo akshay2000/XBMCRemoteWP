@@ -265,11 +265,6 @@
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\DesignTime\AlbumArt.jpg" />
-    <Content Include="Assets\DesignTime\FanArt.jpg" />
-    <Content Include="Assets\DesignTime\NowPlayingBack.jpg" />
-    <Content Include="Assets\DesignTime\AlbumView.png" />
-    <Content Include="Assets\DesignTime\TVArt.jpg" />
     <Content Include="Assets\Glyphs\add.png" />
     <Content Include="Assets\Glyphs\appbar.back.rest.png" />
     <Content Include="Assets\Glyphs\appbar.down.png" />

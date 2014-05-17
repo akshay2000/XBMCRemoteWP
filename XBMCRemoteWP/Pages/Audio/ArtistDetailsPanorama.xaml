@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -52,7 +53,7 @@
                     <phone:LongListSelector x:Name="SongsLLS">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel x:Name="SongItemWrapper" Orientation="Horizontal" Margin="8,0,0,40" Tap="SongItemWrapper_Tap">
+                                <StackPanel x:Name="SongItemWrapper" Orientation="Horizontal" Margin="8,0,0,40" Tap="SongItemWrapper_Tap" toolkit:TiltEffect.IsTiltEnabled="True">
                                     <Border BorderBrush="White" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
                                         <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="White"/>
                                     </Border>
@@ -70,7 +71,7 @@
                     <phone:LongListSelector x:Name="AlbumsLLS" LayoutMode="Grid" GridCellSize="187,187" Margin="15,0,0,0">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <Grid x:Name="AlbumWrapper" Tap="AlbumWrapper_Tap" Margin="0,0,12,12">
+                                <Grid x:Name="AlbumWrapper" Tap="AlbumWrapper_Tap" Margin="0,0,12,12" toolkit:TiltEffect.IsTiltEnabled="True">
                                     <Grid.Background>
                                         <ImageBrush Stretch="UniformToFill">
                                             <ImageBrush.ImageSource>
