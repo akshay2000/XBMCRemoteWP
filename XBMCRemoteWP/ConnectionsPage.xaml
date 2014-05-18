@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c4f="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -46,6 +47,15 @@
                 </phone:LongListSelector.ItemTemplate>
             </phone:LongListSelector>
         </Grid>
+        
+        <c4f:ProgressOverlay x:Name="ConnectingOverlay" Grid.RowSpan="10" Visibility="Collapsed">
+            <c4f:ProgressOverlay.Content>
+                <StackPanel VerticalAlignment="Center">
+                    <ProgressBar IsIndeterminate="True" HorizontalAlignment="Stretch"/>
+                    <TextBlock Text="Connecting..." HorizontalAlignment="Center" Margin="0,12,0,0"/>
+                </StackPanel>
+            </c4f:ProgressOverlay.Content>
+        </c4f:ProgressOverlay>
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>

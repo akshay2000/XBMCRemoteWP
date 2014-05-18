@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="Helpers\GlobalVariables.cs" />
     <Compile Include="Helpers\PlayerHelper.cs" />
+    <Compile Include="Helpers\SettingsHelper.cs" />
     <Compile Include="Models\Audio\Album.cs" />
     <Compile Include="Models\Audio\Artist.cs" />
     <Compile Include="Models\Audio\Song.cs" />

@@ -10,15 +10,24 @@ using Microsoft.Phone.Shell;
 using XBMCRemoteWP.RPCWrappers;
 using XBMCRemoteWP.Models;
 using XBMCRemoteWP.Helpers;
+using System.Threading.Tasks;
 
 namespace XBMCRemoteWP
 {
     public partial class ConnectionsPage : PhoneApplicationPage
     {
+        private enum PageStates { Ready, Connecting}
         public ConnectionsPage()
         {
             InitializeComponent();
             DataContext = App.MainVM;
+            string ip = (string)SettingsHelper.GetValue("RecentServerIP");
+            if (ip != null)
+            {
+                var connectionItem = App.MainVM.ConnectionItems.FirstOrDefault(item => item.IpAddress == ip);
+                if (connectionItem != null)
+                    Connect(connectionItem);
+            }
         }
 
         private void AddConnectionAppBarButton_Click(object sender, EventArgs e)
@@ -28,25 +37,9 @@ namespace XBMCRemoteWP
 
         private async void ConnectionItemWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            try
-            {
-                ConnectionItem selectedConnection = (ConnectionItem)(sender as StackPanel).DataContext;
-                bool isSuccessful = await JSONRPC.Ping(selectedConnection);
-                if (isSuccessful)
-                {
-                    ConnectionManager.CurrentConnection = selectedConnection;
-                    NavigationService.Navigate(new Uri("/CoverPage.xaml", UriKind.Relative));
-                }
-                else
-                {
-                    MessageBox.Show("Could not reach the server.", "Connection Unsuccessful", MessageBoxButton.OK);
-                }
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Tell this message to dev", MessageBoxButton.OK);
-            }
+            ConnectionItem selectedConnection = (ConnectionItem)(sender as StackPanel).DataContext;
+            await Connect(selectedConnection);
+            
         }
 
         private void ContextMenuDeleteConnection_Click(object sender, RoutedEventArgs e)
@@ -68,6 +61,38 @@ namespace XBMCRemoteWP
                 ConnectionManager.CurrentConnection = connectionItem;
                 NavigationService.Navigate(new Uri("/Pages/EditConnectionPage.xaml", UriKind.Relative));
             }
+        }
+
+        private void SetPageState(PageStates state)
+        {
+            if (state == PageStates.Connecting)
+            {
+                ConnectingOverlay.Show();
+                ApplicationBar.IsVisible = false;
+            }
+            else
+            {
+                ConnectingOverlay.Hide();
+                ApplicationBar.IsVisible = true;
+            }
+        }
+
+        private async Task Connect(ConnectionItem connectionItem)
+        {
+            SetPageState(PageStates.Connecting);
+
+            bool isSuccessful = await JSONRPC.Ping(connectionItem);
+            if (isSuccessful)
+            {
+                ConnectionManager.CurrentConnection = connectionItem;
+                SettingsHelper.SetValue("RecentServerIP", connectionItem.IpAddress);
+                NavigationService.Navigate(new Uri("/CoverPage.xaml", UriKind.Relative));
+            }
+            else
+            {
+                MessageBox.Show("Could not reach the server.", "Connection Unsuccessful", MessageBoxButton.OK);
+            }
+            SetPageState(PageStates.Ready);
         }
     }
 }
