@@ -80,10 +80,29 @@
             
             <phone:PivotItem Header="songs">
                 <Grid>
-                    <phone:LongListSelector x:Name="AllSongsLLS" ItemTemplate="{StaticResource SongItemDataTemplate}" toolkit:TiltEffect.IsTiltEnabled="True"/>
+                    <phone:LongListSelector x:Name="AllSongsLLS" toolkit:TiltEffect.IsTiltEnabled="True">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel x:Name="SongItemWrapper" Orientation="Horizontal" Margin="8,0,0,40" Tap="SongItemWrapper_Tap">
+                                    <Border BorderBrush="White" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
+                                        <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="White"/>
+                                    </Border>
+                                    <TextBlock Text="{Binding Label}" Margin="14,-1,0,0" FontSize="36"  FontFamily="Segoe WP SemiLight" Foreground="White"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>
+                    
                 </Grid>
             </phone:PivotItem>
         </phone:Pivot>
     </Grid>
-    
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton x:Name="RefreshMusiccAppBarButton" Click="RefreshMusiccAppBarButton_Click" Text="refresh" IconUri="Assets/Glyphs/refresh.png" />
+            <shell:ApplicationBarIconButton x:Name="PartyMusicAppBarButton" Click="PartyMusicAppBarButton_Click" Text="shuffle" IconUri="Assets/Glyphs/appbar.speakerphone.png"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
 </phone:PhoneApplicationPage>

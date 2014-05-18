@@ -24,27 +24,10 @@ namespace XBMCRemoteWP.Pages.Audio
             InitializeComponent();
         }
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (allArtists == null)
-            {
-                allArtists = await AudioLibrary.GetArtists();
-                AllArtistsLLS.ItemsSource = allArtists;
-            }
-
-            JObject sortWith = new JObject(new JProperty("method", "label"));
-            if (allAlbums == null)
-            {
-                allAlbums = await AudioLibrary.GetAlbums(sort: sortWith);
-                AllAlbumsLLS.ItemsSource = allAlbums;
-            }
-
-            if (allSongs == null)
-            {
-                allSongs = await AudioLibrary.GetSongs(sort: sortWith);
-                AllSongsLLS.ItemsSource = allSongs;
-            }
-
+            if (allArtists == null || allAlbums == null || allSongs == null)
+                ReloadAll();
             base.OnNavigatedTo(e);
         }
 
@@ -74,6 +57,44 @@ namespace XBMCRemoteWP.Pages.Audio
             Album tappedAlbum = (sender as StackPanel).DataContext as Album;
             GlobalVariables.CurrentAlbumId = tappedAlbum.AlbumId;
             NavigationService.Navigate(new Uri("/Pages/Audio/AlbumPage.xaml", UriKind.Relative));
-        }        
+        }
+
+        private void RefreshMusiccAppBarButton_Click(object sender, EventArgs e)
+        {
+            ReloadAll();
+        }
+
+        private async void ReloadAll()
+        {
+
+            allArtists = await AudioLibrary.GetArtists();
+            AllArtistsLLS.ItemsSource = allArtists;
+
+            JObject sortWith = new JObject(new JProperty("method", "label"));
+            allAlbums = await AudioLibrary.GetAlbums(sort: sortWith);
+            AllAlbumsLLS.ItemsSource = allAlbums;
+
+            allSongs = await AudioLibrary.GetSongs(sort: sortWith);
+            AllSongsLLS.ItemsSource = allSongs;
+        }
+
+        private void SongItemWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            var tappedSong = (Song)(sender as StackPanel).DataContext;
+            JObject item = new JObject(new JProperty("songid", tappedSong.SongId));
+            Player.Open(item);
+        }
+
+        private async void PartyMusicAppBarButton_Click(object sender, EventArgs e)
+        {
+            //We need to make sure that the audio player is active before setting partymode on it
+            List<Players> activePlayers = await Player.GetActivePlayers();
+            if (!activePlayers.Contains(Players.Audio))
+            {
+                JObject item = new JObject(new JProperty("songid", 1));
+                await Player.Open(item);
+            }
+            await Player.SetPartyMode(Players.Audio, true);
+        }
     }
 }

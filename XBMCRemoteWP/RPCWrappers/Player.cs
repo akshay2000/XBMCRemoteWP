@@ -89,6 +89,14 @@ namespace XBMCRemoteWP.RPCWrappers
             await ConnectionManager.ExecuteRPCRequest("Player.SetSpeed", parameters);
         }
 
+        public async static Task SetPartyMode(Players player, bool partymode)
+        {
+            JObject parameters = new JObject(
+                new JProperty("playerid", getIdFromPlayers(player)),
+                new JProperty("partymode", partymode));
+            await ConnectionManager.ExecuteRPCRequest("Player.SetPartyMode", parameters);
+        }
+
         private static int getIdFromPlayers(Players player)
         {
             switch (player)

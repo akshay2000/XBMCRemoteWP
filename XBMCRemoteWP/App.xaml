@@ -15,28 +15,7 @@
             <converters:StringToImageBrushConverter x:Key="StringToImageBrushConverter"/>
             <converters:MinutesToStringConverter x:Key="MinutesToStringConverter"/>
             <converters:ListTrimmer x:Key="ListTrimmer"/>
-
-            <DataTemplate x:Key="SongItemDataTemplate">
-                <StackPanel x:Name="SongItemWrapper" Orientation="Horizontal" Margin="8,0,0,40">
-                    <Border BorderBrush="White" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
-                        <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="White"/>
-                    </Border>
-                    <TextBlock Text="{Binding Label}" Margin="14,-1,0,0" FontSize="36"  FontFamily="Segoe WP SemiLight" Foreground="White"/>
-                </StackPanel>
-            </DataTemplate>
-
-            <DataTemplate x:Key="AlbumTileDataTemplate">
-                <Grid x:Name="AlbumWrapper" Margin="0,0,12,12">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Image Width="175" Height="175" Stretch="UniformToFill" Grid.RowSpan="2" Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
-                    <Rectangle Grid.Row="1" Fill="Black" Opacity="0.75"/>
-                    <TextBlock Grid.Row="1" Margin="5,0,5,2" Text="{Binding Label}" Foreground="White"/>
-
-                </Grid>
-            </DataTemplate>
+            
             <!--App name is held as a resource-->
             <sys:String x:Key="AppName">XBMC ASSIST</sys:String>
         </ResourceDictionary>
