@@ -11,9 +11,9 @@ using XBMCRemoteWP.Models;
 
 namespace XBMCRemoteWP.RPCWrappers
 {
-    public enum Players { Audio, Video, Picture}
+    public enum Players { Audio, Video, Picture, None}
     public enum GoTo{ Previous, Next}
-    class Player
+    public class Player
     {
         private static JObject defaultPlayerOptions = new JObject(
             new JProperty("repeat", null),
@@ -33,6 +33,8 @@ namespace XBMCRemoteWP.RPCWrappers
 
         public async static Task<int> PlayPause(Players player)
         {
+            if (player == Players.None)
+                return 0;
             int playerId = getIdFromPlayers(player);
             JObject parameters = new JObject(new JProperty("playerid", playerId));
             JObject responseObjet = await ConnectionManager.ExecuteRPCRequest("Player.PlayPause", parameters);
@@ -42,6 +44,8 @@ namespace XBMCRemoteWP.RPCWrappers
 
         public async static Task GoTo(Players player, GoTo goTo)
         {
+            if (player == Players.None)
+                return;
             int playerId = getIdFromPlayers(player);
             JObject parameters = new JObject(
                 new JProperty("playerid", playerId),
@@ -61,28 +65,39 @@ namespace XBMCRemoteWP.RPCWrappers
             return listToReturn;
         }
 
-        public async static Task<JObject> GetItem(Players player)
+        public async static Task<PlayerItem> GetItem(Players player)
         {
+            if (player == Players.None)
+                return new PlayerItem();
             JObject parameters = new JObject(
                 new JProperty("playerid", getIdFromPlayers(player)),
                 new JProperty("properties",
-                    new JArray("title", "artist", "fanart", "thumbnail", "showtitle")
+                    new JArray("title", "artist", "fanart", "thumbnail", "showtitle", "tagline")
                     ));
             JObject responseObject = await ConnectionManager.ExecuteRPCRequest("Player.GetItem", parameters);
-            return responseObject;
+            JObject itemJson = (JObject)responseObject["result"]["item"];
+            PlayerItem playerItem = itemJson.ToObject<PlayerItem>();
+            return playerItem;
         }
 
-        public async static Task<JObject> GetProperties(Players player, JArray items)
+        public async static Task<PlayerProperties> GetProperties(Players player)
         {
+            if (player == Players.None)
+                return new PlayerProperties();
             JObject parameters = new JObject(
                 new JProperty("playerid", getIdFromPlayers(player)),
-                new JProperty("properties", items));
+                new JProperty("properties", 
+                    new JArray("speed", "repeat", "shuffled", "partymode")));
             JObject responseObject = await ConnectionManager.ExecuteRPCRequest("Player.GetProperties", parameters);
-            return (JObject)responseObject["result"];
+            JObject propertiesJson = (JObject)responseObject["result"];
+            PlayerProperties properties = propertiesJson.ToObject<PlayerProperties>();
+            return properties;
         }
 
         public async static Task SetSpeed(Players player, int speed)
         {
+            if (player == Players.None)
+                return;
             JObject parameters = new JObject(
                new JProperty("playerid", getIdFromPlayers(player)),
                new JProperty("speed", speed));
@@ -91,10 +106,21 @@ namespace XBMCRemoteWP.RPCWrappers
 
         public async static Task SetPartyMode(Players player, bool partymode)
         {
+            if (player == Players.None)
+                return;
             JObject parameters = new JObject(
                 new JProperty("playerid", getIdFromPlayers(player)),
                 new JProperty("partymode", partymode));
             await ConnectionManager.ExecuteRPCRequest("Player.SetPartyMode", parameters);
+        }
+
+        public async static Task Stop(Players player)
+        {
+            if (player == Players.None)
+                return;
+            JObject parameters = new JObject(
+                new JProperty("playerid", getIdFromPlayers(player)));
+            await ConnectionManager.ExecuteRPCRequest("Player.Stop", parameters);
         }
 
         private static int getIdFromPlayers(Players player)

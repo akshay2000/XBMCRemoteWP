@@ -19,6 +19,7 @@ namespace XBMCRemoteWP
         public InputPage()
         {
             InitializeComponent();
+            PlaybackControlsGrid.DataContext = GlobalVariables.CurrentPlayerState.CurrentPlayerProperties;
         }
 
         private void LeftButton_Click(object sender, RoutedEventArgs e)
@@ -71,46 +72,54 @@ namespace XBMCRemoteWP
             Input.ExecuteAction(InputCommands.Back);
         }
 
-        private void PreviousButton_Click(object sender, RoutedEventArgs e)
+        private async void PreviousButton_Click(object sender, RoutedEventArgs e)
         {
-            Player.GoTo(GlobalVariables.NowPlaying.PlayerType, GoTo.Next);
+            await Player.GoTo(GlobalVariables.CurrentPlayerState.PlayerType, GoTo.Next);
+            await PlayerHelper.RefreshPlayerState();
         }
 
         private async void SpeedDownButton_Click(object sender, RoutedEventArgs e)
         {
-            JObject result = await Player.GetProperties(GlobalVariables.NowPlaying.PlayerType, new JArray("speed"));
-            int speed = (int)result["speed"];
+            int speed = GlobalVariables.CurrentPlayerState.CurrentPlayerProperties.Speed;
 
             if (speed != 0 && speed != -32)
             {
                 int index = Array.IndexOf(Speeds, speed);
                 int newSpeed = Speeds[index - 1];
-                await Player.SetSpeed(GlobalVariables.NowPlaying.PlayerType, newSpeed);
+                await Player.SetSpeed(GlobalVariables.CurrentPlayerState.PlayerType, newSpeed);
             }
 
         }
         
-        private void PlayPauseButton_Click(object sender, RoutedEventArgs e)
+        private async void PlayPauseButton_Click(object sender, RoutedEventArgs e)
         {
-            Player.PlayPause(GlobalVariables.NowPlaying.PlayerType);
+            await Player.PlayPause(GlobalVariables.CurrentPlayerState.PlayerType);
+            await PlayerHelper.RefreshPlayerState();
+        }
+
+        private async void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Player.Stop(GlobalVariables.CurrentPlayerState.PlayerType);
+            await PlayerHelper.RefreshPlayerState();
         }
 
         private async void SpeedUpButton_Click(object sender, RoutedEventArgs e)
         {
-            JObject result = await Player.GetProperties(GlobalVariables.NowPlaying.PlayerType, new JArray("speed"));
-            int speed = (int)result["speed"];
+            int speed = GlobalVariables.CurrentPlayerState.CurrentPlayerProperties.Speed;
 
             if (speed != 0 && speed != 32)
             {
                 int index = Array.IndexOf(Speeds, speed);
                 int newSpeed = Speeds[index + 1];
-                await Player.SetSpeed(GlobalVariables.NowPlaying.PlayerType, newSpeed);
+                await Player.SetSpeed(GlobalVariables.CurrentPlayerState.PlayerType, newSpeed);
             }
+            await PlayerHelper.RefreshPlayerState();
         }
 
-        private void NextButton_Click(object sender, RoutedEventArgs e)
+        private async void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            Player.GoTo(GlobalVariables.NowPlaying.PlayerType, GoTo.Next);
+            await Player.GoTo(GlobalVariables.CurrentPlayerState.PlayerType, GoTo.Next);
+            await PlayerHelper.RefreshPlayerState();
         }
 
         private async void VolumeSlider_Loaded(object sender, RoutedEventArgs e)

@@ -21,6 +21,8 @@ namespace XBMCRemoteWP.Helpers
 
         public static Movie CurrentMovie { get; set; }
 
-        public static NowPlayingItem NowPlaying { get; set; }
+        //public static NowPlayingItem NowPlaying { get; set; }
+
+        public static PlayerState CurrentPlayerState { get; set; }
     }
 }

@@ -13,6 +13,8 @@ namespace XBMCRemoteWP.Converters
         {
             List<string> inputList = (List<String>)value;
             string toReturn = "not available";
+            if (inputList == null)
+                inputList = new List<string>();
             if (inputList.Count > 0 && inputList[0]!="")
             {
                 toReturn = string.Empty;

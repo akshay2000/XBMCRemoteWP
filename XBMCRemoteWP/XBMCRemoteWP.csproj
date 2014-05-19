@@ -105,10 +105,13 @@
     <Compile Include="ConnectionsPage.xaml.cs">
       <DependentUpon>ConnectionsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BoolToOpacityConverter.cs" />
     <Compile Include="Converters\ImagePathConverter.cs" />
     <Compile Include="Converters\ListToStringConverter.cs" />
     <Compile Include="Converters\ListTrimmer.cs" />
     <Compile Include="Converters\MinutesToStringConverter.cs" />
+    <Compile Include="Converters\RepeatStateConverter.cs" />
+    <Compile Include="Converters\SpeedToImgSrcConverter.cs" />
     <Compile Include="Converters\StringToImageBrushConverter.cs" />
     <Compile Include="CoverPage.xaml.cs">
       <DependentUpon>CoverPage.xaml</DependentUpon>
@@ -123,7 +126,9 @@
     <Compile Include="Models\ConnectionItem.cs" />
     <Compile Include="Models\MainDataContext.cs" />
     <Compile Include="Models\NotifyBase.cs" />
-    <Compile Include="Models\NowPlayingItem.cs" />
+    <Compile Include="Models\PlayerItem.cs" />
+    <Compile Include="Models\PlayerProperties.cs" />
+    <Compile Include="Models\PlayerState.cs" />
     <Compile Include="Models\Video\Art.cs" />
     <Compile Include="Models\Video\Cast.cs" />
     <Compile Include="Models\Video\Episode.cs" />
@@ -286,12 +291,16 @@
     <Content Include="Assets\Glyphs\menulines.png" />
     <Content Include="Assets\Glyphs\page.png" />
     <Content Include="Assets\Glyphs\refresh.png" />
+    <Content Include="Assets\Glyphs\repeat.png" />
     <Content Include="Assets\Glyphs\save.png" />
+    <Content Include="Assets\Glyphs\shuffle.png" />
     <Content Include="Assets\Glyphs\speeddown.png" />
     <Content Include="Assets\Glyphs\speedup.png" />
     <Content Include="Assets\Glyphs\power.png" />
     <Content Include="Assets\DefaultArt.jpg" />
-    <Content Include="Assets\Glyphs\transport.shuffle.png" />
+    <Content Include="Assets\Glyphs\transport.repeat.png" />
+    <Content Include="Assets\Glyphs\transport.repeatone.png" />
+    <Content Include="Assets\Glyphs\stop.png" />
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

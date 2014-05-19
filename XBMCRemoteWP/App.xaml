@@ -15,6 +15,9 @@
             <converters:StringToImageBrushConverter x:Key="StringToImageBrushConverter"/>
             <converters:MinutesToStringConverter x:Key="MinutesToStringConverter"/>
             <converters:ListTrimmer x:Key="ListTrimmer"/>
+            <converters:BoolToOpacityConverter x:Key="BoolToOpacityConverter"/>
+            <converters:SpeedToImgSrcConverter x:Key="SpeedToImgSrcConverter"/>
+            <converters:RepeatStateConverter x:Key="RepeatStateConverter"/>
             
             <!--App name is held as a resource-->
             <sys:String x:Key="AppName">XBMC ASSIST</sys:String>

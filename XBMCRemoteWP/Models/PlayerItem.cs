@@ -7,7 +7,7 @@ using XBMCRemoteWP.RPCWrappers;
 
 namespace XBMCRemoteWP.Models
 {
-    public class NowPlayingItem : NotifyBase
+    public class PlayerItem : NotifyBase
     {
         private string thumbnail;
         public string Thumbnail
@@ -45,18 +45,43 @@ namespace XBMCRemoteWP.Models
             }
         }
 
-        private string subtitle; 
-        public string Subtitle
+        private string showTitle; 
+        public string ShowTitle
         {
-            get { return subtitle; }
+            get { return showTitle; }
             set 
             {
-                NotifyPropertyChanging("Subitle");
-                subtitle = value;
-                NotifyPropertyChanged("Subtitle");
+                NotifyPropertyChanging("ShowTitle");
+                showTitle = value;
+                NotifyPropertyChanged("ShowTitle");
             }
         }
 
-        public Players PlayerType { get; set; }
+        private string tagline;
+        public string Tagline
+        {
+            get { return tagline; }
+            set
+            {
+                NotifyPropertyChanging("Tagline");
+                tagline = value;
+                NotifyPropertyChanged("Tagline");
+            }
+        }
+
+        private List<string> artist;
+        public List<string> Artist
+        {
+            get { return artist; }
+            set {
+                NotifyPropertyChanging("Artist");
+                artist = value;
+                NotifyPropertyChanged("Artist");
+            }
+        }
+        public string Label { get; set; }
+        public int Id { get; set; }
+        public string Type { get; set; }        
+
     }
 }

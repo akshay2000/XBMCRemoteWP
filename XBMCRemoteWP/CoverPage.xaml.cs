@@ -27,14 +27,14 @@ namespace XBMCRemoteWP
         public CoverPage()
         {
             InitializeComponent();
-            if (GlobalVariables.NowPlaying == null)
-                GlobalVariables.NowPlaying = new NowPlayingItem();
-            NowPlayingGrid.DataContext = GlobalVariables.NowPlaying;
+            if (GlobalVariables.CurrentPlayerState == null)
+                GlobalVariables.CurrentPlayerState = new PlayerState();
+            NowPlayingGrid.DataContext = GlobalVariables.CurrentPlayerState;
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            PlayerHelper.RefreshNowPlaying();
+            await PlayerHelper.RefreshPlayerState();
 
             if (albums == null)
             {
@@ -109,25 +109,22 @@ namespace XBMCRemoteWP
             NavigationService.Navigate(new Uri("/Pages/AboutPage.xaml", UriKind.Relative));
         }
 
-        private void PreviousButton_Click(object sender, RoutedEventArgs e)
+        private async void PreviousButton_Click(object sender, RoutedEventArgs e)
         {
-            Player.GoTo(GlobalVariables.NowPlaying.PlayerType, GoTo.Previous);
-            PlayerHelper.RefreshNowPlaying();
+            await Player.GoTo(GlobalVariables.CurrentPlayerState.PlayerType, GoTo.Previous);
+            await PlayerHelper.RefreshPlayerState();
         }
 
         private async void PlayPauseButton_Click(object sender, RoutedEventArgs e)
         {
-            int speed = await Player.PlayPause(GlobalVariables.NowPlaying.PlayerType);
-            if (speed == 0)
-                PlayPauseButton.ImageSource = new BitmapImage(new Uri("/Assets/Glyphs/appbar.transport.play.rest.png", UriKind.Relative));
-            else
-                PlayPauseButton.ImageSource = new BitmapImage(new Uri("/Assets/Glyphs/appbar.transport.pause.rest.png", UriKind.Relative));
+            await Player.PlayPause(GlobalVariables.CurrentPlayerState.PlayerType);
+            await PlayerHelper.RefreshPlayerState();
         }
 
-        private void NextButton_Click(object sender, RoutedEventArgs e)
+        private async void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            Player.GoTo(GlobalVariables.NowPlaying.PlayerType, GoTo.Next);
-            PlayerHelper.RefreshNowPlaying();
+            await Player.GoTo(GlobalVariables.CurrentPlayerState.PlayerType, GoTo.Next);
+            await PlayerHelper.RefreshPlayerState();
         }
     }
 }
