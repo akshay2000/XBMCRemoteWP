@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{d252985c-da29-41f2-8f5c-6c3f6a9ed77f}" Title="XBMC Assist" RuntimeType="Silverlight" Version="1.0.0.2" Genre="apps.normal" Author="Akshay Zade" Description="Sample description" Publisher="akshay2000" PublisherID="{38fadada-329e-4f10-80fa-2a0739a2b9ad}">
-    <IconPath IsRelative="true" IsResource="false">Untitled-1.png</IconPath>
+  <App xmlns="" ProductID="{d252985c-da29-41f2-8f5c-6c3f6a9ed77f}" Title="X .assist" RuntimeType="Silverlight" Version="1.0.0.2" Genre="apps.normal" Author="Akshay Zade" Description="Sample description" Publisher="akshay2000" PublisherID="{38fadada-329e-4f10-80fa-2a0739a2b9ad}">
+    <IconPath IsRelative="true" IsResource="false">Tile300.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_IDENTITY_DEVICE" />
@@ -13,19 +13,24 @@
     <Tokens>
       <PrimaryToken TokenID="XBMCRemoteWPToken" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsResource="false" IsRelative="true">Untitled-1.png</SmallImageURI>
+          <SmallImageURI IsResource="false" IsRelative="true">TileSmall.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsResource="false" IsRelative="true">Untitled-1.png</BackgroundImageURI>
-          <Title>XBMC Assist</Title>
+          <BackgroundImageURI IsResource="false" IsRelative="true">Tile336.png</BackgroundImageURI>
+          <Title>
+          </Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>
           </BackBackgroundImageURI>
           <BackTitle>
           </BackTitle>
+          <LargeBackgroundImageURI IsRelative="true" IsResource="false">TileWide.png</LargeBackgroundImageURI>
+          <LargeBackContent />
+          <LargeBackBackgroundImageURI IsRelative="true" IsResource="false">
+          </LargeBackBackgroundImageURI>
           <DeviceLockImageURI>
           </DeviceLockImageURI>
-          <HasLarge>false</HasLarge>
+          <HasLarge>True</HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>

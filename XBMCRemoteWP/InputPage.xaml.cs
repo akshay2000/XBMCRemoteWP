@@ -138,7 +138,7 @@ namespace XBMCRemoteWP
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Applikation.Quit();
         }
     }
 }

@@ -27,13 +27,16 @@ namespace XBMCRemoteWP.Pages
 
         private void Email_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Pages/FeedbackPage.xaml", UriKind.Relative));
+            EmailComposeTask emailTask = new EmailComposeTask();
+            emailTask.Subject = "XBMC Assist for Windows Phone";
+            emailTask.To = "appsupport@indestructible.in";
+            emailTask.Show();
         }
 
         private void RateApp_Click(object sender, RoutedEventArgs e)
         {
-            MarketplaceReviewTask RateApp = new MarketplaceReviewTask();
-            RateApp.Show();
+            MarketplaceReviewTask rateApp = new MarketplaceReviewTask();
+            rateApp.Show();
         }
     }
 }
