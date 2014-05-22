@@ -48,5 +48,10 @@ namespace XBMCRemoteWP.Pages
             App.MainVM.SubmitChanges();
             NavigationService.GoBack();
         }
+
+        private void IPTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            IPTextBox.Text = IPTextBox.Text.Replace(',', '.');
+        }
     }
 }

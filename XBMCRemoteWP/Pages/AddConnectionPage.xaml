@@ -55,7 +55,7 @@
                     <TextBlock Text="Name" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
                     <TextBox x:Name="NameTextBox" InputScope="PersonalFullName"/>
                     <TextBlock Text="IP Address" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
-                    <TextBox x:Name="IPTextBox" InputScope="Number"/>
+                    <TextBox x:Name="IPTextBox" InputScope="Number" LostFocus="IPTextBox_LostFocus"/>
                     <TextBlock Text="Port" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
                     <TextBox x:Name="PortTextBox" InputScope="Number" Text="80"/>
                     <TextBlock Text="Username" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
