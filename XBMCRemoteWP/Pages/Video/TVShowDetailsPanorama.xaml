@@ -68,6 +68,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
+                        <Image Source="/Assets/DefaultArt.jpg" Stretch="UniformToFill"/>
                         <Image Source="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}" Stretch="UniformToFill"/>
 
                         <StackPanel Grid.Row="0" Grid.Column="1">
@@ -105,6 +106,11 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
+                                    <Image Grid.RowSpan="2" Stretch="UniformToFill" >
+                                        <Image.Source>
+                                            <BitmapImage DecodePixelType="Logical" DecodePixelHeight="144" UriSource="/Assets/DefaultArt.jpg"/>
+                                        </Image.Source>
+                                    </Image>
                                     <Image Grid.RowSpan="2" Stretch="UniformToFill" >
                                         <Image.Source>
                                             <BitmapImage DecodePixelType="Logical" DecodePixelHeight="144" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>

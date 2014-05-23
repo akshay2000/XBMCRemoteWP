@@ -13,20 +13,18 @@ using XBMCRemoteWP.Helpers;
 
 namespace XBMCRemoteWP.Pages.Video
 {
-    public partial class AllMoviesPage : PhoneApplicationPage
-    {
+    public partial class AllMoviesPivot : PhoneApplicationPage
+    {    
         private List<Movie> allMovies;
-        public AllMoviesPage()
+        private List<Movie> unwatchedMovies;
+        private List<Movie> watchedMovies;
+
+        public AllMoviesPivot()
         {
             InitializeComponent();
-            if(allMovies == null)
+            if (allMovies == null)
                 LoadMovies();
-        }
 
-        private async void LoadMovies()
-        {
-            allMovies = await VideoLibrary.GetMovies();
-            AllMoviesLLS.ItemsSource = allMovies;
         }
 
         private void MovieWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -44,6 +42,18 @@ namespace XBMCRemoteWP.Pages.Video
         private void SearchAppBarButton_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/Pages/Video/SearchMoviesPage.xaml", UriKind.Relative));
+        }
+
+        private async void LoadMovies()
+        {
+            allMovies = await VideoLibrary.GetMovies();
+            AllMoviesLLS.ItemsSource = allMovies;
+
+            unwatchedMovies = allMovies.Where(movie => movie.PlayCount == 0).ToList<Movie>();
+            UnwatchedMoviesLLS.ItemsSource = unwatchedMovies;
+
+            watchedMovies = allMovies.Where(movie => movie.PlayCount > 0).ToList<Movie>();
+            WatchedMoviesLLS.ItemsSource = watchedMovies;
         }
     }
 }

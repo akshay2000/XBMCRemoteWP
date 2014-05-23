@@ -61,6 +61,11 @@
 
                             <Image VerticalAlignment="Top" Stretch="UniformToFill" >
                                 <Image.Source>
+                                    <BitmapImage DecodePixelHeight="144" DecodePixelType="Logical" UriSource="/Assets/DefaultArt.jpg"/>
+                                </Image.Source>
+                            </Image>
+                            <Image VerticalAlignment="Top" Stretch="UniformToFill" >
+                                <Image.Source>
                                     <BitmapImage DecodePixelHeight="144" DecodePixelType="Logical" UriSource="{Binding Thumbnail, Converter={StaticResource ImagePathConverter}}"/>
                                 </Image.Source>
                             </Image>

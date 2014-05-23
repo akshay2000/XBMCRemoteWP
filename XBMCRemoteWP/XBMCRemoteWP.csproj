@@ -152,8 +152,8 @@
     <Compile Include="Pages\EditConnectionPage.xaml.cs">
       <DependentUpon>EditConnectionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Video\AllMoviesPage.xaml.cs">
-      <DependentUpon>AllMoviesPage.xaml</DependentUpon>
+    <Compile Include="Pages\Video\AllMoviesPivot.xaml.cs">
+      <DependentUpon>AllMoviesPivot.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Video\AllTVShowsPage.xaml.cs">
       <DependentUpon>AllTVShowsPage.xaml</DependentUpon>
@@ -239,7 +239,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Video\AllMoviesPage.xaml">
+    <Page Include="Pages\Video\AllMoviesPivot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

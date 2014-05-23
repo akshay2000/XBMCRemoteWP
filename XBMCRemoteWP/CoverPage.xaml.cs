@@ -91,7 +91,7 @@ namespace XBMCRemoteWP
 
         private void AllMoviesTextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Pages/Video/AllMoviesPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/Pages/Video/AllMoviesPivot.xaml", UriKind.Relative));
         }
 
         private void RemoteMenuItem_Click(object sender, EventArgs e)

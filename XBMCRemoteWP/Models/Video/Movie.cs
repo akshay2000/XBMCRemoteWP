@@ -44,5 +44,8 @@ namespace XBMCRemoteWP.Models.Video
         public string Votes { get; set; }
         public List<string> Writer { get; set; }
         public int Year { get; set; }
+
+        //Should be moved to base class if used in more models
+        public int PlayCount { get; set; }
     }
 }
