@@ -37,8 +37,8 @@
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Black">
-        <phone:Panorama Title="{Binding Label}" Background="{Binding Fanart, Converter={StaticResource StringToImageBrushConverter}}" Foreground="White">
-
+        <phone:Panorama Title="{Binding Label}" Foreground="White" Background="{Binding Fanart, Converter={StaticResource StringToImageBrushConverter}}">
+            
             <!--Panorama item one-->
             <phone:PanoramaItem Header="info" Foreground="White">
                 <ScrollViewer>
@@ -71,7 +71,7 @@
                             <TextBlock Text="{Binding Genre, Converter={StaticResource ListToStringConverter}}" Foreground="White" Style="{StaticResource PhoneTextTitle3Style}" TextWrapping="Wrap"/>
 
                             <TextBlock Text="Rating" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999" Margin="12,6,12,0"/>
-                            <TextBlock Text="{Binding Rating}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="White"/>
+                            <TextBlock Text="{Binding Rating, Converter={StaticResource RatingConverter}}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="White"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">

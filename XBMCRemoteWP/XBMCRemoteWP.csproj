@@ -110,6 +110,7 @@
     <Compile Include="Converters\ListToStringConverter.cs" />
     <Compile Include="Converters\ListTrimmer.cs" />
     <Compile Include="Converters\MinutesToStringConverter.cs" />
+    <Compile Include="Converters\RatingConverter.cs" />
     <Compile Include="Converters\RepeatStateConverter.cs" />
     <Compile Include="Converters\SpeedToImgSrcConverter.cs" />
     <Compile Include="Converters\StringToImageBrushConverter.cs" />

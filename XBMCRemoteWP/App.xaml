@@ -12,12 +12,13 @@
         <ResourceDictionary>
             <converters:ImagePathConverter x:Key="ImagePathConverter"/>
             <converters:ListToStringConverter x:Key="ListToStringConverter"/>
-            <converters:StringToImageBrushConverter x:Key="StringToImageBrushConverter"/>
             <converters:MinutesToStringConverter x:Key="MinutesToStringConverter"/>
             <converters:ListTrimmer x:Key="ListTrimmer"/>
             <converters:BoolToOpacityConverter x:Key="BoolToOpacityConverter"/>
             <converters:SpeedToImgSrcConverter x:Key="SpeedToImgSrcConverter"/>
             <converters:RepeatStateConverter x:Key="RepeatStateConverter"/>
+            <converters:RatingConverter x:Key="RatingConverter"/>
+            <converters:StringToImageBrushConverter x:Key="StringToImageBrushConverter"/>
             
             <!--App name is held as a resource-->
             <sys:String x:Key="AppName">XBMC ASSIST</sys:String>

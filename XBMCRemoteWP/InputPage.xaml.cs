@@ -19,9 +19,10 @@ namespace XBMCRemoteWP
         public InputPage()
         {
             InitializeComponent();
-            PlaybackControlsGrid.DataContext = GlobalVariables.CurrentPlayerState.CurrentPlayerProperties;
+            DataContext = GlobalVariables.CurrentPlayerState;
         }
 
+        #region Remote Keys
         private void LeftButton_Click(object sender, RoutedEventArgs e)
         {
             Input.ExecuteAction(InputCommands.Left);
@@ -72,6 +73,8 @@ namespace XBMCRemoteWP
             Input.ExecuteAction(InputCommands.Back);
         }
 
+        #endregion
+
         private async void PreviousButton_Click(object sender, RoutedEventArgs e)
         {
             await Player.GoTo(GlobalVariables.CurrentPlayerState.PlayerType, GoTo.Next);
@@ -87,8 +90,8 @@ namespace XBMCRemoteWP
                 int index = Array.IndexOf(Speeds, speed);
                 int newSpeed = Speeds[index - 1];
                 await Player.SetSpeed(GlobalVariables.CurrentPlayerState.PlayerType, newSpeed);
-            }
-
+                await PlayerHelper.RefreshPlayerState();
+            }          
         }
         
         private async void PlayPauseButton_Click(object sender, RoutedEventArgs e)
@@ -112,8 +115,8 @@ namespace XBMCRemoteWP
                 int index = Array.IndexOf(Speeds, speed);
                 int newSpeed = Speeds[index + 1];
                 await Player.SetSpeed(GlobalVariables.CurrentPlayerState.PlayerType, newSpeed);
+                await PlayerHelper.RefreshPlayerState();
             }
-            await PlayerHelper.RefreshPlayerState();
         }
 
         private async void NextButton_Click(object sender, RoutedEventArgs e)

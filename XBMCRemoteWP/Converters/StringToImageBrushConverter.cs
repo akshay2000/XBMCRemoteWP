@@ -17,6 +17,8 @@ namespace XBMCRemoteWP.Converters
         {
             string imagePath = (string)value;
             string imageURL = string.Empty;
+            if (imagePath == null)
+                imagePath = String.Empty;
             if (imagePath.Length > 8)
             {
                 string uri = imagePath.Substring(8);
@@ -33,7 +35,7 @@ namespace XBMCRemoteWP.Converters
             }
             else
             {
-                imageURL = "/Assets/DesignTime/AlbumArt.jpg";
+                imageURL = "";
             }
 
             ImageBrush imageBrush = new ImageBrush();

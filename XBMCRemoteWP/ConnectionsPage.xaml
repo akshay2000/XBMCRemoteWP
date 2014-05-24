@@ -82,10 +82,6 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar>
             <shell:ApplicationBarIconButton x:Name="AddConnectionAppBarButton" Click="AddConnectionAppBarButton_Click" Text="add connection" IconUri="Assets/Glyphs/add.png" />
-            <shell:ApplicationBar.MenuItems>
-                <!--<shell:ApplicationBarMenuItem x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click" Text="settings"/>-->
-                <!--<shell:ApplicationBarMenuItem x:Name="AboutMenuItem" Click="AboutMenuItem_Click" Text="about"/>-->
-            </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
     

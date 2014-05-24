@@ -184,7 +184,7 @@
                 </Grid.ColumnDefinitions>
                 <c4d:RoundButton x:Name="PreviousButton" ImageSource="/Assets/Glyphs/appbar.transport.rew.rest.png" Click="PreviousButton_Click" Grid.Column="0" HorizontalAlignment="Center" />
                 <c4d:RoundButton x:Name="SpeedDownButton" ImageSource="/Assets/Glyphs/speeddown.png" Click="SpeedDownButton_Click" Grid.Column="1" HorizontalAlignment="Center" />
-                <c4d:RoundButton x:Name="PlayPauseButton" ImageSource="{Binding Speed, Converter={StaticResource SpeedToImgSrcConverter}}" Click="PlayPauseButton_Click" Grid.Column="2" HorizontalAlignment="Center" />
+                <c4d:RoundButton x:Name="PlayPauseButton" ImageSource="{Binding CurrentPlayerProperties.Speed, Converter={StaticResource SpeedToImgSrcConverter}}" Click="PlayPauseButton_Click" Grid.Column="2" HorizontalAlignment="Center" />
                 <c4d:RoundButton x:Name="StopButton" ImageSource="/Assets/Glyphs/stop.png" Click="StopButton_Click" Grid.Column="3" HorizontalAlignment="Center" />
                 <c4d:RoundButton x:Name="SpeedUpButton" ImageSource="/Assets/Glyphs/speedup.png" Click="SpeedUpButton_Click" Grid.Column="4" HorizontalAlignment="Center" />
                 <c4d:RoundButton x:Name="NextButton" ImageSource="/Assets/Glyphs/appbar.transport.ff.rest.png" Click="NextButton_Click" Grid.Column="5" HorizontalAlignment="Center" />                

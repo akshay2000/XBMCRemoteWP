@@ -29,7 +29,7 @@ namespace XBMCRemoteWP
             InitializeComponent();
             if (GlobalVariables.CurrentPlayerState == null)
                 GlobalVariables.CurrentPlayerState = new PlayerState();
-            NowPlayingGrid.DataContext = GlobalVariables.CurrentPlayerState;
+            DataContext = GlobalVariables.CurrentPlayerState;
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
@@ -38,19 +38,19 @@ namespace XBMCRemoteWP
 
             if (albums == null)
             {
-                albums = await AudioLibrary.GetRecentlyAddedAlbums(new Limits { Start = 0, End = 8 });
+                albums = await AudioLibrary.GetRecentlyAddedAlbums(new Limits { Start = 0, End = 12 });
                 MusicLLS.ItemsSource = albums;
             }
 
             if (episodes == null)
             {
-                episodes = await VideoLibrary.GetRecentlyAddedEpisodes(new Limits { Start = 0, End = 8 });
+                episodes = await VideoLibrary.GetRecentlyAddedEpisodes(new Limits { Start = 0, End = 10 });
                 TVShowsLLS.ItemsSource = episodes;
             }
 
             if (movies == null)
             {
-                movies = await VideoLibrary.GetRecentlyAddedMovies(new Limits { Start = 0, End = 6 });
+                movies = await VideoLibrary.GetRecentlyAddedMovies(new Limits { Start = 0, End = 15 });
                 MoviesLLS.ItemsSource = movies;
             }
 
