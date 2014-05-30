@@ -19,23 +19,23 @@ namespace XBMCRemoteWP.Pages.Audio
         public AlbumPage()
         {
             InitializeComponent();
+            this.Loaded += AlbumPage_Loaded;
         }
 
-        private List<Song> songsInAlbum;
-        private Album currentAlbum;
-
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        async void AlbumPage_Loaded(object sender, RoutedEventArgs e)
         {
-
+            ConnectionManager.ManageSystemTray(true);
             JObject filter = new JObject(new JProperty("albumid", GlobalVariables.CurrentAlbumId));
             songsInAlbum = await AudioLibrary.GetSongs(filter);
             SongsLLS.ItemsSource = songsInAlbum;
 
             currentAlbum = await AudioLibrary.GetAlbumDetails(GlobalVariables.CurrentAlbumId);
             AlbumInfoGrid.DataContext = currentAlbum;
-
-            base.OnNavigatedTo(e);
+            ConnectionManager.ManageSystemTray(false);
         }
+
+        private List<Song> songsInAlbum;
+        private Album currentAlbum;
 
         private async void SongItemWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {

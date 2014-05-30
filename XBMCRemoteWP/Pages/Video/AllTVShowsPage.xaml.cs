@@ -19,14 +19,21 @@ namespace XBMCRemoteWP.Pages.Video
         public AllTVShowsPage()
         {
             InitializeComponent();
-            if(allTVShows == null)
+            this.Loaded += AllTVShowsPage_Loaded;
+        }
+
+        void AllTVShowsPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (allTVShows == null)
                 LoadTVShows();
         }
 
         private async void LoadTVShows()
         {
+            ConnectionManager.ManageSystemTray(true);
             allTVShows = await VideoLibrary.GetTVShows();
             AllTVShowsLLS.ItemsSource = allTVShows;
+            ConnectionManager.ManageSystemTray(false);
         }
 
         private void TVShowWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)

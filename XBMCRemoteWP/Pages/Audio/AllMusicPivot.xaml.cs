@@ -22,13 +22,13 @@ namespace XBMCRemoteWP.Pages.Audio
         public AllMusicPivot()
         {
             InitializeComponent();
+            this.Loaded += AllMusicPivot_Loaded;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        async void AllMusicPivot_Loaded(object sender, RoutedEventArgs e)
         {
             if (allArtists == null || allAlbums == null || allSongs == null)
                 ReloadAll();
-            base.OnNavigatedTo(e);
         }
 
         private void PlayArtistBorder_Tap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -66,7 +66,7 @@ namespace XBMCRemoteWP.Pages.Audio
 
         private async void ReloadAll()
         {
-
+            ConnectionManager.ManageSystemTray(true);
             allArtists = await AudioLibrary.GetArtists();
             AllArtistsLLS.ItemsSource = allArtists;
 
@@ -76,6 +76,7 @@ namespace XBMCRemoteWP.Pages.Audio
 
             allSongs = await AudioLibrary.GetSongs(sort: sortWith);
             AllSongsLLS.ItemsSource = allSongs;
+            ConnectionManager.ManageSystemTray(false);
         }
 
         private void SongItemWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)

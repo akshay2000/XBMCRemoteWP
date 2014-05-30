@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -37,6 +39,26 @@ namespace XBMCRemoteWP.Helpers
                 {
                     _currentConnection = value;
                 }
+            }
+        }
+
+        public static void ManageSystemTray(bool isActive, string message = "Loading...")
+        {
+            if (SystemTray.ProgressIndicator == null)
+            {
+                SystemTray.ProgressIndicator = new ProgressIndicator();
+            }
+
+            if (isActive)
+            {
+                SystemTray.IsVisible = true;
+                SystemTray.ProgressIndicator.IsIndeterminate = true;
+                SystemTray.ProgressIndicator.Text = message;
+                SystemTray.ProgressIndicator.IsVisible = true;                
+            }
+            else
+            {
+                SystemTray.ProgressIndicator.IsVisible = false;
             }
         }
 

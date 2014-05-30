@@ -22,9 +22,13 @@ namespace XBMCRemoteWP.Pages.Video
         public AllMoviesPivot()
         {
             InitializeComponent();
+            this.Loaded += AllMoviesPivot_Loaded;
+        }
+
+        void AllMoviesPivot_Loaded(object sender, RoutedEventArgs e)
+        {
             if (allMovies == null)
                 LoadMovies();
-
         }
 
         private void MovieWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -46,6 +50,7 @@ namespace XBMCRemoteWP.Pages.Video
 
         private async void LoadMovies()
         {
+            ConnectionManager.ManageSystemTray(true);
             allMovies = await VideoLibrary.GetMovies();
             AllMoviesLLS.ItemsSource = allMovies;
 
@@ -54,6 +59,27 @@ namespace XBMCRemoteWP.Pages.Video
 
             watchedMovies = allMovies.Where(movie => movie.PlayCount > 0).ToList<Movie>();
             WatchedMoviesLLS.ItemsSource = watchedMovies;
+            ConnectionManager.ManageSystemTray(false);
         }
+
+        //private void ManageSystemTray(bool isActive, string message = "Loading...")
+        //{
+        //    if (SystemTray.ProgressIndicator == null)
+        //    {
+        //        SystemTray.ProgressIndicator = new ProgressIndicator();
+        //    }
+
+        //    if (isActive)
+        //    {
+        //        SystemTray.IsVisible = true;
+        //        SystemTray.ProgressIndicator.IsIndeterminate = true;
+        //        SystemTray.ProgressIndicator.Text = message;
+        //        SystemTray.ProgressIndicator.IsVisible = true;
+        //    }
+        //    else
+        //    {
+        //        SystemTray.ProgressIndicator.IsVisible = false;
+        //    }
+        //}
     }
 }

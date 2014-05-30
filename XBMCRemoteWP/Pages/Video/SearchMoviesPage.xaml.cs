@@ -39,11 +39,13 @@ namespace XBMCRemoteWP.Pages.Video
 
         private async void SearchAndReload(string query)
         {
+            ConnectionManager.ManageSystemTray(true);
             if(AllMovies == null)
                 AllMovies = await VideoLibrary.GetMovies();
 
             FilteredMovies = AllMovies.Where(t => t.Title.ToLower().Contains(query.ToLower())).ToList();
             SearchMoviesLLS.ItemsSource = FilteredMovies;
+            ConnectionManager.ManageSystemTray(false);
         }
 
         private void SearchMoviesTextBox_Loaded(object sender, RoutedEventArgs e)
