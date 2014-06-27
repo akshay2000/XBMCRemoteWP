@@ -7,6 +7,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:rma="clr-namespace:RateMyApp.Controls;assembly=RateMyApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -217,8 +218,12 @@
                 </Grid>
             </phone:PanoramaItem>
         </phone:Panorama>
+
+        <rma:FeedbackOverlay x:Name="FeedbackOverlay" Grid.RowSpan="10" FeedbackTo="appsupport@indestructible.in" ApplicationName="X .assist" CompanyName="akshay2000" />
     </Grid>
 
+    
+    
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Mode="Minimized">
             <shell:ApplicationBar.MenuItems>
