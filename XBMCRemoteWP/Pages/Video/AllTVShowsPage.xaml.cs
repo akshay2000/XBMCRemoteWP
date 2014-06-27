@@ -47,5 +47,10 @@ namespace XBMCRemoteWP.Pages.Video
         {
             LoadTVShows();
         }
+
+        private void SearchAppBarButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/Video/SearchTVShowsPage.xaml", UriKind.Relative));
+        }
     }
 }

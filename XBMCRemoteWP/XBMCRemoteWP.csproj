@@ -165,6 +165,9 @@
     <Compile Include="Pages\Video\SearchMoviesPage.xaml.cs">
       <DependentUpon>SearchMoviesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Video\SearchTVShowsPage.xaml.cs">
+      <DependentUpon>SearchTVShowsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Video\TVShowDetailsPanorama.xaml.cs">
       <DependentUpon>TVShowDetailsPanorama.xaml</DependentUpon>
     </Compile>
@@ -253,6 +256,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Video\SearchMoviesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Video\SearchTVShowsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -22,11 +22,6 @@ namespace XBMCRemoteWP.Pages.Video
         {
             InitializeComponent();
         }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-        }
         
         private void SearchMoviesTextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {

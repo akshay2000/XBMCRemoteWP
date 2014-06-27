@@ -11,6 +11,7 @@ using XBMCRemoteWP.RPCWrappers;
 using XBMCRemoteWP.Models;
 using XBMCRemoteWP.Helpers;
 using System.Threading.Tasks;
+using Microsoft.Phone.Tasks;
 
 namespace XBMCRemoteWP
 {
@@ -93,6 +94,19 @@ namespace XBMCRemoteWP
                 MessageBox.Show("Could not reach the server.", "Connection Unsuccessful", MessageBoxButton.OK);
             }
             SetPageState(PageStates.Ready);
+        }
+
+        private void AboutMenuItem_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/AboutPage.xaml", UriKind.Relative));
+        }
+
+        private void FeedbackMenuItem_Click(object sender, EventArgs e)
+        {
+            EmailComposeTask emailTask = new EmailComposeTask();
+            emailTask.Subject = "XBMC Assist for Windows Phone";
+            emailTask.To = "appsupport@indestructible.in";
+            emailTask.Show();
         }
     }
 }
