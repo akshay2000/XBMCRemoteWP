@@ -54,8 +54,8 @@
                 <StackPanel>
                     <TextBlock Text="Name" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
                     <TextBox x:Name="NameTextBox" Text="{Binding ConnectionName}" InputScope="PersonalFullName"/>
-                    <TextBlock Text="IP Address" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
-                    <TextBox x:Name="IPTextBox" Text="{Binding IpAddress}" InputScope="Number" LostFocus="IPTextBox_LostFocus"/>
+                    <TextBlock Text="IP Address/Host Name" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
+                    <TextBox x:Name="IPTextBox" Text="{Binding IpAddress}" />
                     <TextBlock Text="Port" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
                     <TextBox x:Name="PortTextBox" Text="{Binding Port}" InputScope="Number" />
                     <TextBlock Text="Username" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>

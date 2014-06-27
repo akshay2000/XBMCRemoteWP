@@ -274,7 +274,6 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="RateMyAppGuide_v1 1.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png">

@@ -22,11 +22,6 @@ namespace XBMCRemoteWP.Pages
         private void SaveConnectionAppBarButton_Click(object sender, EventArgs e)
         {
             int port;
-            if(!ConnectionManager.IsIpAddressValid(IPTextBox.Text))
-            {
-                MessageBox.Show("Please, enter a valid IPv4 address.", "Invalid IP Address", MessageBoxButton.OK);
-                return;
-            }
 
             if (!int.TryParse(PortTextBox.Text, out port))
             {
