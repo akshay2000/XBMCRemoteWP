@@ -168,7 +168,7 @@
                 <Button x:Name="EnterButton" Width="180" Height="180" Content="X" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource EnterButtonStyle}" Click="EnterButton_Click" />
 
                 <c4d:RoundButton x:Name="GoBackButton" VerticalAlignment="Bottom" HorizontalAlignment="Left" ImageSource="/Assets/Glyphs/goback.png" Click="GoBackButton_Click"/>
-                <c4d:RoundButton x:Name="InfoButton" VerticalAlignment="Top" HorizontalAlignment="Right" ImageSource="/Assets/Glyphs/page.png" Click="InfoButton_Click" Margin="0,10,0,0"/>
+                <c4d:RoundButton x:Name="OSDButton" VerticalAlignment="Top" HorizontalAlignment="Right" ImageSource="/Assets/Glyphs/page.png" Click="OSDButton_Click" Margin="0,10,0,0"/>
                 <c4d:RoundButton x:Name="MenuButton" VerticalAlignment="Bottom" HorizontalAlignment="Right" ImageSource="/Assets/Glyphs/menulines.png" Click="MenuButton_Click"/>
                 <c4d:RoundButton x:Name="HomeButton" VerticalAlignment="Top" HorizontalAlignment="Left" ImageSource="/Assets/Glyphs/home.png" Click="HomeButton_Click" Margin="0,10,0,0"/>                
             </Grid>
