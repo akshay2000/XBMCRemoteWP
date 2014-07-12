@@ -63,7 +63,7 @@
                         </Image>
                         <StackPanel Grid.Column="1" Grid.Row="0">
                             <TextBlock Margin="12,-12,0,0" Text="mood" Foreground="White" Style="{StaticResource PhoneTextTitle2Style}"/>
-                            <TextBlock Margin="12,0,0,0" Text="{Binding Mood, Converter={StaticResource ListToStringConverter}}" TextWrapping="Wrap" Foreground="White"/>
+                            <TextBlock Margin="12,0,0,0" Text="{Binding Mood, Converter={StaticResource ListToStringConverter}, ConverterParameter=true}" TextWrapping="Wrap" Foreground="White"/>
                         </StackPanel>
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" >
                             <TextBlock Foreground="White" Margin="0,24,0,0" Text="bio" Style="{StaticResource PhoneTextTitle2Style}"/>

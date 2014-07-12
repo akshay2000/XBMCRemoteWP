@@ -12,7 +12,8 @@ namespace XBMCRemoteWP.Converters
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             List<string> inputList = (List<String>)value;
-            string toReturn = "not available";
+            bool showNotAvailable = System.Convert.ToBoolean(parameter);
+            string toReturn = showNotAvailable ? "not available" : String.Empty;
             if (inputList == null)
                 inputList = new List<string>();
             if (inputList.Count > 0 && inputList[0]!="")

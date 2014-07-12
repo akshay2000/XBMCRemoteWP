@@ -73,10 +73,10 @@
 
                         <StackPanel Grid.Row="0" Grid.Column="1">
                             <TextBlock Text="Genre" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
-                            <TextBlock Text="{Binding Genre, Converter={StaticResource ListToStringConverter}}" Foreground="White" Style="{StaticResource PhoneTextTitle3Style}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Genre, Converter={StaticResource ListToStringConverter}, ConverterParameter=true}" Foreground="White" Style="{StaticResource PhoneTextTitle3Style}" TextWrapping="Wrap"/>
 
                             <TextBlock Text="Studio" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999" Margin="12,6,12,0"/>
-                            <TextBlock Text="{Binding Studio, Converter={StaticResource ListToStringConverter}}" Foreground="White" Style="{StaticResource PhoneTextTitle3Style}"/>
+                            <TextBlock Text="{Binding Studio, Converter={StaticResource ListToStringConverter}, ConverterParameter=true}" Foreground="White" Style="{StaticResource PhoneTextTitle3Style}"/>
 
                             <TextBlock Text="Rating" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999" Margin="12,6,12,0"/>
                             <TextBlock Text="{Binding Rating, Converter={StaticResource RatingConverter}}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="White"/>

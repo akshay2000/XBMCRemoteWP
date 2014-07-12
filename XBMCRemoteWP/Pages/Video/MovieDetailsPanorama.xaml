@@ -65,10 +65,10 @@
 
                         <StackPanel Grid.Row="0" Grid.Column="1">
                             <TextBlock Text="Director" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999"/>
-                            <TextBlock Text="{Binding Director, Converter={StaticResource ListToStringConverter}}" Foreground="White" Style="{StaticResource PhoneTextTitle3Style}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Director, Converter={StaticResource ListToStringConverter}, ConverterParameter=true}" Foreground="White" Style="{StaticResource PhoneTextTitle3Style}" TextWrapping="Wrap"/>
 
                             <TextBlock Text="Genre" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999" Margin="12,6,12,0"/>
-                            <TextBlock Text="{Binding Genre, Converter={StaticResource ListToStringConverter}}" Foreground="White" Style="{StaticResource PhoneTextTitle3Style}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Genre, Converter={StaticResource ListToStringConverter}, ConverterParameter=true}" Foreground="White" Style="{StaticResource PhoneTextTitle3Style}" TextWrapping="Wrap"/>
 
                             <TextBlock Text="Rating" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999" Margin="12,6,12,0"/>
                             <TextBlock Text="{Binding Rating, Converter={StaticResource RatingConverter}}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="White"/>
@@ -79,10 +79,10 @@
                             <TextBlock Text="{Binding Tagline}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="White" TextWrapping="Wrap" Margin="0"/>
 
                             <TextBlock Text="Writer" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999" Margin="0,6,0,0"/>
-                            <TextBlock Text="{Binding Writer, Converter={StaticResource ListToStringConverter}}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="White" TextWrapping="Wrap" Margin="0"/>
+                            <TextBlock Text="{Binding Writer, Converter={StaticResource ListToStringConverter}, ConverterParameter=true}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="White" TextWrapping="Wrap" Margin="0"/>
 
                             <TextBlock Text="Studio" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999" Margin="0,6,0,0"/>
-                            <TextBlock Text="{Binding Studio, Converter={StaticResource ListToStringConverter}}" Foreground="White" Style="{StaticResource PhoneTextTitle3Style}" Margin="0"/>
+                            <TextBlock Text="{Binding Studio, Converter={StaticResource ListToStringConverter}, ConverterParameter=true}" Foreground="White" Style="{StaticResource PhoneTextTitle3Style}" Margin="0"/>
 
                             <TextBlock Text="Runtime" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#FF999999" Margin="0,6,0,0"/>
                             <TextBlock Text="{Binding Runtime, Converter={StaticResource MinutesToStringConverter}}" Style="{StaticResource PhoneTextTitle3Style}" Foreground="White" Margin="0"/>

@@ -67,7 +67,7 @@
                         </Image>
                         <StackPanel Grid.Column="1">
                             <TextBlock Text="{Binding Label}" FontSize="36" TextWrapping="Wrap" LineHeight="40" FontFamily="Segoe WP SemiLight" Margin="14,-10,0,0" LineStackingStrategy="BaselineToBaseline"/>
-                            <TextBlock Text="{Binding Artist, Converter={StaticResource ListToStringConverter}}" Margin="16,-5,0,0" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding Artist, Converter={StaticResource ListToStringConverter}, ConverterParameter=true}" Margin="16,-5,0,0" TextWrapping="Wrap" />
                         </StackPanel>
                     </Grid>
                    
