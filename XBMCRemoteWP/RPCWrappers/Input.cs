@@ -22,5 +22,13 @@ namespace XBMCRemoteWP.RPCWrappers
             JObject parameters = new JObject(new JProperty("action", action));
             await ConnectionManager.ExecuteRPCRequest("Input.ExecuteAction", parameters);
         }
+
+        public static async void SendText(string textToSend, bool isDone)
+        {
+           JObject parameters = new JObject(
+               new JProperty("text", textToSend),
+               new JProperty("done", isDone));
+            await ConnectionManager.ExecuteRPCRequest("Input.SendText", parameters);
+        }
     }
 }

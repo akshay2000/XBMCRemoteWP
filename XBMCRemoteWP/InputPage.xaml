@@ -140,7 +140,8 @@
             </Grid.RowDefinitions>
             
             <Grid Grid.Row="0" VerticalAlignment="Center">
-                <c4d:RoundButton x:Name="QuitButton" ImageSource="/Assets/Glyphs/power.png" Click="QuitButton_Click" />
+                <!--<c4d:RoundButton x:Name="QuitButton" ImageSource="/Assets/Glyphs/power.png" Click="QuitButton_Click" />-->
+                <TextBox x:Name="SendTextBox" KeyUp="SendTextBox_KeyUp" />
             </Grid>
             
             <!--Navigation-->

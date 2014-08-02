@@ -10,6 +10,8 @@ using Microsoft.Phone.Shell;
 using XBMCRemoteWP.Helpers;
 using XBMCRemoteWP.RPCWrappers;
 using Newtonsoft.Json.Linq;
+using Microsoft.Xna.Framework.Input;
+using System.Windows.Input;
 
 namespace XBMCRemoteWP
 {
@@ -142,6 +144,16 @@ namespace XBMCRemoteWP
         private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
             Applikation.Quit();
+        }
+
+        private void SendTextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Input.SendText(SendTextBox.Text, true);
+                SendTextBox.Text = string.Empty;
+                this.Focus();
+            }
         }
     }
 }
