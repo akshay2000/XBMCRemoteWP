@@ -15,6 +15,7 @@ using XBMCRemoteWP.Helpers;
 using XBMCRemoteWP.Models.Video;
 using System.Windows.Media.Imaging;
 using XBMCRemoteWP.Models;
+using System.Windows.Threading;
 
 namespace XBMCRemoteWP
 {
@@ -24,17 +25,30 @@ namespace XBMCRemoteWP
         private List<Episode> episodes;
         private List<Movie> movies;
 
+        private DispatcherTimer timer;
+
         public CoverPage()
         {
             InitializeComponent();
             if (GlobalVariables.CurrentPlayerState == null)
                 GlobalVariables.CurrentPlayerState = new PlayerState();
             DataContext = GlobalVariables.CurrentPlayerState;
+
+            PlayerHelper.RefreshPlayerState();
+
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(10);
+            timer.Start();
+            timer.Tick += timer_Tick;
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            PlayerHelper.RefreshPlayerState();
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            await PlayerHelper.RefreshPlayerState();
 
             if (albums == null)
             {
