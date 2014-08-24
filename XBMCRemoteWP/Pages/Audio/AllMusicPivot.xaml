@@ -41,7 +41,7 @@
         <phone:Pivot Title="{StaticResource AppName}" Foreground="White">
             <!--Artists: Pivot item one-->
             <phone:PivotItem Header="artists">
-                <Grid>
+                <Grid Margin="6,0,0,0">
                     <phone:LongListSelector x:Name="AllArtistsLLS" IsGroupingEnabled="True" HideEmptyGroups="True" GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}" JumpListStyle="{StaticResource JumpListStyle}">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
@@ -59,7 +59,7 @@
 
             <!--Albums: Pivot item two-->
             <phone:PivotItem Header="albums">
-                <Grid>
+                <Grid Margin="6,0,0,0">
                     <phone:LongListSelector x:Name="AllAlbumsLLS" IsGroupingEnabled="True" HideEmptyGroups="True" GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}" JumpListStyle="{StaticResource JumpListStyle}">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
@@ -101,15 +101,13 @@
             
             <!--Songs: Pivot item three-->
             <phone:PivotItem Header="songs">
-                <Grid>
+                <Grid Margin="6,0,0,0">
                     <phone:LongListSelector x:Name="AllSongsLLS" JumpListStyle="{StaticResource JumpListStyle}" GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}" LayoutMode="List" IsGroupingEnabled="True" HideEmptyGroups="True" toolkit:TiltEffect.IsTiltEnabled="True">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel x:Name="SongItemWrapper" Orientation="Horizontal" Margin="8,15,0,25" Tap="SongItemWrapper_Tap">
-                                    <Border BorderBrush="White" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
-                                        <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="White"/>
-                                    </Border>
-                                    <TextBlock Text="{Binding Label}" Margin="14,-1,0,0" FontSize="36"  FontFamily="Segoe WP SemiLight" Foreground="White"/>
+                                <StackPanel x:Name="SongItemWrapper" Orientation="Vertical" Margin="6,8,0,12" Tap="SongItemWrapper_Tap">
+                                    <TextBlock Text="{Binding Label}" FontSize="36"  FontFamily="Segoe WP SemiLight" Foreground="White"/>
+                                    <TextBlock Text="{Binding AlbumArtist, Converter={StaticResource ListToStringConverter}, ConverterParameter=true}" Style="{StaticResource PhoneTextSmallStyle}" Foreground="#FF999999" TextWrapping="Wrap" Margin="0,-5,0,0"/>
                                 </StackPanel>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
