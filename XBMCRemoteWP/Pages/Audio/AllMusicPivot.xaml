@@ -46,7 +46,7 @@
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel x:Name="ArtistItemWrapper" Orientation="Horizontal" Margin="8,15,0,25" toolkit:TiltEffect.IsTiltEnabled="True">
-                                    <Border x:Name="PlayArtistBorder" Tap="PlayArtistBorder_Tap" BorderBrush="White" Margin="0,0,0,0" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
+                                    <Border x:Name="PlayArtistBorder" Tap="PlayArtistBorder_Tap" BorderBrush="White" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
                                         <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="White"/>
                                     </Border>
                                     <TextBlock x:Name="ArtistNameTextBlock" Tap="ArtistNameTextBlock_Tap" Text="{Binding Label}" Margin="14,-1,0,0" FontSize="36"  FontFamily="Segoe WP SemiLight" Foreground="White"/>

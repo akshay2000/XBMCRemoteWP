@@ -48,9 +48,9 @@ namespace XBMCRemoteWP.Pages.Video
             public SeasonItem(int key, IEnumerable<T> items)
                 : base(items)
             {
-                this.SeasonKey = key;
+                this.Key = key;
             }
-            public int SeasonKey { get; private set; }
+            public int Key { get; private set; }
         }
 
         private void EpisodeWrapper_Tap(object sender, System.Windows.Input.GestureEventArgs e)

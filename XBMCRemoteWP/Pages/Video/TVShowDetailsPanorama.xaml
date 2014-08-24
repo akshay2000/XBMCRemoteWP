@@ -35,7 +35,7 @@
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
 
-    <phone:PhoneApplicationPage.Resources>
+    <!--<phone:PhoneApplicationPage.Resources>
         <Style x:Key="JumpListStyle" TargetType="phone:LongListSelector">
             <Setter Property="GridCellSize"  Value="113,113"/>
             <Setter Property="LayoutMode" Value="Grid" />
@@ -49,7 +49,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </phone:PhoneApplicationPage.Resources>
+    </phone:PhoneApplicationPage.Resources>-->
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Black">
@@ -126,11 +126,11 @@
             </phone:PanoramaItem>
             
             <phone:PanoramaItem Header="seasons" Foreground="White">
-                <Grid>
-                    <phone:LongListSelector x:Name="SeasonsLLS" Foreground="White" IsGroupingEnabled="True" JumpListStyle="{StaticResource JumpListStyle}">
+                <Grid Margin="6,0,0,0">
+                    <phone:LongListSelector x:Name="SeasonsLLS" Foreground="White" IsGroupingEnabled="True" JumpListStyle="{StaticResource JumpListStyle}" GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel x:Name="EpisodeWrapper" Orientation="Horizontal" Margin="5" toolkit:TiltEffect.IsTiltEnabled="True" Tap="EpisodeWrapper_Tap">
+                                <StackPanel x:Name="EpisodeWrapper" Orientation="Horizontal" Margin="8,5,5,5" toolkit:TiltEffect.IsTiltEnabled="True" Tap="EpisodeWrapper_Tap">
                                     <Border x:Name="PlayEpisodeBorder" BorderBrush="White" Margin="0,0,0,0" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
                                         <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="White"/>
                                     </Border>
@@ -138,7 +138,7 @@
                                 </StackPanel>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
-                        <phone:LongListSelector.GroupHeaderTemplate>
+                        <!--<phone:LongListSelector.GroupHeaderTemplate>
                             <DataTemplate>
                                 <Border Background="Transparent" Padding="5">
                                     <Border Background="{StaticResource PhoneAccentBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" BorderThickness="2" Width="62" Height="62" Margin="0,0,18,0" HorizontalAlignment="Left">
@@ -146,7 +146,7 @@
                                     </Border>
                                 </Border>
                             </DataTemplate>
-                        </phone:LongListSelector.GroupHeaderTemplate>
+                        </phone:LongListSelector.GroupHeaderTemplate>-->
                     </phone:LongListSelector>
                 </Grid>
             </phone:PanoramaItem>
