@@ -34,18 +34,18 @@
             </toolkit:NavigationOutTransition.Forward>
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
-
+    
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Black">
         <!--Pivot Control-->
         <phone:Pivot Title="{StaticResource AppName}" Foreground="White">
-            <!--Pivot item one-->
+            <!--Artists: Pivot item one-->
             <phone:PivotItem Header="artists">
                 <Grid>
-                    <phone:LongListSelector x:Name="AllArtistsLLS">
+                    <phone:LongListSelector x:Name="AllArtistsLLS" IsGroupingEnabled="True" HideEmptyGroups="True" GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}" JumpListStyle="{StaticResource JumpListStyle}">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel x:Name="ArtistItemWrapper" Orientation="Horizontal" Margin="8,0,0,40" toolkit:TiltEffect.IsTiltEnabled="True">
+                                <StackPanel x:Name="ArtistItemWrapper" Orientation="Horizontal" Margin="8,15,0,25" toolkit:TiltEffect.IsTiltEnabled="True">
                                     <Border x:Name="PlayArtistBorder" Tap="PlayArtistBorder_Tap" BorderBrush="White" Margin="0,0,0,0" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
                                         <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="White"/>
                                     </Border>
@@ -57,13 +57,13 @@
                 </Grid>
             </phone:PivotItem>
 
-            <!--Pivot item two-->
+            <!--Albums: Pivot item two-->
             <phone:PivotItem Header="albums">
                 <Grid>
-                    <phone:LongListSelector x:Name="AllAlbumsLLS" Margin="12,0,0,0">
+                    <phone:LongListSelector x:Name="AllAlbumsLLS" IsGroupingEnabled="True" HideEmptyGroups="True" GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}" JumpListStyle="{StaticResource JumpListStyle}">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <Grid x:Name="AlbumItemWrapper" Margin="0,0,0,24" toolkit:TiltEffect.IsTiltEnabled="True">
+                                <Grid x:Name="AlbumItemWrapper" Margin="6,0,0,24" toolkit:TiltEffect.IsTiltEnabled="True">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="*"/>
@@ -99,12 +99,13 @@
                 </Grid>
             </phone:PivotItem>
             
+            <!--Songs: Pivot item three-->
             <phone:PivotItem Header="songs">
                 <Grid>
-                    <phone:LongListSelector x:Name="AllSongsLLS" toolkit:TiltEffect.IsTiltEnabled="True">
+                    <phone:LongListSelector x:Name="AllSongsLLS" JumpListStyle="{StaticResource JumpListStyle}" GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}" LayoutMode="List" IsGroupingEnabled="True" HideEmptyGroups="True" toolkit:TiltEffect.IsTiltEnabled="True">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel x:Name="SongItemWrapper" Orientation="Horizontal" Margin="8,0,0,40" Tap="SongItemWrapper_Tap">
+                                <StackPanel x:Name="SongItemWrapper" Orientation="Horizontal" Margin="8,15,0,25" Tap="SongItemWrapper_Tap">
                                     <Border BorderBrush="White" CornerRadius="22" BorderThickness="3" Width="41" Height="41">
                                         <Polygon VerticalAlignment="Center" Margin="4,0,0,0" HorizontalAlignment="Center" Points="0,0 13,10, 0,20 0,0" Fill="White"/>
                                     </Border>
@@ -112,8 +113,7 @@
                                 </StackPanel>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
-                    </phone:LongListSelector>
-                    
+                    </phone:LongListSelector>                    
                 </Grid>
             </phone:PivotItem>
         </phone:Pivot>

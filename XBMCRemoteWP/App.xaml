@@ -19,9 +19,33 @@
             <converters:RepeatStateConverter x:Key="RepeatStateConverter"/>
             <converters:RatingConverter x:Key="RatingConverter"/>
             <converters:StringToImageBrushConverter x:Key="StringToImageBrushConverter"/>
+            <phone:JumpListItemBackgroundConverter x:Key="BackgroundConverter"/>
+            <phone:JumpListItemForegroundConverter x:Key="ForegroundConverter"/>
             
             <!--App name is held as a resource-->
             <sys:String x:Key="AppName">XBMC ASSIST</sys:String>
+
+            <DataTemplate x:Key="GroupHeaderTemplate">
+                <Border Background="Transparent" Padding="6,12">
+                    <Border Background="{StaticResource PhoneAccentBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" BorderThickness="2" Width="62" Height="62" Margin="0,0,18,0" HorizontalAlignment="Left">
+                        <TextBlock Text="{Binding Key}" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="48" Padding="6" FontFamily="{StaticResource PhoneFontFamilySemiLight}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Border>
+                </Border>
+            </DataTemplate>
+            
+            <Style x:Key="JumpListStyle" TargetType="phone:LongListSelector">
+                <Setter Property="GridCellSize"  Value="113,113"/>
+                <Setter Property="LayoutMode" Value="Grid" />
+                <Setter Property="ItemTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <Border Background="{Binding Converter={StaticResource BackgroundConverter}}" Width="113" Height="113" Margin="6" >
+                                <TextBlock Text="{Binding Key}" FontSize="48" Padding="10" Foreground="{Binding Converter={StaticResource ForegroundConverter}}" VerticalAlignment="Bottom"/>
+                            </Border>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 

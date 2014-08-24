@@ -68,14 +68,17 @@ namespace XBMCRemoteWP.Pages.Audio
         {
             ConnectionManager.ManageSystemTray(true);
             allArtists = await AudioLibrary.GetArtists();
-            AllArtistsLLS.ItemsSource = allArtists;
+            var groupedAllArtists = GroupingHelper.GroupList(allArtists, (Artist a) => { return a.Label; }, true);
+            AllArtistsLLS.ItemsSource = groupedAllArtists;
 
             JObject sortWith = new JObject(new JProperty("method", "label"));
             allAlbums = await AudioLibrary.GetAlbums(sort: sortWith);
-            AllAlbumsLLS.ItemsSource = allAlbums;
+            var groupedAllAlbums = GroupingHelper.GroupList(allAlbums, (Album a) => { return a.Label; }, true);
+            AllAlbumsLLS.ItemsSource = groupedAllAlbums;
 
             allSongs = await AudioLibrary.GetSongs(sort: sortWith);
-            AllSongsLLS.ItemsSource = allSongs;
+            var groupedAllSongs = GroupingHelper.GroupList(allSongs, (Song s) => { return s.Label; }, true);
+            AllSongsLLS.ItemsSource = groupedAllSongs;
             ConnectionManager.ManageSystemTray(false);
         }
 

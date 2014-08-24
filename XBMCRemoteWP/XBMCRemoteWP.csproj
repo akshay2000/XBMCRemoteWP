@@ -118,11 +118,13 @@
       <DependentUpon>CoverPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GlobalVariables.cs" />
+    <Compile Include="Helpers\GroupingHelper.cs" />
     <Compile Include="Helpers\PlayerHelper.cs" />
     <Compile Include="Helpers\SettingsHelper.cs" />
     <Compile Include="Models\Audio\Album.cs" />
     <Compile Include="Models\Audio\Artist.cs" />
     <Compile Include="Models\Audio\Song.cs" />
+    <Compile Include="Models\Common\GroupedList.cs" />
     <Compile Include="Models\Common\Limits.cs" />
     <Compile Include="Models\ConnectionItem.cs" />
     <Compile Include="Models\MainDataContext.cs" />
