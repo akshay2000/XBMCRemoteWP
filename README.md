@@ -52,6 +52,6 @@ All the points in previous section are applicable here. You might want to go thr
 * If you were thinking that `localhost` on emulator points to your host dev machine, think again. Emulator's `localhost` points to the emulator itself. If you want to access the host machine, use host machine's IP address.
 * Check that emulator's connections are configured correctly.
 
-**miscellaneous**  
+**Miscellaneous**
 * If you want to make raw JSON-RPC calls and examine the output, you may use some sort of REST client. [Postman](http://www.getpostman.com/) is one excellent choice.
 * Everything is easier when you have a wireless router.
