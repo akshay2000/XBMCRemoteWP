@@ -37,7 +37,7 @@ Just hit the run button!
 If you've followed all the steps above correctly, you shouldn't have any trouble. So, before jumping here, please make sure that you didn't miss anything out. If you still have some trouble, this should help you.
 
 **Phone won't connect to the server**  
-Open Internet Explorer on the phone and navigate to server. Make sure you use the correct port. Example URL looks like `http:\\192.168.0.10:8080`.  
+Open Internet Explorer on the phone and navigate to server. Make sure you use the correct port. Example URL looks like `http://192.168.0.10:8080`.  
 If you are able to see the XBMC Web UI
 * Go back to X. assist and double check your connection settings.
 * Make sure that you have entered the correct password.
