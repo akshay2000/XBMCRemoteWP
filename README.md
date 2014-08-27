@@ -13,6 +13,7 @@ This is a short version XBMC setup. If you are interested in knowing all the sma
 * Now, go to `Settings>Remote control` and check both the options, especially 'Allow programs on other systems to control XBMC'.
 
 **Set up the remote**  
+This should be easy and fun!
 * Download the app from [Windows Phone Store](http://www.windowsphone.com/s?appid=3897b459-b11b-41eb-9cea-dd9e53c55b78).
 * Tap the 'add connection' button in the app bar.
 * Remember the details you chose while setting up the server? Enter those details here and save the connection.
