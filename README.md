@@ -38,9 +38,10 @@ If you've followed all the steps above correctly, you shouldn't have any trouble
 
 **Phone won't connect to the server**  
 Open Internet Explorer on the phone and navigate to server. Make sure you use the correct port. Example URL looks like `http://192.168.0.10:8080`.  
-If you are able to see the XBMC Web UI
+If you are able to see the XBMC Web UI:
 * Go back to X. assist and double check your connection settings.
 * Make sure that you have entered the correct password.
+
 If you are _not_ able to see the XBMC Web UI:
 * Check the you have enabled webserver and remote access in XBMC settings.
 * Check if you can open the Web UI from any other computer on the local network. If not, you have bigger problems!
@@ -53,5 +54,6 @@ All the points in previous section are applicable here. You might want to go thr
 * Check that emulator's connections are configured correctly.
 
 **Miscellaneous**
+Some random things, in no particular order.
 * If you want to make raw JSON-RPC calls and examine the output, you may use some sort of REST client. [Postman](http://www.getpostman.com/) is one excellent choice.
 * Everything is easier when you have a wireless router.
