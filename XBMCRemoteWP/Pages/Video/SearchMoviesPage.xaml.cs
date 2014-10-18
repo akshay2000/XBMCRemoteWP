@@ -16,8 +16,8 @@ namespace XBMCRemoteWP.Pages.Video
 {
     public partial class SearchMoviesPage : PhoneApplicationPage
     {
-        private List<Movie> AllMovies;
-        private List<Movie> FilteredMovies;
+        private List<Movie> allMovies;
+        private List<Movie> filteredMovies;
         public SearchMoviesPage()
         {
             InitializeComponent();
@@ -35,11 +35,11 @@ namespace XBMCRemoteWP.Pages.Video
         private async void SearchAndReload(string query)
         {
             ConnectionManager.ManageSystemTray(true);
-            if(AllMovies == null)
-                AllMovies = await VideoLibrary.GetMovies();
+            if(allMovies == null)
+                allMovies = await VideoLibrary.GetMovies();
 
-            FilteredMovies = AllMovies.Where(t => t.Title.ToLower().Contains(query.ToLower())).ToList();
-            SearchMoviesLLS.ItemsSource = FilteredMovies;
+            filteredMovies = allMovies.Where(t => t.Title.ToLower().Contains(query.ToLower())).ToList();
+            SearchMoviesLLS.ItemsSource = filteredMovies;
             ConnectionManager.ManageSystemTray(false);
         }
 
